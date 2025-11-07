@@ -1,0 +1,32 @@
+{
+  "navigation": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About Us",
+    "portfolio": "Portfolio",
+    "video": "Video",
+    "contact": "Contact",
+    "request": "Request Quote"
+  },
+  "hero": {
+    "drilling": {
+      "title": "Water Well Drilling",
+      "subtitle": "Hydrogeological well drilling",
+      "description": "Private drilling needs (irrigation, private homes), Geophysical wells, Core drilling, Auger drilling, Percussion drilling"
+    },
+    "geological": {
+      "title": "Engineering-Geological Surveys",
+      "subtitle": "Drilling and engineering-geological wells",
+      "description": "Sampling disturbed and undisturbed structure, Field testing: stamp, SPT, CPT, DPT, Full complex of laboratory tests, Preparation and delivery of technical report"
+    },
+    "geodesy": {
+      "title": "Geodesy and Topography",
+      "subtitle": "Measurements for determining boundaries of land plots",
+      "description": "Development of maps, plans and schemes, Verification of object location accuracy, Topographic mapping, Terrain and object positioning, Geodetic construction support"
+    },
+    "buttons": {
+      "whatsapp": "WhatsApp",
+      "phone": "+7 (775) 502-05-55"
+    }
+  }
+}
