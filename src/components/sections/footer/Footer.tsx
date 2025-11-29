@@ -62,6 +62,7 @@ export function Footer() {
               alt="Логотип компании GeoExploration"
               width={150}
               height={50}
+              loading="lazy"
             />
             <p className="text-sm text-muted-foreground">
               Профессиональные геологические и геодезические услуги
@@ -93,37 +94,39 @@ export function Footer() {
             <h3 id="footer-contacts-heading" className="font-semibold">
               Контакты
             </h3>
-            <ul className="space-y-2 text-sm" role="list">
-              {contactLinks.map((link) => {
-                const LucideIcon = link.icon;
-                const brandIconData = link.brand;
-                return (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-                      aria-label={link.aria}
-                      {...(link.external && {
-                        target: "_blank",
-                        rel: "noopener noreferrer",
-                      })}
-                    >
-                      {brandIconData ? (
-                        <BrandIcon
-                          icon={brandIconData}
-                          className="h-4 w-4"
-                          aria-hidden="true"
-                          label={link.label}
-                        />
-                      ) : LucideIcon ? (
-                        <LucideIcon className="h-4 w-4" aria-hidden="true" />
-                      ) : null}
-                      <span>{link.label}</span>
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
+            <address className="not-italic">
+              <ul className="space-y-2 text-sm" role="list">
+                {contactLinks.map((link) => {
+                  const LucideIcon = link.icon;
+                  const brandIconData = link.brand;
+                  return (
+                    <li key={link.label}>
+                      <a
+                        href={link.href}
+                        className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+                        aria-label={link.aria}
+                        {...(link.external && {
+                          target: "_blank",
+                          rel: "noopener noreferrer",
+                        })}
+                      >
+                        {brandIconData ? (
+                          <BrandIcon
+                            icon={brandIconData}
+                            className="h-4 w-4"
+                            aria-hidden="true"
+                            label={link.label}
+                          />
+                        ) : LucideIcon ? (
+                          <LucideIcon className="h-4 w-4" aria-hidden="true" />
+                        ) : null}
+                        <span>{link.label}</span>
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </address>
           </div>
         </div>
 

@@ -7,9 +7,7 @@ import { cn } from "@/lib/utils";
 
 export function Header({ className: _className }: { className?: string }) {
   const [scrolled, setScrolled] = useState(false);
-  const [activeHash, setActiveHash] = useState<string>(
-    typeof window !== "undefined" ? window.location.hash : ""
-  );
+  const [activeHash, setActiveHash] = useState<string>("");
 
   useEffect(() => {
     const onScroll = () => {
@@ -19,7 +17,7 @@ export function Header({ className: _className }: { className?: string }) {
       setActiveHash(window.location.hash);
     };
     onScroll();
-    onHashChange();
+    setActiveHash(window.location.hash);
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("hashchange", onHashChange);
     return () => {
@@ -39,6 +37,7 @@ export function Header({ className: _className }: { className?: string }) {
 
   return (
     <header
+      role="banner"
       className={cn(
         "sticky top-0 z-50 w-full border-b transition-all",
         scrolled
@@ -65,10 +64,8 @@ export function Header({ className: _className }: { className?: string }) {
               width={scrolled ? 140 : 220}
               height={scrolled ? 40 : 60}
               priority
-              className={cn(
-                "transition-all",
-                scrolled ? "opacity-100" : "opacity-100"
-              )}
+              sizes="(max-width: 768px) 140px, 220px"
+              className="transition-all"
             />
           </a>
         </div>
@@ -89,7 +86,12 @@ export function Header({ className: _className }: { className?: string }) {
               )}
               asChild
             >
-              <a href={item.href}>{item.label}</a>
+              <a
+                href={item.href}
+                {...(activeHash === item.href && { "aria-current": "page" })}
+              >
+                {item.label}
+              </a>
             </Button>
           ))}
         </nav>
