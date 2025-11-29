@@ -1,58 +1,13 @@
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
-import { Phone, Mail } from "lucide-react";
-import { siInstagram, siWhatsapp, type SimpleIcon } from "simple-icons";
+// Icons now provided via centralized data definitions in contactLinks
 import { BrandIcon } from "@/components/ui/brand-icon";
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from "@/ui/external-link";
+import { serviceLinks, contactLinks } from "@/data/links";
 
 export function Footer() {
-  const serviceLinks = [
-    { label: "Бурение скважин на воду", href: "#services" },
-    { label: "Инженерно-геологические изыскания", href: "#services" },
-    { label: "Геодезия и топография", href: "#services" },
-    { label: "Вынос в натуру", href: "#services" },
-  ];
-
-  type ContactLink = {
-    label: string;
-    href: string;
-    aria: string;
-    external?: boolean;
-    brand?: SimpleIcon;
-    icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-  };
-
-  const contactLinks: ContactLink[] = [
-    {
-      label: "WhatsApp",
-      href: `${process.env.NEXT_PUBLIC_WHATSAPP_BASE}`,
-      external: true,
-      brand: siWhatsapp,
-      aria: "Открыть чат WhatsApp",
-    },
-    {
-      label: process.env.NEXT_PUBLIC_PHONE_DISPLAY || "Телефон",
-      href: `tel:${process.env.NEXT_PUBLIC_PHONE_MAIN}`,
-      icon: Phone,
-      aria: `Позвонить по номеру ${
-        process.env.NEXT_PUBLIC_PHONE_DISPLAY || "основной телефон"
-      }`,
-    },
-    {
-      label: process.env.NEXT_PUBLIC_EMAIL || "Email",
-      href: `mailto:${process.env.NEXT_PUBLIC_EMAIL}`,
-      icon: Mail,
-      aria: `Написать на email ${process.env.NEXT_PUBLIC_EMAIL}`,
-    },
-    {
-      label: "Instagram",
-      href: `${process.env.NEXT_PUBLIC_INSTAGRAM_URL}`,
-      external: true,
-      brand: siInstagram,
-      aria: "Перейти в профиль Instagram",
-    },
-  ];
+  // serviceLinks & contactLinks imported from central data file
 
   return (
     <footer

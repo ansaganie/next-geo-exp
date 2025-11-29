@@ -1,9 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
-
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { NavigationMenu, NavigationMenuList } from "@/ui/navigation-menu";
+import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
+import { Menu } from "lucide-react";
+import { navLinks, headerCta } from "@/data/links";
 
 export function Header({ className: _className }: { className?: string }) {
   const [scrolled, setScrolled] = useState(false);
@@ -26,14 +29,7 @@ export function Header({ className: _className }: { className?: string }) {
     };
   }, []);
 
-  const navItems = [
-    { href: "#top", label: "Главная" },
-    { href: "#services", label: "Услуги" },
-    { href: "#about", label: "О нас" },
-    { href: "#portfolio", label: "Портфолио" },
-    { href: "#video", label: "Видео" },
-    { href: "#contact-us", label: "Контакты" },
-  ];
+  const navItems = navLinks;
 
   return (
     <header
@@ -71,38 +67,85 @@ export function Header({ className: _className }: { className?: string }) {
         </div>
 
         <nav
-          className="flex flex-1 items-center justify-center"
+          className="hidden md:flex flex-1 items-center justify-center"
           role="navigation"
           aria-label="Главная навигация"
         >
-          {navItems.map((item) => (
-            <Button
-              key={item.href}
-              variant="ghost"
-              className={cn(
-                "text-foreground hover:text-primary hover:bg-primary/10",
-                activeHash === item.href &&
-                  "font-bold text-primary underline underline-offset-4"
-              )}
-              asChild
-            >
-              <a
-                href={item.href}
-                {...(activeHash === item.href && { "aria-current": "page" })}
-              >
-                {item.label}
-              </a>
-            </Button>
-          ))}
+          <NavigationMenu className="w-full justify-center">
+            <NavigationMenuList className="flex items-center gap-2">
+              {navItems.map((item) => (
+                <Button
+                  key={item.href}
+                  variant="ghost"
+                  className={cn(
+                    "px-3 py-2 text-sm font-medium text-foreground hover:text-primary hover:bg-primary/10 transition-colors",
+                    activeHash === item.href &&
+                      "font-bold text-primary underline underline-offset-4"
+                  )}
+                  asChild
+                >
+                  <a
+                    href={item.href}
+                    {...(activeHash === item.href && {
+                      "aria-current": "page",
+                    })}
+                  >
+                    {item.label}
+                  </a>
+                </Button>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
         </nav>
 
-        <div className="flex items-center">
+        <div className="flex md:hidden items-center">
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" aria-label="Меню">
+                <Menu className="h-5 w-5" aria-hidden="true" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="w-64">
+              <nav
+                className="flex flex-col gap-1"
+                aria-label="Мобильная навигация"
+              >
+                {navItems.map((item) => (
+                  <Button
+                    key={item.href}
+                    variant="ghost"
+                    className={cn(
+                      "justify-start", // align text left
+                      activeHash === item.href &&
+                        "font-bold text-primary underline underline-offset-4"
+                    )}
+                    asChild
+                  >
+                    <a
+                      href={item.href}
+                      {...(activeHash === item.href && {
+                        "aria-current": "page",
+                      })}
+                    >
+                      {item.label}
+                    </a>
+                  </Button>
+                ))}
+                <Button variant="default" className="mt-2" asChild>
+                  <a href={headerCta.href}>{headerCta.label}</a>
+                </Button>
+              </nav>
+            </SheetContent>
+          </Sheet>
+        </div>
+
+        <div className="hidden md:flex items-center">
           <Button
             size="sm"
             asChild
             className="bg-primary text-primary-foreground hover:bg-primary/90"
           >
-            <a href="#contact-us">Оставить заявку</a>
+            <a href={headerCta.href}>{headerCta.label}</a>
           </Button>
         </div>
       </div>
