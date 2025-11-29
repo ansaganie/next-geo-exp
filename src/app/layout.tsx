@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: "GeoExploration – Геологические и инженерные услуги",
   description:
     "Профессиональные инженерно-геологические изыскания, бурение скважин на воду, геодезия и топографическая съемка по всему Казахстану.",
+  icons: {
+    icon: "/favicon.ico",
+  },
   keywords: [
     "геология",
     "инженерно-геологические изыскания",
@@ -56,8 +59,12 @@ export const metadata: Metadata = {
       "Инженерно-геологические изыскания, бурение скважин на воду, геодезические и топографические работы в Казахстане.",
     images: ["/assets/images/Logo.png"],
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
   themeColor: "#1e40af",
-  viewport: "width=device-width,initial-scale=1",
 };
 
 export default function RootLayout({
