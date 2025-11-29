@@ -1,48 +1,50 @@
 import React from "react";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export function Header({ className }: { className?: string }) {
+  const navItems = [
+    { href: "#top", label: "Главная" },
+    { href: "#services", label: "Услуги" },
+    { href: "#about", label: "О нас" },
+    { href: "#portfolio", label: "Портфолио" },
+    { href: "#video", label: "Видео" },
+    { href: "#contact-us", label: "Контакты" },
+  ];
+
   return (
-    <header className={cn("w-full border-b bg-background", className)}>
-      <div className="mx-auto flex max-w-6xl items-center justify-between py-4 px-8">
-        <div className="flex items-center gap-3">
-          <Image
-            src="/assets/images/Logo.png"
-            alt="GeoExploration"
-            width={140}
-            height={40}
-          />
-        </div>
-        <nav className="text-sm font-medium">
-          <ul className="flex gap-8">
-            <li>
-              <a href="#top">Главное</a>
-            </li>
-            <li>
-              <a href="#services">Услуги</a>
-            </li>
-            <li>
-              <a href="#about">О нас</a>
-            </li>
-            <li>
-              <a href="#portfolio">Работы</a>
-            </li>
-            <li>
-              <a href="#video">Видео</a>
-            </li>
-            <li>
-              <a href="#contact-us">Контакты</a>
-            </li>
-          </ul>
-        </nav>
-        <div>
-          <a
-            href="#contact-us"
-            className="rounded bg-primary px-4 py-2 text-primary-foreground text-sm"
-          >
-            Оставить заявку
+    <header
+      className={cn(
+        "sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60",
+        className
+      )}
+    >
+      <div className="container flex h-16 items-center">
+        <div className="mr-8 flex">
+          <a href="#top" className="flex items-center">
+            <Image
+              src="/assets/images/Logo.png"
+              alt="GeoExploration"
+              width={140}
+              height={40}
+              priority
+            />
           </a>
+        </div>
+
+        <nav className="flex flex-1 items-center justify-center">
+          {navItems.map((item) => (
+            <Button key={item.href} variant="ghost" asChild>
+              <a href={item.href}>{item.label}</a>
+            </Button>
+          ))}
+        </nav>
+
+        <div className="flex items-center">
+          <Button asChild>
+            <a href="#contact-us">Оставить заявку</a>
+          </Button>
         </div>
       </div>
     </header>

@@ -1,75 +1,93 @@
 import React from "react";
 import Image from "next/image";
+import { Separator } from "@/components/ui/separator";
 
 export function Footer() {
+  const serviceLinks = [
+    "Бурение скважин на воду",
+    "Инженерно-геологические изыскания",
+    "Геодезия и топография",
+    "Вынос в натуру",
+  ];
+
+  const contactLinks = [
+    {
+      label: "WhatsApp",
+      href: `${process.env.NEXT_PUBLIC_WHATSAPP_BASE}`,
+      external: true,
+    },
+    {
+      label: process.env.NEXT_PUBLIC_PHONE_DISPLAY || "Телефон",
+      href: `tel:${process.env.NEXT_PUBLIC_PHONE_MAIN}`,
+    },
+    {
+      label: process.env.NEXT_PUBLIC_EMAIL || "info@gex.kz",
+      href: `mailto:${process.env.NEXT_PUBLIC_EMAIL}`,
+    },
+    {
+      label: "Instagram",
+      href: `${process.env.NEXT_PUBLIC_INSTAGRAM_URL}`,
+      external: true,
+    },
+  ];
+
   return (
-    <footer
-      className="border-t bg-background py-12"
-      aria-labelledby="footer-heading"
-    >
-      <div className="mx-auto max-w-6xl px-8">
+    <footer className="border-t bg-muted/50" aria-labelledby="footer-heading">
+      <div className="container py-12">
         <h2 id="footer-heading" className="sr-only">
           Футер сайта GeoExploration
         </h2>
-        <div className="grid gap-10 md:grid-cols-3">
-          <div>
+
+        <div className="grid gap-8 md:grid-cols-3">
+          {/* Company Info */}
+          <div className="space-y-4">
             <Image
               src="/assets/images/Logofooter.png"
               alt="GeoExploration"
               width={150}
               height={50}
             />
-            <div className="mt-3 text-sm">
-              <a href={`tel:${process.env.NEXT_PUBLIC_PHONE_MAIN}`}>
-                {process.env.NEXT_PUBLIC_PHONE_DISPLAY}
-              </a>
-            </div>
+            <p className="text-sm text-muted-foreground">
+              Профессиональные геологические и геодезические услуги
+            </p>
           </div>
-          <div className="text-sm">
-            <h3 className="mb-2 font-semibold">Услуги</h3>
-            <ul className="space-y-1">
-              <li>Бурение скважин</li>
-              <li>Инженерно-геологические изыскания</li>
-              <li>Геодезия и топография</li>
-              <li>Вынос в натуру</li>
+
+          {/* Services */}
+          <div className="space-y-4">
+            <h3 className="font-semibold">Услуги</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              {serviceLinks.map((service, index) => (
+                <li key={index}>{service}</li>
+              ))}
             </ul>
           </div>
-          <div className="text-sm">
-            <h3 className="mb-2 font-semibold">Контакты</h3>
-            <ul className="space-y-1">
-              <li>
-                <a
-                  href={`${process.env.NEXT_PUBLIC_WHATSAPP_BASE}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Whatsapp
-                </a>
-              </li>
-              <li>
-                <a href={`tel:${process.env.NEXT_PUBLIC_PHONE_MAIN}`}>
-                  Телефон
-                </a>
-              </li>
-              <li>
-                <a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>
-                  {process.env.NEXT_PUBLIC_EMAIL}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`${process.env.NEXT_PUBLIC_INSTAGRAM_URL}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Instagram
-                </a>
-              </li>
+
+          {/* Contacts */}
+          <div className="space-y-4">
+            <h3 className="font-semibold">Контакты</h3>
+            <ul className="space-y-2 text-sm">
+              {contactLinks.map((link, index) => (
+                <li key={index}>
+                  <a
+                    href={link.href}
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    {...(link.external && {
+                      target: "_blank",
+                      rel: "noopener noreferrer",
+                    })}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
-        <div className="mt-10 text-center text-xs text-muted-foreground">
-          © 2025 GeoExploration. Все права защищены.
+
+        <Separator className="my-8" />
+
+        <div className="text-center text-sm text-muted-foreground">
+          © {new Date().getFullYear()} GeoExploration. Все права защищены.
         </div>
       </div>
     </footer>
