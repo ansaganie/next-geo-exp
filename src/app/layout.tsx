@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "next-themes";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -10,9 +9,37 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "GeoExploration - Geological and Engineering Services",
+  title: "GeoExploration – Геологические и инженерные услуги",
   description:
-    "Professional geological surveys, water drilling, engineering consulting, and topographic mapping services in Kazakhstan.",
+    "Профессиональные инженерно-геологические изыскания, бурение скважин на воду, геодезия и топографическая съемка по всему Казахстану.",
+  keywords: [
+    "геология",
+    "инженерно-геологические изыскания",
+    "бурение скважин",
+    "бурение воды",
+    "геодезия",
+    "топографическая съемка",
+    "кадастровые работы",
+    "GeoExploration",
+    "изыскания Казахстан",
+  ],
+  metadataBase: new URL("https://geoexploration.kz"),
+  alternates: {
+    canonical: "https://geoexploration.kz",
+  },
+  openGraph: {
+    title: "GeoExploration – Геологические и инженерные услуги",
+    description:
+      "Инженерно-геологические изыскания, бурение скважин на воду, геодезические и топографические работы в Казахстане.",
+    url: "https://geoexploration.kz",
+    siteName: "GeoExploration",
+    locale: "ru_RU",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -21,11 +48,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="ru">
       <body className={`${inter.variable} font-sans antialiased`}>
-        <ThemeProvider attribute="class" disableTransitionOnChange>
-          {children}
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   );
