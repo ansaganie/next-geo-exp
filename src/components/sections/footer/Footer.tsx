@@ -1,8 +1,10 @@
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { Phone, Mail } from "lucide-react";
-import { siInstagram, siWhatsapp } from "simple-icons";
+import { siInstagram, siWhatsapp, type SimpleIcon } from "simple-icons";
 import { BrandIcon } from "@/components/ui/brand-icon";
+import { Button } from "@/components/ui/button";
+import { ExternalLink } from "@/ui/external-link";
 
 export function Footer() {
   const serviceLinks = [
@@ -12,7 +14,16 @@ export function Footer() {
     { label: "Вынос в натуру", href: "#services" },
   ];
 
-  const contactLinks = [
+  type ContactLink = {
+    label: string;
+    href: string;
+    aria: string;
+    external?: boolean;
+    brand?: SimpleIcon;
+    icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  };
+
+  const contactLinks: ContactLink[] = [
     {
       label: "WhatsApp",
       href: `${process.env.NEXT_PUBLIC_WHATSAPP_BASE}`,
@@ -29,7 +40,7 @@ export function Footer() {
       }`,
     },
     {
-      label: process.env.NEXT_PUBLIC_EMAIL,
+      label: process.env.NEXT_PUBLIC_EMAIL || "Email",
       href: `mailto:${process.env.NEXT_PUBLIC_EMAIL}`,
       icon: Mail,
       aria: `Написать на email ${process.env.NEXT_PUBLIC_EMAIL}`,
@@ -97,31 +108,47 @@ export function Footer() {
             <address className="not-italic">
               <ul className="space-y-2 text-sm" role="list">
                 {contactLinks.map((link) => {
-                  const LucideIcon = link.icon;
-                  const brandIconData = link.brand;
+                  const {
+                    icon: LucideIcon,
+                    brand: brandIconData,
+                    external,
+                  } = link;
+                  const content = (
+                    <span className="flex items-center gap-2">
+                      {brandIconData ? (
+                        <BrandIcon
+                          icon={brandIconData}
+                          className="h-4 w-4"
+                          aria-hidden="true"
+                          label={link.label}
+                        />
+                      ) : LucideIcon ? (
+                        <LucideIcon className="h-4 w-4" aria-hidden="true" />
+                      ) : null}
+                      <span>{link.label}</span>
+                    </span>
+                  );
                   return (
                     <li key={link.label}>
-                      <a
-                        href={link.href}
-                        className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-                        aria-label={link.aria}
-                        {...(link.external && {
-                          target: "_blank",
-                          rel: "noopener noreferrer",
-                        })}
-                      >
-                        {brandIconData ? (
-                          <BrandIcon
-                            icon={brandIconData}
-                            className="h-4 w-4"
-                            aria-hidden="true"
-                            label={link.label}
-                          />
-                        ) : LucideIcon ? (
-                          <LucideIcon className="h-4 w-4" aria-hidden="true" />
-                        ) : null}
-                        <span>{link.label}</span>
-                      </a>
+                      {external ? (
+                        <ExternalLink
+                          href={link.href}
+                          aria-label={link.aria}
+                          className="text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
+                        >
+                          {content}
+                        </ExternalLink>
+                      ) : (
+                        <Button
+                          asChild
+                          variant="link"
+                          className="p-0 h-auto text-muted-foreground hover:text-foreground"
+                        >
+                          <a href={link.href} aria-label={link.aria}>
+                            {content}
+                          </a>
+                        </Button>
+                      )}
                     </li>
                   );
                 })}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { cn } from "@/lib/utils";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -55,6 +56,8 @@ export const metadata: Metadata = {
       "Инженерно-геологические изыскания, бурение скважин на воду, геодезические и топографические работы в Казахстане.",
     images: ["/assets/images/Logo.png"],
   },
+  themeColor: "#1e40af",
+  viewport: "width=device-width,initial-scale=1",
 };
 
 export default function RootLayout({
@@ -64,8 +67,47 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`${inter.variable} font-sans antialiased`}>
-        {children}
+      <body
+        className={cn(
+          inter.variable,
+          "min-h-screen bg-background font-sans antialiased text-foreground"
+        )}
+      >
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-md focus:bg-primary focus:px-3 focus:py-2 focus:text-primary-foreground"
+        >
+          Перейти к содержимому
+        </a>
+        <main id="main" role="main">
+          {children}
+        </main>
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "GeoExploration",
+              url: "https://geoexploration.kz",
+              logo: "https://geoexploration.kz/assets/images/Logo.png",
+              contactPoint: [
+                {
+                  "@type": "ContactPoint",
+                  telephone: process.env.NEXT_PUBLIC_PHONE_MAIN || "",
+                  contactType: "customer service",
+                  areaServed: "KZ",
+                  availableLanguage: ["ru"],
+                },
+              ],
+              sameAs: [
+                process.env.NEXT_PUBLIC_INSTAGRAM_URL || "",
+                process.env.NEXT_PUBLIC_WHATSAPP_BASE || "",
+              ].filter(Boolean),
+            }),
+          }}
+        />
       </body>
     </html>
   );
