@@ -2,8 +2,8 @@
 import React from "react";
 import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
+import { Check } from "lucide-react";
 import { slides, type Slide, type TitleSegment } from "@/shared/lib/slides";
-import { Badge } from "@/shared/ui/badge";
 import {
   Carousel,
   CarouselContent,
@@ -42,23 +42,9 @@ export function HeroCarousel() {
   );
 
   const renderTitle = (segments: TitleSegment[]) => {
-    return segments.map((segment, idx) => {
-      if (segment.emphasis === "primary") {
-        return (
-          <em key={idx} className="text-primary not-italic font-semibold">
-            {segment.text}
-          </em>
-        );
-      }
-      if (segment.emphasis === "accent") {
-        return (
-          <span key={idx} className="text-amber-500 font-semibold">
-            {segment.text}
-          </span>
-        );
-      }
-      return <span key={idx}>{segment.text}</span>;
-    });
+    return segments.map((segment, idx) => (
+      <span key={idx}>{segment.text}</span>
+    ));
   };
 
   return (
@@ -103,29 +89,21 @@ export function HeroCarousel() {
                   <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
                     {/* Content Column */}
                     <div className="flex flex-col justify-center space-y-6">
-                      {/* Badge */}
-                      <div>
-                        <Badge
-                          variant="default"
-                          className="mb-4 px-4 py-1.5 text-sm font-medium shadow-lg"
-                        >
-                          {slide.badge}
-                        </Badge>
-                      </div>
-
-                      {/* Title with Emphasis */}
-                      <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight">
+                      {/* Title */}
+                      <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-primary">
                         {renderTitle(slide.titleSegments)}
                       </h3>
 
                       {/* Points List */}
-                      <ul className="space-y-2.5 text-base md:text-lg text-foreground/90">
+                      <ul className="space-y-3 text-base md:text-lg">
                         {slide.points.map((point: string, idx: number) => (
                           <li key={idx} className="flex items-start gap-3">
-                            <span className="text-primary mt-1 flex-shrink-0">
-                              ➤
+                            <div className="mt-1 flex-shrink-0 rounded-full bg-primary/10 p-1">
+                              <Check className="h-4 w-4 text-primary" />
+                            </div>
+                            <span className="leading-relaxed text-foreground/80">
+                              {point}
                             </span>
-                            <span className="leading-relaxed">{point}</span>
                           </li>
                         ))}
                       </ul>
@@ -134,7 +112,7 @@ export function HeroCarousel() {
                     {/* Visual Column - Portfolio Images */}
                     <div className="hidden lg:flex items-center justify-center">
                       <div className="relative w-full max-w-md aspect-[4/3]">
-                        <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl">
+                        <div className="absolute inset-0 overflow-hidden rounded-lg shadow-lg">
                           <Image
                             src={
                               slide.id === "drilling"
@@ -150,7 +128,6 @@ export function HeroCarousel() {
                             className="object-cover"
                             sizes="(max-width: 1024px) 0vw, 33vw"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
                         </div>
                       </div>
                     </div>
@@ -160,18 +137,18 @@ export function HeroCarousel() {
             </CarouselContent>
 
             {/* Custom Numbered Dots Navigation */}
-            <div className="mt-8 flex justify-center gap-4">
+            <div className="mt-8 flex justify-center gap-3">
               {slides.map((slide, index) => (
                 <button
                   key={slide.id}
                   onClick={() => scrollTo(index)}
                   className={cn(
-                    "relative flex items-center justify-center transition-all duration-300",
-                    "w-12 h-12 rounded-full font-bold text-lg",
-                    "hover:scale-110",
+                    "relative flex items-center justify-center transition-all duration-300 cursor-pointer",
+                    "w-10 h-10 rounded-md font-semibold text-sm",
+                    "hover:scale-105",
                     current === index
-                      ? "bg-primary text-primary-foreground shadow-lg scale-110"
-                      : "bg-background/60 text-foreground/70 backdrop-blur-sm border border-foreground/20 hover:bg-background/80"
+                      ? "bg-primary text-primary-foreground shadow-md"
+                      : "bg-background/70 text-foreground/60 backdrop-blur-sm border border-border hover:bg-background/90 hover:text-foreground/80"
                   )}
                   aria-label={`Go to slide ${index + 1}: ${slide.badge}`}
                   aria-current={current === index ? "true" : "false"}
