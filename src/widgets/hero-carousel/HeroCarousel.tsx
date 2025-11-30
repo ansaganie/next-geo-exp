@@ -29,9 +29,15 @@ export function HeroCarousel() {
 
     setCurrent(api.selectedScrollSnap());
 
-    api.on("select", () => {
+    const handleSelect = () => {
       setCurrent(api.selectedScrollSnap());
-    });
+    };
+
+    api.on("select", handleSelect);
+
+    return () => {
+      api.off("select", handleSelect);
+    };
   }, [api]);
 
   const scrollTo = useCallback(
@@ -92,7 +98,7 @@ export function HeroCarousel() {
                           {slide.points.map((point: string, idx: number) => (
                             <li key={idx} className="flex items-start gap-3">
                               <div className="mt-1 flex-shrink-0 rounded-full bg-primary/10 p-1">
-                                <CheckCircle2 className="h-4 w-4 " />
+                                <CheckCircle2 className="h-4 w-4" />
                               </div>
                               <span className="leading-relaxed">{point}</span>
                             </li>
