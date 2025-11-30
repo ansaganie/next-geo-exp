@@ -24,7 +24,7 @@ export function ContactSection() {
     formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm({ resolver: zodResolver(schema) });
 
-  async function onSubmit(data: any) {
+  async function onSubmit(data: z.infer<typeof schema>) {
     // Placeholder: integrate /api/lead later
     console.log("Lead submitted", data);
     reset();

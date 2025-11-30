@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/shared/ui/button";
 import { cn } from "@/shared/lib/utils";
 import {
@@ -52,7 +53,7 @@ export function Header() {
       </a>
       <div className={"container flex items-center justify-between py-0"}>
         <div className="mr-8 flex">
-          <a href="/" className={"flex items-center transition-all py-2"}>
+          <Link href="/" className={"flex items-center transition-all py-2"}>
             <Image
               src={
                 scrolled
@@ -66,7 +67,7 @@ export function Header() {
               sizes="(max-width: 768px) 140px, 220px"
               className="transition-all"
             />
-          </a>
+          </Link>
         </div>
 
         <nav
