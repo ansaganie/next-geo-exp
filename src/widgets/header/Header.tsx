@@ -39,9 +39,9 @@ export function Header() {
     <header
       role="banner"
       className={cn(
-        "sticky top-0 z-50 w-full border-b transition-all",
+        "sticky top-0 z-50 w-full transition-all",
         scrolled
-          ? "bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/60"
+          ? "bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/60 border-b"
           : "bg-transparent"
       )}
     >
@@ -82,9 +82,14 @@ export function Header() {
                   key={item.href}
                   variant="ghost"
                   className={cn(
-                    "px-3 py-2 text-sm font-medium text-foreground hover:text-primary hover:bg-primary/10 transition-colors",
+                    "px-3 py-2 text-sm font-medium transition-colors",
+                    scrolled
+                      ? "text-foreground hover:text-primary hover:bg-primary/10"
+                      : "text-white hover:text-white hover:bg-white/20",
                     activeHash === item.href &&
-                      "font-bold text-primary underline underline-offset-4"
+                      (scrolled
+                        ? "font-bold text-primary underline underline-offset-4"
+                        : "font-bold text-white underline underline-offset-4")
                   )}
                   asChild
                 >

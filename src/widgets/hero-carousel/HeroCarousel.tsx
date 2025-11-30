@@ -19,8 +19,6 @@ export function HeroCarousel() {
   const autoplayPlugin = useRef(
     Autoplay({
       delay: 10000,
-      stopOnInteraction: true,
-      stopOnMouseEnter: true,
     })
   );
 
@@ -74,8 +72,6 @@ export function HeroCarousel() {
             opts={{ loop: true }}
             plugins={[autoplayPlugin.current]}
             className="w-full"
-            onMouseEnter={() => autoplayPlugin.current.stop()}
-            onMouseLeave={() => autoplayPlugin.current.play()}
           >
             <CarouselContent>
               {slides.map((slide: Slide) => (
@@ -84,7 +80,7 @@ export function HeroCarousel() {
                     {/* Content Column */}
                     <div className="flex flex-col justify-center space-y-6">
                       {/* Title */}
-                      <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-primary">
+                      <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-foreground">
                         {slide.title}
                       </h3>
 
@@ -95,7 +91,7 @@ export function HeroCarousel() {
                             <div className="mt-1 flex-shrink-0 rounded-full bg-primary/10 p-1">
                               <CheckCircle2 className="h-4 w-4 text-primary" />
                             </div>
-                            <span className="leading-relaxed text-foreground/80">
+                            <span className="leading-relaxed text-foreground">
                               {point}
                             </span>
                           </li>
