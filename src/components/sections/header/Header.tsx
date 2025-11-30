@@ -8,7 +8,7 @@ import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { navLinks, headerCta } from "@/data/links";
 
-export function Header({ className: _className }: { className?: string }) {
+export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [activeHash, setActiveHash] = useState<string>("");
 

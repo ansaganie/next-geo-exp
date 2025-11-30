@@ -6,10 +6,9 @@ export type NavLink = { label: string; href: string };
 
 export const navLinks: NavLink[] = [
   { label: "Услуги", href: "#services" },
-  { label: "О нас", href: "#about" },
   { label: "Портфолио", href: "#portfolio" },
-  { label: "Видео", href: "#video" }, // existing id
-  { label: "Контакты", href: "#contact-us" }, // existing id
+  { label: "О нас", href: "#about" },
+  { label: "Контакты", href: "#contact-us" },
 ];
 
 export const serviceLinks: NavLink[] = [
