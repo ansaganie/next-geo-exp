@@ -8,8 +8,8 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 
-const WHATSAPP_BASE =
-  process.env.NEXT_PUBLIC_WHATSAPP_BASE || "https://wa.me/77755020555";
+const WHATSAPP_BASE = process.env.NEXT_PUBLIC_WHATSAPP_BASE;
+const PHONE_MAIN = process.env.NEXT_PUBLIC_PHONE_MAIN;
 
 export function HeroCarousel() {
   return (
@@ -50,7 +50,7 @@ export function HeroCarousel() {
                         </a>
                       </Button>
                       <Button asChild variant="outline">
-                        <a href="tel:+77755020555">{slide.phone}</a>
+                        <a href={`tel:${PHONE_MAIN}`}>{slide.phone}</a>
                       </Button>
                     </div>
                   </div>

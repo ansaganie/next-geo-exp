@@ -8,9 +8,7 @@ export type Slide = {
   phone: string;
 };
 
-const PHONE_DISPLAY =
-  process.env.NEXT_PUBLIC_PHONE_DISPLAY || "+7 (775) 502-05-55";
-// Non-sensitive default WhatsApp message kept inline (no need for env)
+const PHONE_DISPLAY = process.env.NEXT_PUBLIC_PHONE_DISPLAY || "";
 const WHATSAPP_DEFAULT = "Здравствуйте! пишу с сайта GEOEXPLORATION";
 
 export const slides: Slide[] = [
