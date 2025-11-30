@@ -83,7 +83,7 @@ export function HeroCarousel() {
                     <Card className="border-none bg-transparent shadow-none">
                       <CardContent className="p-0 flex flex-col justify-center space-y-6">
                         {/* Title */}
-                        <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-foreground">
+                        <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight">
                           {slide.title}
                         </h3>
 
@@ -94,9 +94,7 @@ export function HeroCarousel() {
                               <div className="mt-1 flex-shrink-0 rounded-full bg-primary/10 p-1">
                                 <CheckCircle2 className="h-4 w-4 " />
                               </div>
-                              <span className="leading-relaxed text-foreground">
-                                {point}
-                              </span>
+                              <span className="leading-relaxed">{point}</span>
                             </li>
                           ))}
                         </ul>
@@ -131,10 +129,10 @@ export function HeroCarousel() {
                   variant={current === index ? "default" : "outline"}
                   size="icon"
                   className={cn(
-                    "w-10 h-10 rounded-md font-semibold text-sm transition-all duration-300",
+                    "w-10 h-10 rounded-md font-semibold text-sm transition-all duration-300 hover:cursor-pointer",
                     current === index
                       ? "shadow-md"
-                      : "bg-background/70 backdrop-blur-sm hover:bg-background/90",
+                      : "text-primary hover:text-primary bg-background/70 backdrop-blur-sm hover:bg-background/90",
                     "hover:scale-105"
                   )}
                   aria-label={`Go to slide ${index + 1}: ${slide.title}`}
