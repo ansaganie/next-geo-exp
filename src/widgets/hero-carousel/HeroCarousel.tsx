@@ -45,7 +45,7 @@ export function HeroCarousel() {
     <section
       id="top"
       aria-labelledby="hero-heading"
-      className="relative h-[calc(100vh-80px)] flex items-center overflow-hidden"
+      className="min-h-screen flex items-center overflow-hidden"
     >
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
@@ -59,7 +59,7 @@ export function HeroCarousel() {
           sizes="100vw"
         />
         {/* Lighter overlay for better background visibility */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background/50 via-background/40 to-background/30" />
+        <div className="absolute inset-0 bg-gradient-to-br from-background/30 via-background/20 to-background/10" />
       </div>
 
       {/* Content */}
