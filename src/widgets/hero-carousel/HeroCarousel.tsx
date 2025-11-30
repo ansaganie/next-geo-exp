@@ -1,9 +1,13 @@
 "use client";
-import React from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
-import { Check } from "lucide-react";
-import { slides, type Slide, type TitleSegment } from "@/shared/lib/slides";
+import { CheckCircle2 } from "lucide-react";
+import { slides, type Slide } from "@/shared/lib/slides";
+import { Badge } from "@/shared/ui/badge";
+import { Card, CardContent } from "@/shared/ui/card";
+import { Button } from "@/shared/ui/button";
+import { Separator } from "@/shared/ui/separator";
 import {
   Carousel,
   CarouselContent,
@@ -13,64 +17,50 @@ import {
 import { cn } from "@/shared/lib/utils";
 
 export function HeroCarousel() {
-  const [api, setApi] = React.useState<CarouselApi>();
-  const [current, setCurrent] = React.useState(0);
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
 
-  const autoplayPlugin = React.useRef(
-    Autoplay({
-      delay: 10000,
-      stopOnInteraction: true,
-      stopOnMouseEnter: true,
-    })
+  const autoplayPlugin = useRef(
+    Autoplay({ delay: 10000, stopOnInteraction: true, stopOnMouseEnter: true })
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!api) return;
 
-    setCurrent(api.selectedScrollSnap());
+    const updateCurrent = () => setCurrent(api.selectedScrollSnap());
+    updateCurrent();
+    api.on("select", updateCurrent);
 
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap());
-    });
+    return () => {
+      api.off("select", updateCurrent);
+    };
   }, [api]);
 
-  const scrollTo = React.useCallback(
-    (index: number) => {
-      api?.scrollTo(index);
-    },
-    [api]
-  );
-
-  const renderTitle = (segments: TitleSegment[]) => {
-    return segments.map((segment, idx) => (
-      <span key={idx}>{segment.text}</span>
-    ));
-  };
+  const scrollTo = useCallback((index: number) => api?.scrollTo(index), [api]);
 
   return (
     <section
       id="top"
       aria-labelledby="hero-heading"
-      className="relative h-[calc(100vh-80px)] flex items-center overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden"
     >
-      {/* Background Image with Overlay */}
+      {/* Animated Background */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/assets/images/bgbg.png"
           alt=""
           fill
-          className="object-cover"
+          className="object-cover animate-in fade-in duration-1000"
           priority
           quality={90}
-          sizes="100vw"
         />
-        {/* Lighter overlay for better background visibility */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background/50 via-background/40 to-background/30" />
+        <div className="absolute inset-0 bg-gradient-to-br from-background/60 via-background/40 to-background/20" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full py-16 md:py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="relative z-10 w-full py-20 md:py-32">
+        <div className="container mx-auto px-4">
           <h2 id="hero-heading" className="sr-only">
             Ключевые услуги GeoExploration
           </h2>
@@ -86,49 +76,53 @@ export function HeroCarousel() {
             <CarouselContent>
               {slides.map((slide: Slide) => (
                 <CarouselItem key={slide.id}>
-                  <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
-                    {/* Content Column */}
-                    <div className="flex flex-col justify-center space-y-6">
-                      {/* Title */}
-                      <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-primary">
-                        {renderTitle(slide.titleSegments)}
-                      </h3>
+                  <div className="grid lg:grid-cols-2 gap-12 items-center">
+                    {/* Content */}
+                    <Card className="border-none bg-background/80 backdrop-blur-xl shadow-2xl animate-in slide-in-from-left duration-700">
+                      <CardContent className="p-8 md:p-12 space-y-6">
+                        <Badge
+                          variant="default"
+                          className="text-sm font-medium animate-in fade-in slide-in-from-top duration-500 delay-100"
+                        >
+                          {slide.badge}
+                        </Badge>
 
-                      {/* Points List */}
-                      <ul className="space-y-3 text-base md:text-lg">
-                        {slide.points.map((point: string, idx: number) => (
-                          <li key={idx} className="flex items-start gap-3">
-                            <div className="mt-1 flex-shrink-0 rounded-full bg-primary/10 p-1">
-                              <Check className="h-4 w-4 text-primary" />
-                            </div>
-                            <span className="leading-relaxed text-foreground/80">
-                              {point}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                        <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight animate-in fade-in slide-in-from-top duration-500 delay-200">
+                          {slide.title}
+                        </h3>
 
-                    {/* Visual Column - Portfolio Images */}
-                    <div className="hidden lg:flex items-center justify-center">
-                      <div className="relative w-full max-w-md aspect-[4/3]">
-                        <div className="absolute inset-0 overflow-hidden rounded-lg shadow-lg">
-                          <Image
-                            src={
-                              slide.id === "drilling"
-                                ? "/assets/images/portfolio-02.jpg"
-                                : slide.id === "geo-survey"
-                                ? "/assets/images/portfolio-01.jpg"
-                                : slide.id === "geodesy"
-                                ? "/assets/images/portfolio-03.jpg"
-                                : "/assets/images/portfolio-04.jpg"
-                            }
-                            alt={slide.badge}
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 1024px) 0vw, 33vw"
-                          />
-                        </div>
+                        <Separator className="animate-in fade-in duration-500 delay-300" />
+
+                        <ul className="space-y-4 animate-in fade-in slide-in-from-bottom duration-500 delay-400">
+                          {slide.points.map((point, idx) => (
+                            <li
+                              key={idx}
+                              className="flex items-start gap-3 group"
+                              style={{
+                                animationDelay: `${400 + idx * 50}ms`,
+                              }}
+                            >
+                              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 flex-shrink-0 transition-transform group-hover:scale-110" />
+                              <span className="text-foreground/90 leading-relaxed text-base md:text-lg">
+                                {point}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
+
+                    {/* Image */}
+                    <div className="hidden lg:block relative h-[600px] animate-in fade-in slide-in-from-right duration-700">
+                      <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl ring-1 ring-border/50 group">
+                        <Image
+                          src={slide.image}
+                          alt={slide.badge}
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover:scale-105"
+                          sizes="50vw"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       </div>
                     </div>
                   </div>
@@ -136,33 +130,31 @@ export function HeroCarousel() {
               ))}
             </CarouselContent>
 
-            {/* Custom Numbered Dots Navigation */}
-            <div className="mt-8 flex justify-center gap-3">
+            {/* Navigation */}
+            <div className="mt-12 flex justify-center gap-2 animate-in fade-in duration-500 delay-500">
               {slides.map((slide, index) => (
-                <button
+                <Button
                   key={slide.id}
                   onClick={() => scrollTo(index)}
+                  variant={current === index ? "default" : "outline"}
+                  size="icon"
                   className={cn(
-                    "relative flex items-center justify-center transition-all duration-300 cursor-pointer",
-                    "w-10 h-10 rounded-md font-semibold text-sm",
-                    "hover:scale-105",
-                    current === index
-                      ? "bg-primary text-primary-foreground shadow-md"
-                      : "bg-background/70 text-foreground/60 backdrop-blur-sm border border-border hover:bg-background/90 hover:text-foreground/80"
+                    "h-12 w-12 rounded-full transition-all duration-300",
+                    current === index && "scale-110 shadow-lg"
                   )}
-                  aria-label={`Go to slide ${index + 1}: ${slide.badge}`}
-                  aria-current={current === index ? "true" : "false"}
+                  aria-label={`Перейти к слайду ${index + 1}: ${slide.badge}`}
+                  aria-current={current === index}
                 >
                   {index + 1}
-                </button>
+                </Button>
               ))}
             </div>
           </Carousel>
         </div>
       </div>
 
-      {/* Decorative Elements */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+      {/* Decorative */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
     </section>
   );
 }

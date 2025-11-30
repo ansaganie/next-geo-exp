@@ -1,30 +1,16 @@
-export type TitleSegment = {
-  text: string;
-  emphasis?: "primary" | "accent"; // primary = blue, accent = orange
-};
-
 export type Slide = {
   id: string;
   badge: string;
-  titleSegments: TitleSegment[]; // Structured title with emphasis
+  title: string;
   points: string[];
-  whatsappText: string;
-  phone: string;
+  image: string;
 };
-
-const PHONE_DISPLAY = process.env.NEXT_PUBLIC_PHONE_DISPLAY || "";
-const WHATSAPP_DEFAULT = "Здравствуйте! пишу с сайта GEOEXPLORATION";
 
 export const slides: Slide[] = [
   {
     id: "drilling",
     badge: "Бурение скважин",
-    titleSegments: [
-      { text: "Бурение " },
-      { text: "гидрогеологических", emphasis: "primary" },
-      { text: " " },
-      { text: "скважин", emphasis: "accent" },
-    ],
+    title: "Бурение гидрогеологических скважин",
     points: [
       "Бурение под частные нужды (полив, частный дом)",
       "Бурение геофизических скважин",
@@ -32,36 +18,24 @@ export const slides: Slide[] = [
       "Шнековое бурение",
       "Ударно-канатное бурение",
     ],
-    whatsappText: WHATSAPP_DEFAULT,
-    phone: PHONE_DISPLAY,
+    image: "/assets/images/portfolio-02.jpg",
   },
   {
     id: "geo-survey",
     badge: "Инженерно-геологические изыскания",
-    titleSegments: [
-      { text: "Бурение", emphasis: "primary" },
-      { text: " и " },
-      { text: "инженерно-геологические", emphasis: "accent" },
-      { text: " скважины" },
-    ],
+    title: "Бурение и инженерно-геологические скважины",
     points: [
       "Отбор проб нарушенной и ненарушенной структуры",
       "Полевые испытания: штамповые, SPT, CPT, DPT",
       "Полный комплекс лабораторных испытаний",
       "Подготовка и выдача технического отчета",
     ],
-    whatsappText: WHATSAPP_DEFAULT,
-    phone: PHONE_DISPLAY,
+    image: "/assets/images/portfolio-01.jpg",
   },
   {
     id: "geodesy",
     badge: "Геодезия и топография",
-    titleSegments: [
-      { text: "Измерения " },
-      { text: "для определения", emphasis: "primary" },
-      { text: " границ " },
-      { text: "земельных участков", emphasis: "accent" },
-    ],
+    title: "Измерения для определения границ земельных участков",
     points: [
       "Разработка карт, планов и схем",
       "Проверка точности расположения объектов на местности",
@@ -71,22 +45,15 @@ export const slides: Slide[] = [
       "Разметка фундаментов, дорог и других объектов",
       "Контроль точности выполнения проектных работ",
       "Аэрофотосъемка и лазерное сканирование",
-      "Геодезическое сопровождение строительства",
       "Съемка для проектирования",
       "Специализированные геодезические исследования",
     ],
-    whatsappText: WHATSAPP_DEFAULT,
-    phone: PHONE_DISPLAY,
+    image: "/assets/images/portfolio-03.jpg",
   },
   {
     id: "hydrogeology",
     badge: "Гидрогеология",
-    titleSegments: [
-      { text: "Получение", emphasis: "primary" },
-      { text: " " },
-      { text: "разрешительных документов", emphasis: "accent" },
-      { text: " на специальное водопользование" },
-    ],
+    title: "Получение разрешительных документов на специальное водопользование",
     points: [
       "Гидрогеологические исследования",
       "Проектирование водозаборных скважин",
@@ -95,7 +62,6 @@ export const slides: Slide[] = [
       "Переоценка запасов месторождений подземных вод",
       "Прогноз водопритоков",
     ],
-    whatsappText: WHATSAPP_DEFAULT,
-    phone: PHONE_DISPLAY,
+    image: "/assets/images/portfolio-04.jpg",
   },
 ];
