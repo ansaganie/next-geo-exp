@@ -86,9 +86,7 @@ export function Header({ className: _className }: { className?: string }) {
                 >
                   <a
                     href={item.href}
-                    {...(activeHash === item.href && {
-                      "aria-current": "page",
-                    })}
+                    aria-current={activeHash === item.href ? "page" : undefined}
                   >
                     {item.label}
                   </a>
