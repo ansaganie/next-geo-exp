@@ -59,8 +59,8 @@ export function HeroCarousel() {
           quality={90}
           sizes="100vw"
         />
-        {/* Lighter overlay for better background visibility */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background/30 via-background/20 to-background/10" />
+        {/* Subtle overlay + gentle vignette for balanced contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/45 via-background/25 to-transparent" />
       </div>
 
       {/* Content */}
@@ -84,12 +84,12 @@ export function HeroCarousel() {
                     <Card className="border-none bg-transparent shadow-none">
                       <CardContent className="p-0 flex flex-col justify-center space-y-6">
                         {/* Title */}
-                        <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight">
+                        <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight drop-shadow-lg">
                           {slide.title}
                         </h3>
 
                         {/* Points List */}
-                        <ul className="space-y-3 text-base md:text-lg">
+                        <ul className="space-y-3 text-base md:text-lg drop-shadow">
                           {slide.points.map((point: string, idx: number) => (
                             <li key={idx} className="flex items-start gap-3">
                               <div className="mt-1 flex-shrink-0 rounded-full bg-primary/10 p-1">
