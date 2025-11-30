@@ -1,6 +1,6 @@
-import { Header } from "@/components/sections/header/Header";
-import { Footer } from "@/components/sections/footer/Footer";
-import { MainContent } from "@/components/MainContent";
+import { Header } from "@/widgets/header/Header";
+import { Footer } from "@/widgets/footer/Footer";
+import { MainContent } from "@/widgets/main-content/MainContent";
 
 export default function Home() {
   return (
