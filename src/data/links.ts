@@ -31,7 +31,7 @@ export type ContactLink = {
 export const contactLinks: ContactLink[] = [
   {
     label: "WhatsApp",
-    href: `${process.env.NEXT_PUBLIC_WHATSAPP_BASE}`,
+    href: process.env.NEXT_PUBLIC_WHATSAPP_BASE || "",
     external: true,
     brand: siWhatsapp,
     aria: "Открыть чат WhatsApp",
@@ -52,7 +52,7 @@ export const contactLinks: ContactLink[] = [
   },
   {
     label: "Instagram",
-    href: `${process.env.NEXT_PUBLIC_INSTAGRAM_URL}`,
+    href: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "",
     external: true,
     brand: siInstagram,
     aria: "Перейти в профиль Instagram",
