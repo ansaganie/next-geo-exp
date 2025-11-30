@@ -22,7 +22,7 @@ jobs:
         run: bun install
 
       - name: Run lint
-        run: bun lint
+        run: bun run lint
 
       - name: Run build
-        run: bun build
+        run: bun run build
