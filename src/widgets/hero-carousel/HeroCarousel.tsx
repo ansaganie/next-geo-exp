@@ -25,10 +25,9 @@ export function HeroCarousel() {
   );
 
   useEffect(() => {
-    autoplayPlugin.current.reset();
-
     if (!api) return;
 
+    autoplayPlugin.current.play();
     setCurrent(api.selectedScrollSnap());
 
     const handleSelect = () => {
