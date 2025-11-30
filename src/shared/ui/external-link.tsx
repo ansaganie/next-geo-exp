@@ -19,7 +19,7 @@ export function ExternalLink({
   return (
     <a
       className={cn(
-        "inline-flex items-center gap-2 underline-offset-4 transition-colors hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm",
+        "inline-flex items-center gap-2 underline-offset-4 transition-colors hover:underline focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-xs",
         className
       )}
       rel={finalRel}

@@ -13,7 +13,7 @@ export function MainContent() {
         {/* Hero Section */}
         <section
           id="top"
-          className="py-20 text-center bg-gradient-to-b from-primary/5 to-background"
+          className="py-20 text-center bg-linear-to-b from-primary/5 to-background"
         >
           <div className="container">
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl text-primary">

@@ -41,13 +41,13 @@ export function Header() {
       className={cn(
         "sticky top-0 z-50 w-full border-b transition-all",
         scrolled
-          ? "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+          ? "bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/60"
           : "bg-transparent"
       )}
     >
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only absolute left-2 top-2 z-50 rounded bg-primary px-4 py-2 text-primary-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+        className="sr-only focus:not-sr-only absolute left-2 top-2 z-50 rounded-sm bg-primary px-4 py-2 text-primary-foreground focus:outline-hidden focus:ring-2 focus:ring-primary"
       >
         Перейти к основному содержимому
       </a>

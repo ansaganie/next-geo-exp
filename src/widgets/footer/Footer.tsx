@@ -89,7 +89,7 @@ export function Footer() {
                         <ExternalLink
                           href={link.href}
                           aria-label={link.aria}
-                          className="text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
+                          className="text-muted-foreground hover:text-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-xs"
                         >
                           {content}
                         </ExternalLink>
