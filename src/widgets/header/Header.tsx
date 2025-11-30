@@ -8,7 +8,12 @@ import {
   NavigationMenu,
   NavigationMenuList,
 } from "@/shared/ui/navigation-menu";
-import { Sheet, SheetTrigger, SheetContent } from "@/shared/ui/sheet";
+import {
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+  SheetTitle,
+} from "@/shared/ui/sheet";
 import { Menu } from "lucide-react";
 import { navLinks, headerCta } from "@/shared/lib/links";
 
@@ -39,9 +44,9 @@ export function Header() {
     <header
       role="banner"
       className={cn(
-        "sticky top-0 z-50 w-full border-b transition-all",
+        "sticky top-0 z-50 w-full transition-all",
         scrolled
-          ? "bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/60"
+          ? "bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/60 border-b"
           : "bg-transparent"
       )}
     >
@@ -82,9 +87,14 @@ export function Header() {
                   key={item.href}
                   variant="ghost"
                   className={cn(
-                    "px-3 py-2 text-sm font-medium text-foreground hover:text-primary hover:bg-primary/10 transition-colors",
+                    "px-3 py-2 text-sm font-medium transition-colors",
+                    scrolled
+                      ? "text-foreground hover:text-primary hover:bg-primary/10"
+                      : "text-white hover:text-white hover:bg-white/20",
                     activeHash === item.href &&
-                      "font-bold text-primary underline underline-offset-4"
+                      (scrolled
+                        ? "font-bold text-primary underline underline-offset-4"
+                        : "font-bold text-white underline underline-offset-4")
                   )}
                   asChild
                 >
@@ -108,6 +118,9 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="w-64">
+              <SheetTitle className="sr-only">
+                Главное меню навигации
+              </SheetTitle>
               <nav
                 className="flex flex-col gap-1"
                 aria-label="Мобильная навигация"

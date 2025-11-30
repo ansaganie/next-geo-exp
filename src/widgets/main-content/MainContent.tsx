@@ -5,27 +5,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/shared/ui/card";
+import { HeroCarousel } from "@/widgets/hero-carousel/HeroCarousel";
 
 export function MainContent() {
   return (
     <main className="flex-1">
       <div className="space-y-12">
-        {/* Hero Section */}
-        <section
-          id="top"
-          className="py-20 text-center bg-linear-to-b from-primary/5 to-background"
-        >
-          <div className="container">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl text-primary">
-              GeoExploration
-            </h1>
-            <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
-              Профессиональные геологические и геодезические услуги в
-              Казахстане. Бурение скважин, инженерно-геологические изыскания,
-              топографические съемки.
-            </p>
-          </div>
-        </section>
+        {/* Hero Carousel Section */}
+        <HeroCarousel />
 
         {/* Services Section */}
         <section id="services" className="py-20 bg-muted/30">
