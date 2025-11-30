@@ -4,6 +4,8 @@ import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
 import { CheckCircle2 } from "lucide-react";
 import { slides, type Slide } from "@/shared/lib/slides";
+import { Card, CardContent } from "@/shared/ui/card";
+import { Button } from "@/shared/ui/button";
 import {
   Carousel,
   CarouselContent,
@@ -78,41 +80,43 @@ export function HeroCarousel() {
                 <CarouselItem key={slide.id}>
                   <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
                     {/* Content Column */}
-                    <div className="flex flex-col justify-center space-y-6">
-                      {/* Title */}
-                      <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-foreground">
-                        {slide.title}
-                      </h3>
+                    <Card className="border-none bg-transparent shadow-none">
+                      <CardContent className="p-0 flex flex-col justify-center space-y-6">
+                        {/* Title */}
+                        <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-foreground">
+                          {slide.title}
+                        </h3>
 
-                      {/* Points List */}
-                      <ul className="space-y-3 text-base md:text-lg">
-                        {slide.points.map((point: string, idx: number) => (
-                          <li key={idx} className="flex items-start gap-3">
-                            <div className="mt-1 flex-shrink-0 rounded-full bg-primary/10 p-1">
-                              <CheckCircle2 className="h-4 w-4 text-primary" />
-                            </div>
-                            <span className="leading-relaxed text-foreground">
-                              {point}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                        {/* Points List */}
+                        <ul className="space-y-3 text-base md:text-lg">
+                          {slide.points.map((point: string, idx: number) => (
+                            <li key={idx} className="flex items-start gap-3">
+                              <div className="mt-1 flex-shrink-0 rounded-full bg-primary/10 p-1">
+                                <CheckCircle2 className="h-4 w-4 " />
+                              </div>
+                              <span className="leading-relaxed text-foreground">
+                                {point}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
 
                     {/* Visual Column - Portfolio Images */}
-                    <div className="hidden lg:flex items-center justify-center">
-                      <div className="relative w-full max-w-md aspect-[4/3]">
+                    <Card className="hidden lg:flex items-center justify-center border-none bg-transparent shadow-none">
+                      <CardContent className="p-0 relative w-full max-w-md aspect-[4/3]">
                         <div className="absolute inset-0 overflow-hidden rounded-lg shadow-lg">
                           <Image
                             src={slide.image}
-                            alt={slide.badge}
+                            alt={slide.title}
                             fill
                             className="object-cover"
                             sizes="(max-width: 1024px) 0vw, 33vw"
                           />
                         </div>
-                      </div>
-                    </div>
+                      </CardContent>
+                    </Card>
                   </div>
                 </CarouselItem>
               ))}
@@ -121,30 +125,28 @@ export function HeroCarousel() {
             {/* Custom Numbered Dots Navigation */}
             <div className="mt-8 flex justify-center gap-3">
               {slides.map((slide, index) => (
-                <button
+                <Button
                   key={slide.id}
                   onClick={() => scrollTo(index)}
+                  variant={current === index ? "default" : "outline"}
+                  size="icon"
                   className={cn(
-                    "relative flex items-center justify-center transition-all duration-300 cursor-pointer",
-                    "w-10 h-10 rounded-md font-semibold text-sm",
-                    "hover:scale-105",
+                    "w-10 h-10 rounded-md font-semibold text-sm transition-all duration-300",
                     current === index
-                      ? "bg-primary text-primary-foreground shadow-md"
-                      : "bg-background/70 text-foreground/60 backdrop-blur-sm border border-border hover:bg-background/90 hover:text-foreground/80"
+                      ? "shadow-md"
+                      : "bg-background/70 backdrop-blur-sm hover:bg-background/90",
+                    "hover:scale-105"
                   )}
-                  aria-label={`Go to slide ${index + 1}: ${slide.badge}`}
-                  aria-current={current === index ? "true" : "false"}
+                  aria-label={`Go to slide ${index + 1}: ${slide.title}`}
+                  aria-current={current === index}
                 >
                   {index + 1}
-                </button>
+                </Button>
               ))}
             </div>
           </Carousel>
         </div>
       </div>
-
-      {/* Decorative Elements */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
     </section>
   );
 }

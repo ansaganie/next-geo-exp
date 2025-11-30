@@ -1,6 +1,5 @@
 export type Slide = {
   id: string;
-  badge: string;
   title: string;
   points: string[];
   image: string;
@@ -9,7 +8,6 @@ export type Slide = {
 export const slides: Slide[] = [
   {
     id: "drilling",
-    badge: "Бурение скважин",
     title: "Бурение гидрогеологических скважин",
     points: [
       "Бурение под частные нужды (полив, частный дом)",
@@ -22,7 +20,6 @@ export const slides: Slide[] = [
   },
   {
     id: "geo-survey",
-    badge: "Инженерно-геологические изыскания",
     title: "Бурение и инженерно-геологические скважины",
     points: [
       "Отбор проб нарушенной и ненарушенной структуры",
@@ -34,7 +31,6 @@ export const slides: Slide[] = [
   },
   {
     id: "geodesy",
-    badge: "Геодезия и топография",
     title: "Измерения для определения границ земельных участков",
     points: [
       "Разработка карт, планов и схем",
@@ -52,7 +48,6 @@ export const slides: Slide[] = [
   },
   {
     id: "hydrogeology",
-    badge: "Гидрогеология",
     title: "Получение разрешительных документов на специальное водопользование",
     points: [
       "Гидрогеологические исследования",
