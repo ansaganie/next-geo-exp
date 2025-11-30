@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
 import { CheckCircle2 } from "lucide-react";
@@ -25,6 +25,8 @@ export function HeroCarousel() {
   );
 
   useEffect(() => {
+    autoplayPlugin.current.reset();
+
     if (!api) return;
 
     setCurrent(api.selectedScrollSnap());
@@ -37,15 +39,9 @@ export function HeroCarousel() {
 
     return () => {
       api.off("select", handleSelect);
+      autoplayPlugin.current.stop();
     };
   }, [api]);
-
-  const scrollTo = useCallback(
-    (index: number) => {
-      api?.scrollTo(index);
-    },
-    [api]
-  );
 
   return (
     <section
@@ -131,7 +127,7 @@ export function HeroCarousel() {
               {slides.map((slide, index) => (
                 <Button
                   key={slide.id}
-                  onClick={() => scrollTo(index)}
+                  onClick={() => api?.scrollTo(index)}
                   variant={current === index ? "default" : "outline"}
                   size="icon"
                   className={cn(
