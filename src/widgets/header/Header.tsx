@@ -8,7 +8,12 @@ import {
   NavigationMenu,
   NavigationMenuList,
 } from "@/shared/ui/navigation-menu";
-import { Sheet, SheetTrigger, SheetContent } from "@/shared/ui/sheet";
+import {
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+  SheetTitle,
+} from "@/shared/ui/sheet";
 import { Menu } from "lucide-react";
 import { navLinks, headerCta } from "@/shared/lib/links";
 
@@ -113,6 +118,9 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="w-64">
+              <SheetTitle className="sr-only">
+                Главное меню навигации
+              </SheetTitle>
               <nav
                 className="flex flex-col gap-1"
                 aria-label="Мобильная навигация"
