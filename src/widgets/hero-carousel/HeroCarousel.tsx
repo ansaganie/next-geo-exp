@@ -27,7 +27,8 @@ export function HeroCarousel() {
   useEffect(() => {
     if (!api) return;
 
-    autoplayPlugin.current.play();
+    const plugin = autoplayPlugin.current;
+    plugin.play();
     setCurrent(api.selectedScrollSnap());
 
     const handleSelect = () => {
@@ -38,7 +39,7 @@ export function HeroCarousel() {
 
     return () => {
       api.off("select", handleSelect);
-      autoplayPlugin.current.stop();
+      plugin.stop();
     };
   }, [api]);
 

@@ -1,12 +1,9 @@
 FROM oven/bun:alpine
 
 # Config Bun
-ENV PATH="~/.bun/bin:${PATH}"
+ENV PATH="$HOME/.bun/bin:${PATH}"
 RUN ln -s /usr/local/bin/bun /usr/local/bin/node
 
-# Update packages
-RUN if [ "alpine" == "alpine" ] ; then apk update ; else apt-get update ; fi
-
+RUN apk update
 # Install Git
-RUN if [ "alpine" == "alpine" ] ; then apk add git ; else apt-get install -y git ; fi
-
+RUN apk add git

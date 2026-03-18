@@ -2,7 +2,7 @@
 // README at: https://github.com/marcosgomesneto/bun-devcontainers/tree/main/src/basic-bun
 {
   "name": "Bun",
-  "dockerFile": "Dockerfile",
+  "dockerFile": "Dockerfile",  
   // Configure tool-specific properties.
   "customizations": {
     // Configure properties specific to VS Code.
