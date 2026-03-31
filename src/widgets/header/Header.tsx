@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 import { Button } from "@/shared/ui/button";
 import { cn } from "@/shared/lib/utils";
 import {
@@ -14,14 +15,17 @@ import {
   SheetContent,
   SheetTitle,
 } from "@/shared/ui/sheet";
-import { Menu } from "lucide-react";
+import { Menu, Moon, Sun } from "lucide-react";
 import { navLinks, headerCta } from "@/shared/lib/links";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [activeHash, setActiveHash] = useState<string>("");
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const onScroll = () => {
       setScrolled(window.scrollY > 0);
     };
@@ -46,8 +50,8 @@ export function Header() {
       className={cn(
         "sticky top-0 z-50 w-full transition-all",
         scrolled
-          ? "bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/60 border-b"
-          : "bg-transparent"
+          ? "bg-card/95 backdrop-blur-md supports-backdrop-filter:bg-card/80 border-b border-border/60 shadow-sm"
+          : "bg-transparent",
       )}
     >
       <a
@@ -89,12 +93,12 @@ export function Header() {
                   className={cn(
                     "px-3 py-2 text-sm font-medium transition-colors",
                     scrolled
-                      ? "text-foreground hover:text-primary hover:bg-primary/10"
+                      ? "text-foreground hover:text-secondary hover:bg-secondary/10"
                       : "text-white hover:text-white hover:bg-white/20",
                     activeHash === item.href &&
                       (scrolled
-                        ? "font-bold text-primary underline underline-offset-4"
-                        : "font-bold text-white underline underline-offset-4")
+                        ? "font-bold text-secondary underline underline-offset-4 decoration-secondary"
+                        : "font-bold text-white underline underline-offset-4"),
                   )}
                   asChild
                 >
@@ -130,9 +134,9 @@ export function Header() {
                     key={item.href}
                     variant="ghost"
                     className={cn(
-                      "justify-start", // align text left
+                      "justify-start",
                       activeHash === item.href &&
-                        "font-bold text-primary underline underline-offset-4"
+                        "font-bold text-secondary underline underline-offset-4 decoration-secondary",
                     )}
                     asChild
                   >
@@ -154,11 +158,31 @@ export function Header() {
           </Sheet>
         </div>
 
-        <div className="hidden md:flex items-center">
+        <div className="hidden md:flex items-center gap-2">
+          {mounted && (
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className={cn(
+                "transition-colors",
+                scrolled
+                  ? "text-foreground hover:bg-secondary/10"
+                  : "text-white hover:bg-white/20",
+              )}
+              aria-label={theme === "dark" ? "Светлая тема" : "Тёмная тема"}
+            >
+              {theme === "dark" ? (
+                <Sun className="h-4 w-4" />
+              ) : (
+                <Moon className="h-4 w-4" />
+              )}
+            </Button>
+          )}
           <Button
             size="sm"
             asChild
-            className="bg-primary text-primary-foreground hover:bg-primary/90"
+            className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-lg"
           >
             <a href={headerCta.href}>{headerCta.label}</a>
           </Button>

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/shared/lib/utils";
+import { ThemeProvider } from "@/shared/providers/theme-provider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -64,7 +65,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#1e40af",
+  themeColor: "#89ABC2",
 };
 
 export default function RootLayout({
@@ -73,47 +74,53 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru">
+    <html lang="ru" suppressHydrationWarning>
       <body
         className={cn(
           inter.variable,
-          "min-h-screen bg-background font-sans antialiased text-foreground"
+          "min-h-screen bg-background font-sans antialiased text-foreground",
         )}
       >
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-md focus:bg-primary focus:px-3 focus:py-2 focus:text-primary-foreground"
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={false}
         >
-          Перейти к содержимому
-        </a>
-        <main id="main" role="main">
-          {children}
-        </main>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "GeoExploration",
-              url: "https://geoexploration.kz",
-              logo: "https://geoexploration.kz/assets/images/Logo.png",
-              contactPoint: [
-                {
-                  "@type": "ContactPoint",
-                  telephone: process.env.NEXT_PUBLIC_PHONE_MAIN || "",
-                  contactType: "customer service",
-                  areaServed: "KZ",
-                  availableLanguage: ["ru"],
-                },
-              ],
-              sameAs: [
-                process.env.NEXT_PUBLIC_INSTAGRAM_URL || "",
-                process.env.NEXT_PUBLIC_WHATSAPP_BASE || "",
-              ].filter(Boolean),
-            }),
-          }}
-        />
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-md focus:bg-primary focus:px-3 focus:py-2 focus:text-primary-foreground"
+          >
+            Перейти к содержимому
+          </a>
+          <main id="main" role="main">
+            {children}
+          </main>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                name: "GeoExploration",
+                url: "https://geoexploration.kz",
+                logo: "https://geoexploration.kz/assets/images/Logo.png",
+                contactPoint: [
+                  {
+                    "@type": "ContactPoint",
+                    telephone: process.env.NEXT_PUBLIC_PHONE_MAIN || "",
+                    contactType: "customer service",
+                    areaServed: "KZ",
+                    availableLanguage: ["ru"],
+                  },
+                ],
+                sameAs: [
+                  process.env.NEXT_PUBLIC_INSTAGRAM_URL || "",
+                  process.env.NEXT_PUBLIC_WHATSAPP_BASE || "",
+                ].filter(Boolean),
+              }),
+            }}
+          />
+        </ThemeProvider>
       </body>
     </html>
   );

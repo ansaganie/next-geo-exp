@@ -11,7 +11,7 @@ export function Footer() {
 
   return (
     <footer
-      className="border-t bg-muted/50"
+      className="border-t border-border/60 bg-accent text-accent-foreground"
       aria-labelledby="footer-heading"
       role="contentinfo"
     >
@@ -30,7 +30,7 @@ export function Footer() {
               height={50}
               loading="lazy"
             />
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-accent-foreground/70">
               Профессиональные геологические и геодезические услуги
             </p>
           </div>
@@ -40,12 +40,15 @@ export function Footer() {
             <h3 id="footer-services-heading" className="font-semibold">
               Услуги
             </h3>
-            <ul className="space-y-2 text-sm text-muted-foreground" role="list">
+            <ul
+              className="space-y-2 text-sm text-accent-foreground/70"
+              role="list"
+            >
               {serviceLinks.map((service) => (
                 <li key={service.label}>
                   <a
                     href={service.href}
-                    className="hover:text-foreground transition-colors"
+                    className="hover:text-accent-foreground transition-colors"
                     aria-label={`Перейти к разделу: ${service.label}`}
                   >
                     {service.label}
@@ -89,7 +92,7 @@ export function Footer() {
                         <ExternalLink
                           href={link.href}
                           aria-label={link.aria}
-                          className="text-muted-foreground hover:text-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-xs"
+                          className="text-accent-foreground/70 hover:text-accent-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-xs"
                         >
                           {content}
                         </ExternalLink>
@@ -97,7 +100,7 @@ export function Footer() {
                         <Button
                           asChild
                           variant="link"
-                          className="p-0 h-auto text-muted-foreground hover:text-foreground"
+                          className="p-0 h-auto text-accent-foreground/70 hover:text-accent-foreground"
                         >
                           <a href={link.href} aria-label={link.aria}>
                             {content}
@@ -114,7 +117,7 @@ export function Footer() {
 
         <Separator className="my-8" />
 
-        <div className="text-center text-sm text-muted-foreground">
+        <div className="text-center text-sm text-accent-foreground/60">
           © {new Date().getFullYear()} GeoExploration. Все права защищены.
         </div>
       </div>
