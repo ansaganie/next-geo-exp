@@ -6,9 +6,11 @@ import { BrandIcon } from "@/shared/ui/brand-icon";
 import { Button } from "@/shared/ui/button";
 import { ExternalLink } from "@/shared/ui/external-link";
 import { serviceLinks, contactLinks } from "@/shared/lib/links";
+import { getTranslations } from "next-intl/server";
 
-export function Footer() {
-  // serviceLinks & contactLinks imported from central data file
+export async function Footer() {
+  const t = await getTranslations("footer");
+  const tCommon = await getTranslations("common");
 
   return (
     <footer
@@ -18,7 +20,7 @@ export function Footer() {
     >
       <div className="container py-12">
         <h2 id="footer-heading" className="sr-only">
-          Футер сайта GeoExploration
+          {t("heading")}
         </h2>
 
         <div className="grid gap-8 md:grid-cols-3">
@@ -26,20 +28,18 @@ export function Footer() {
           <div className="space-y-4" aria-labelledby="footer-company-heading">
             <Image
               src="/assets/images/Logofooter.png"
-              alt="Логотип компании GeoExploration"
+              alt={t("logoAlt")}
               width={150}
               height={50}
               loading="lazy"
             />
-            <p className="text-sm text-accent-foreground/70">
-              Профессиональные геологические и геодезические услуги
-            </p>
+            <p className="text-sm text-accent-foreground/70">{t("tagline")}</p>
           </div>
 
           {/* Services */}
           <div className="space-y-4" aria-labelledby="footer-services-heading">
             <h3 id="footer-services-heading" className="font-semibold">
-              Услуги
+              {t("services")}
             </h3>
             <ul
               className="space-y-2 text-sm text-accent-foreground/70"
@@ -50,7 +50,7 @@ export function Footer() {
                   <Link
                     href={service.href}
                     className="hover:text-accent-foreground transition-colors"
-                    aria-label={`Перейти к разделу: ${service.label}`}
+                    aria-label={t("goToSection", { label: service.label })}
                   >
                     {service.label}
                   </Link>
@@ -62,7 +62,7 @@ export function Footer() {
           {/* Contacts */}
           <div className="space-y-4" aria-labelledby="footer-contacts-heading">
             <h3 id="footer-contacts-heading" className="font-semibold">
-              Контакты
+              {t("contacts")}
             </h3>
             <address className="not-italic">
               <ul className="space-y-2 text-sm" role="list">
@@ -119,7 +119,8 @@ export function Footer() {
         <Separator className="my-8" />
 
         <div className="text-center text-sm text-accent-foreground/60">
-          © {new Date().getFullYear()} GeoExploration. Все права защищены.
+          © {new Date().getFullYear()} GeoExploration.{" "}
+          {tCommon("allRightsReserved")}
         </div>
       </div>
     </footer>

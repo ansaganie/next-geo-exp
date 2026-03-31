@@ -3,8 +3,10 @@ import React from "react";
 import Image from "next/image";
 import { portfolioItems } from "@/entities/portfolio/portfolio";
 import { Carousel, CarouselContent, CarouselItem } from "@/shared/ui/carousel";
+import { useTranslations } from "next-intl";
 
 export function PortfolioSection() {
+  const t = useTranslations("portfolio");
   return (
     <section
       id="portfolio"
@@ -14,13 +16,13 @@ export function PortfolioSection() {
       <div className="mx-auto max-w-6xl px-8">
         <div className="mb-12 text-center">
           <p className="mb-2 text-sm font-medium uppercase tracking-widest text-secondary">
-            Портфолио
+            {t("eyebrow")}
           </p>
           <h2
             id="portfolio-heading"
             className="text-3xl font-bold tracking-tight"
           >
-            Наши работы и проекты
+            {t("heading")}
           </h2>
           <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-secondary/60" />
         </div>
@@ -40,7 +42,7 @@ export function PortfolioSection() {
                     <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                     <div className="absolute bottom-3 left-3 right-3 translate-y-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
                       <span className="inline-block rounded-md bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground">
-                        Подробнее
+                        {t("viewMore")}
                       </span>
                     </div>
                   </div>

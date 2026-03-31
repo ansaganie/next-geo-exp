@@ -1,10 +1,12 @@
 "use client";
 import React from "react";
 import { videos } from "@/entities/video/videos";
+import { useTranslations } from "next-intl";
 
 export function VideoTestimonials() {
   const [active, setActive] = React.useState(videos[0].id);
   const current = videos.find((v) => v.id === active)!;
+  const t = useTranslations("video");
   return (
     <section
       id="video"
@@ -14,10 +16,10 @@ export function VideoTestimonials() {
       <div className="mx-auto max-w-6xl px-8">
         <div className="mb-12 text-center">
           <p className="mb-2 text-sm font-medium uppercase tracking-widest text-secondary">
-            Медиа
+            {t("eyebrow")}
           </p>
           <h2 id="video-heading" className="text-3xl font-bold tracking-tight">
-            Видео
+            {t("heading")}
           </h2>
           <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-secondary/60" />
         </div>

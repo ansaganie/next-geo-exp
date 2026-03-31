@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 type Breadcrumb = { label: string; href?: string };
 
@@ -10,12 +11,13 @@ interface PageHeaderProps {
   bgImage?: string;
 }
 
-export function PageHeader({
+export async function PageHeader({
   title,
   subtitle,
   breadcrumbs,
   bgImage = "/assets/images/bgbg.png",
 }: PageHeaderProps) {
+  const t = await getTranslations("breadcrumbs");
   return (
     <section
       className="relative flex min-h-[260px] items-center justify-center overflow-hidden bg-accent"
@@ -32,7 +34,7 @@ export function PageHeader({
 
       <div className="relative z-10 mx-auto max-w-4xl px-8 py-16 text-center">
         {breadcrumbs && breadcrumbs.length > 0 && (
-          <nav aria-label="Хлебные крошки" className="mb-4">
+          <nav aria-label={t("label")} className="mb-4">
             <ol className="flex items-center justify-center gap-1 text-sm text-accent-foreground/60">
               {breadcrumbs.map((crumb, i) => (
                 <li key={crumb.label} className="flex items-center gap-1">

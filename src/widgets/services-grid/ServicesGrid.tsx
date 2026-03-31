@@ -1,20 +1,22 @@
 import React from "react";
 import { services } from "@/entities/service/services";
 import { ServiceCard } from "@/entities/service/ServiceCard";
+import { getTranslations } from "next-intl/server";
 
-export function ServicesGrid() {
+export async function ServicesGrid() {
+  const t = await getTranslations("servicesGrid");
   return (
     <section id="services" aria-labelledby="services-heading" className="py-20">
       <div className="mx-auto max-w-6xl px-8">
         <div className="mb-12 text-center">
           <p className="mb-2 text-sm font-medium uppercase tracking-widest text-secondary">
-            Что мы предлагаем
+            {t("eyebrow")}
           </p>
           <h2
             id="services-heading"
             className="text-3xl font-bold tracking-tight"
           >
-            Наши услуги
+            {t("heading")}
           </h2>
           <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-secondary/60" />
         </div>

@@ -6,13 +6,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/shared/ui/input";
 import { Textarea } from "@/shared/ui/textarea";
 import { Button } from "@/shared/ui/button";
+import { useTranslations } from "next-intl";
 
 const schema = z.object({
-  name: z.string().min(2, "Минимум 2 символа"),
-  surname: z.string().min(2, "Минимум 2 символа"),
-  phone: z
-    .string()
-    .regex(/^(?:\+7|8)\d{10}$/i, "Формат +7XXXXXXXXXX или 8XXXXXXXXXX"),
+  name: z.string().min(2, "minChars"),
+  surname: z.string().min(2, "minChars"),
+  phone: z.string().regex(/^(?:\+7|8)\d{10}$/i, "phoneFormat"),
   comment: z.string().optional(),
 });
 
@@ -27,6 +26,7 @@ export function ContactSection() {
   const [status, setStatus] = React.useState<"idle" | "success" | "error">(
     "idle",
   );
+  const t = useTranslations("contact");
 
   async function onSubmit(data: z.infer<typeof schema>) {
     setStatus("idle");
@@ -53,13 +53,13 @@ export function ContactSection() {
       <div className="mx-auto max-w-6xl px-8">
         <div className="mb-12 text-center">
           <p className="mb-2 text-sm font-medium uppercase tracking-widest text-secondary">
-            Связаться
+            {t("eyebrow")}
           </p>
           <h2
             id="contact-heading"
             className="text-3xl font-bold tracking-tight"
           >
-            Оставьте контакты — мы свяжемся
+            {t("heading")}
           </h2>
           <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-secondary/60" />
         </div>
@@ -68,7 +68,7 @@ export function ContactSection() {
             <div className="overflow-hidden rounded-xl border border-border/60 shadow-sm">
               <iframe
                 src={process.env.NEXT_PUBLIC_MAP_IFRAME_SRC}
-                title="Офис GeoExploration на карте"
+                title={t("mapTitle")}
                 className="h-72 w-full"
                 allowFullScreen
               />
@@ -98,37 +98,37 @@ export function ContactSection() {
             aria-describedby="form-status"
           >
             <Input
-              placeholder="Имя"
+              placeholder={t("name")}
               className="rounded-lg border-border/60 bg-background"
               {...register("name")}
             />
             {errors.name && (
               <p className="text-xs text-red-600">
-                {errors.name.message as string}
+                {t(errors.name.message as "minChars" | "phoneFormat")}
               </p>
             )}
             <Input
-              placeholder="Фамилия"
+              placeholder={t("surname")}
               className="rounded-lg border-border/60 bg-background"
               {...register("surname")}
             />
             {errors.surname && (
               <p className="text-xs text-red-600">
-                {errors.surname.message as string}
+                {t(errors.surname.message as "minChars" | "phoneFormat")}
               </p>
             )}
             <Input
-              placeholder="Телефон (+7XXXXXXXXXX)"
+              placeholder={t("phone")}
               className="rounded-lg border-border/60 bg-background"
               {...register("phone")}
             />
             {errors.phone && (
               <p className="text-xs text-red-600">
-                {errors.phone.message as string}
+                {t(errors.phone.message as "minChars" | "phoneFormat")}
               </p>
             )}
             <Textarea
-              placeholder="Комментарий (необязательно)"
+              placeholder={t("comment")}
               className="rounded-lg border-border/60 bg-background"
               {...register("comment")}
             />
@@ -137,16 +137,16 @@ export function ContactSection() {
               disabled={isSubmitting}
               className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-lg"
             >
-              {isSubmitting ? "Отправка..." : "Отправить заявку"}
+              {isSubmitting ? t("submitting") : t("submit")}
             </Button>
             {status === "success" && (
               <p id="form-status" className="text-xs text-green-600">
-                Заявка успешно отправлена!
+                {t("success")}
               </p>
             )}
             {status === "error" && (
               <p id="form-status" className="text-xs text-red-600">
-                Ошибка при отправке. Попробуйте ещё раз.
+                {t("error")}
               </p>
             )}
           </form>

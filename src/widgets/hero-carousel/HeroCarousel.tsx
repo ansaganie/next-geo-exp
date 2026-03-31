@@ -13,10 +13,12 @@ import {
   CarouselApi,
 } from "@/shared/ui/carousel";
 import { cn } from "@/shared/lib/utils";
+import { useTranslations } from "next-intl";
 
 export function HeroCarousel() {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
+  const t = useTranslations("hero");
 
   const autoplayPlugin = useRef(
     Autoplay({
@@ -69,7 +71,7 @@ export function HeroCarousel() {
       <div className="relative z-10 w-full py-16 md:py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <h2 id="hero-heading" className="sr-only">
-            Ключевые услуги GeoExploration
+            {t("heading")}
           </h2>
 
           <Carousel
@@ -138,7 +140,10 @@ export function HeroCarousel() {
                       : "text-white border-white/40 hover:text-white bg-white/10 backdrop-blur-sm hover:bg-white/20",
                     "hover:scale-105",
                   )}
-                  aria-label={`Go to slide ${index + 1}: ${slide.title}`}
+                  aria-label={t("goToSlide", {
+                    index: index + 1,
+                    title: slide.title,
+                  })}
                   aria-current={current === index}
                 >
                   {index + 1}

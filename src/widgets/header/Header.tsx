@@ -17,6 +17,7 @@ import {
 } from "@/shared/ui/sheet";
 import { Menu, Moon, Sun, ChevronDown } from "lucide-react";
 import { navLinks, headerCta } from "@/shared/lib/links";
+import { useTranslations } from "next-intl";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -29,6 +30,7 @@ export function Header() {
   const [activeHash, setActiveHash] = useState<string>("");
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const t = useTranslations("header");
 
   useEffect(() => {
     setMounted(true);
@@ -64,7 +66,7 @@ export function Header() {
         href="#main-content"
         className="sr-only focus:not-sr-only absolute left-2 top-2 z-50 rounded-sm bg-primary px-4 py-2 text-primary-foreground focus:outline-hidden focus:ring-2 focus:ring-primary"
       >
-        Перейти к основному содержимому
+        {t("skipToMain")}
       </a>
       <div className={"container flex items-center justify-between py-0"}>
         <div className="mr-8 flex">
@@ -75,7 +77,7 @@ export function Header() {
                   ? "/assets/images/Logoblack.png"
                   : "/assets/images/Logo.png"
               }
-              alt="Логотип компании GeoExploration"
+              alt={t("logoAlt")}
               width={scrolled ? 140 : 220}
               height={scrolled ? 40 : 60}
               priority
@@ -88,7 +90,7 @@ export function Header() {
         <nav
           className="hidden md:flex flex-1 items-center justify-center"
           role="navigation"
-          aria-label="Главная навигация"
+          aria-label={t("mainNav")}
         >
           <NavigationMenu className="w-full justify-center">
             <NavigationMenuList className="flex items-center gap-2">
@@ -112,7 +114,7 @@ export function Header() {
                     <DropdownMenuContent align="start" className="w-64">
                       <DropdownMenuItem asChild>
                         <a href={item.href} className="font-medium">
-                          Все услуги
+                          {t("allServices")}
                         </a>
                       </DropdownMenuItem>
                       {item.children.map((child) => (
@@ -156,18 +158,13 @@ export function Header() {
         <div className="flex md:hidden items-center">
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" aria-label="Меню">
+              <Button variant="ghost" size="icon" aria-label={t("menu")}>
                 <Menu className="h-5 w-5" aria-hidden="true" />
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="w-64">
-              <SheetTitle className="sr-only">
-                Главное меню навигации
-              </SheetTitle>
-              <nav
-                className="flex flex-col gap-1"
-                aria-label="Мобильная навигация"
-              >
+              <SheetTitle className="sr-only">{t("mainMenu")}</SheetTitle>
+              <nav className="flex flex-col gap-1" aria-label={t("mobileNav")}>
                 {navItems.map((item) => (
                   <div key={item.href}>
                     <Button
@@ -225,7 +222,7 @@ export function Header() {
                   ? "text-foreground hover:bg-secondary/10"
                   : "text-white hover:bg-white/20",
               )}
-              aria-label={theme === "dark" ? "Светлая тема" : "Тёмная тема"}
+              aria-label={theme === "dark" ? t("lightTheme") : t("darkTheme")}
             >
               {theme === "dark" ? (
                 <Sun className="h-4 w-4" />
