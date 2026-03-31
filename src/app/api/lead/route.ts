@@ -53,7 +53,7 @@ export async function POST(request: Request) {
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ chat_id: chatId, text, parse_mode: "HTML" }),
+      body: JSON.stringify({ chat_id: chatId, text }),
     },
   );
 

@@ -7,8 +7,16 @@ import { getTranslations } from "next-intl/server";
 
 const filtered = services.filter((s) => s.category === "geodesy");
 
-export async function generateMetadata(): Promise<Metadata> {
-  const tCat = await getTranslations("categories.geodesy");
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const tCat = await getTranslations({
+    locale,
+    namespace: "categories.geodesy",
+  });
   return {
     title: `${tCat("label")} — GeoExploration`,
     description: tCat("description"),

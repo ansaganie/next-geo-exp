@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { Separator } from "@/shared/ui/separator";
 // Icons now provided via centralized data definitions in contactLinks
 import { BrandIcon } from "@/shared/ui/brand-icon";

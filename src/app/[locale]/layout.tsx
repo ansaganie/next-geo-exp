@@ -35,6 +35,9 @@ export async function generateMetadata({
     en: "en_US",
   };
 
+  const localePrefix = locale === "ru" ? "" : `/${locale}`;
+  const canonicalUrl = `https://geoexploration.kz${localePrefix}`;
+
   return {
     title: t("title"),
     description: t("description"),
@@ -52,7 +55,7 @@ export async function generateMetadata({
     ],
     metadataBase: new URL("https://geoexploration.kz"),
     alternates: {
-      canonical: "https://geoexploration.kz",
+      canonical: canonicalUrl,
       languages: {
         ru: "https://geoexploration.kz",
         kk: "https://geoexploration.kz/kk",
@@ -62,7 +65,7 @@ export async function generateMetadata({
     openGraph: {
       title: t("title"),
       description: t("ogDescription"),
-      url: "https://geoexploration.kz",
+      url: canonicalUrl,
       siteName: "GeoExploration",
       locale: ogLocaleMap[locale] ?? "ru_RU",
       type: "website",
@@ -123,9 +126,7 @@ export default async function LocaleLayout({
             >
               {t("skipToContent")}
             </a>
-            <main id="main" role="main">
-              {children}
-            </main>
+            <div id="main">{children}</div>
             <script
               type="application/ld+json"
               dangerouslySetInnerHTML={{
@@ -141,7 +142,7 @@ export default async function LocaleLayout({
                       telephone: process.env.NEXT_PUBLIC_PHONE_MAIN || "",
                       contactType: "customer service",
                       areaServed: "KZ",
-                      availableLanguage: ["ru"],
+                      availableLanguage: ["ru", "kk", "en"],
                     },
                   ],
                   sameAs: [

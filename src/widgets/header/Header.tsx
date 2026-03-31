@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useTheme } from "next-themes";
 import { Button } from "@/shared/ui/button";
 import { cn } from "@/shared/lib/utils";
@@ -73,7 +73,7 @@ export function Header() {
       )}
     >
       <a
-        href="#main-content"
+        href="#main"
         className="sr-only focus:not-sr-only absolute left-2 top-2 z-50 rounded-sm bg-primary px-4 py-2 text-primary-foreground focus:outline-hidden focus:ring-2 focus:ring-primary"
       >
         {t("skipToMain")}
@@ -119,9 +119,9 @@ export function Header() {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="start" className="w-64">
                       <DropdownMenuItem asChild>
-                        <a href={item.href} className="font-medium">
+                        <Link href={item.href} className="font-medium">
                           {t("allServices")}
-                        </a>
+                        </Link>
                       </DropdownMenuItem>
                       {item.children.map((child) => (
                         <DropdownMenuItem key={child.href} asChild>
@@ -144,14 +144,14 @@ export function Header() {
                     )}
                     asChild
                   >
-                    <a
+                    <Link
                       href={item.href}
                       aria-current={
                         activeHash === item.href ? "page" : undefined
                       }
                     >
                       {tNav(item.labelKey)}
-                    </a>
+                    </Link>
                   </Button>
                 ),
               )}
@@ -180,14 +180,14 @@ export function Header() {
                       )}
                       asChild
                     >
-                      <a
+                      <Link
                         href={item.href}
                         {...(activeHash === item.href && {
                           "aria-current": "page",
                         })}
                       >
                         {tNav(item.labelKey)}
-                      </a>
+                      </Link>
                     </Button>
                     {item.children && (
                       <div className="ml-4 flex flex-col gap-0.5">
@@ -209,7 +209,7 @@ export function Header() {
                   </div>
                 ))}
                 <Button variant="default" className="mt-2" asChild>
-                  <a href={headerCta.href}>{tNav(headerCta.labelKey)}</a>
+                  <Link href={headerCta.href}>{tNav(headerCta.labelKey)}</Link>
                 </Button>
               </nav>
               {mounted && (
@@ -318,7 +318,7 @@ export function Header() {
             asChild
             className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-lg"
           >
-            <a href={headerCta.href}>{tNav(headerCta.labelKey)}</a>
+            <Link href={headerCta.href}>{tNav(headerCta.labelKey)}</Link>
           </Button>
         </div>
       </div>

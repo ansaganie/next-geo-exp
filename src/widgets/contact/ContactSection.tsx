@@ -66,12 +66,18 @@ export function ContactSection() {
         <div className="grid gap-10 md:grid-cols-2">
           <div>
             <div className="overflow-hidden rounded-xl border border-border/60 shadow-sm">
-              <iframe
-                src={process.env.NEXT_PUBLIC_MAP_IFRAME_SRC}
-                title={t("mapTitle")}
-                className="h-72 w-full"
-                allowFullScreen
-              />
+              {process.env.NEXT_PUBLIC_MAP_IFRAME_SRC ? (
+                <iframe
+                  src={process.env.NEXT_PUBLIC_MAP_IFRAME_SRC}
+                  title={t("mapTitle")}
+                  className="h-72 w-full"
+                  allowFullScreen
+                />
+              ) : (
+                <div className="flex h-72 w-full items-center justify-center bg-muted text-muted-foreground text-sm">
+                  {t("mapTitle")}
+                </div>
+              )}
             </div>
             <div className="mt-4 space-y-1 text-sm">
               <div>

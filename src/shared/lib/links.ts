@@ -12,7 +12,7 @@ export type NavLink = {
 export const navLinks: NavLink[] = [
   {
     labelKey: "services",
-    href: "#services",
+    href: "/#services",
     children: [
       { labelKey: "geodesy", href: "/services/geodesy" },
       { labelKey: "geotechnical", href: "/services/geotechnical" },
@@ -21,9 +21,9 @@ export const navLinks: NavLink[] = [
       { labelKey: "equipment", href: "/services/equipment" },
     ],
   },
-  { labelKey: "portfolio", href: "#portfolio" },
-  { labelKey: "about", href: "#about" },
-  { labelKey: "contacts", href: "#contact-us" },
+  { labelKey: "portfolio", href: "/#portfolio" },
+  { labelKey: "about", href: "/#about" },
+  { labelKey: "contacts", href: "/#contact-us" },
 ];
 
 export const serviceLinks: NavLink[] = [
@@ -76,5 +76,5 @@ export const contactLinks: ContactLink[] = [
 
 export const headerCta = {
   labelKey: "submitRequest",
-  href: "#contact-us",
+  href: "/#contact-us",
 };

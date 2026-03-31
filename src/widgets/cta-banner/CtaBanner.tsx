@@ -1,4 +1,5 @@
 import { Button } from "@/shared/ui/button";
+import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 
 interface CtaBannerProps {
@@ -29,7 +30,7 @@ export async function CtaBanner({
           asChild
           className="mt-6 bg-secondary text-secondary-foreground hover:bg-secondary/90"
         >
-          <a href={ctaHref}>{ctaLabel ?? t("button")}</a>
+          <Link href={ctaHref}>{ctaLabel ?? t("button")}</Link>
         </Button>
       </div>
     </section>
