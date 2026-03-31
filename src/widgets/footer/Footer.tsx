@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Separator } from "@/shared/ui/separator";
 // Icons now provided via centralized data definitions in contactLinks
 import { BrandIcon } from "@/shared/ui/brand-icon";
@@ -46,13 +47,13 @@ export function Footer() {
             >
               {serviceLinks.map((service) => (
                 <li key={service.label}>
-                  <a
+                  <Link
                     href={service.href}
                     className="hover:text-accent-foreground transition-colors"
                     aria-label={`Перейти к разделу: ${service.label}`}
                   >
                     {service.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

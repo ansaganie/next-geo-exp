@@ -2,20 +2,37 @@ import { siInstagram, siWhatsapp, type SimpleIcon } from "simple-icons";
 import { Phone, Mail } from "lucide-react";
 import type { ComponentType, SVGProps } from "react";
 
-export type NavLink = { label: string; href: string };
+export type NavLink = { label: string; href: string; children?: NavLink[] };
 
 export const navLinks: NavLink[] = [
-  { label: "Услуги", href: "#services" },
+  {
+    label: "Услуги",
+    href: "#services",
+    children: [
+      { label: "Геодезия и топография", href: "/services/geodesy" },
+      {
+        label: "Инженерно-геологические изыскания",
+        href: "/services/geotechnical",
+      },
+      { label: "Бурение скважин", href: "/services/drilling" },
+      { label: "Гидрогеология", href: "/services/hydrogeology" },
+      { label: "Оборудование и материалы", href: "/services/equipment" },
+    ],
+  },
   { label: "Портфолио", href: "#portfolio" },
   { label: "О нас", href: "#about" },
   { label: "Контакты", href: "#contact-us" },
 ];
 
 export const serviceLinks: NavLink[] = [
-  { label: "Бурение скважин на воду", href: "#services" },
-  { label: "Инженерно-геологические изыскания", href: "#services" },
-  { label: "Геодезия и топография", href: "#services" },
-  { label: "Вынос в натуру", href: "#services" },
+  { label: "Геодезия и топография", href: "/services/geodesy" },
+  {
+    label: "Инженерно-геологические изыскания",
+    href: "/services/geotechnical",
+  },
+  { label: "Бурение скважин", href: "/services/drilling" },
+  { label: "Гидрогеология", href: "/services/hydrogeology" },
+  { label: "Оборудование и материалы", href: "/services/equipment" },
 ];
 
 export type ContactLink = {

@@ -15,8 +15,14 @@ import {
   SheetContent,
   SheetTitle,
 } from "@/shared/ui/sheet";
-import { Menu, Moon, Sun } from "lucide-react";
+import { Menu, Moon, Sun, ChevronDown } from "lucide-react";
 import { navLinks, headerCta } from "@/shared/lib/links";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/shared/ui/dropdown-menu";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -86,30 +92,63 @@ export function Header() {
         >
           <NavigationMenu className="w-full justify-center">
             <NavigationMenuList className="flex items-center gap-2">
-              {navItems.map((item) => (
-                <Button
-                  key={item.href}
-                  variant="ghost"
-                  className={cn(
-                    "px-3 py-2 text-sm font-medium transition-colors",
-                    scrolled
-                      ? "text-foreground hover:text-secondary hover:bg-secondary/10"
-                      : "text-white hover:text-white hover:bg-white/20",
-                    activeHash === item.href &&
-                      (scrolled
-                        ? "font-bold text-secondary underline underline-offset-4 decoration-secondary"
-                        : "font-bold text-white underline underline-offset-4"),
-                  )}
-                  asChild
-                >
-                  <a
-                    href={item.href}
-                    aria-current={activeHash === item.href ? "page" : undefined}
+              {navItems.map((item) =>
+                item.children ? (
+                  <DropdownMenu key={item.href}>
+                    <DropdownMenuTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        className={cn(
+                          "px-3 py-2 text-sm font-medium transition-colors gap-1",
+                          scrolled
+                            ? "text-foreground hover:text-secondary hover:bg-secondary/10"
+                            : "text-white hover:text-white hover:bg-white/20",
+                        )}
+                      >
+                        {item.label}
+                        <ChevronDown className="h-3 w-3" aria-hidden="true" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="start" className="w-64">
+                      <DropdownMenuItem asChild>
+                        <a href={item.href} className="font-medium">
+                          Все услуги
+                        </a>
+                      </DropdownMenuItem>
+                      {item.children.map((child) => (
+                        <DropdownMenuItem key={child.href} asChild>
+                          <Link href={child.href}>{child.label}</Link>
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                ) : (
+                  <Button
+                    key={item.href}
+                    variant="ghost"
+                    className={cn(
+                      "px-3 py-2 text-sm font-medium transition-colors",
+                      scrolled
+                        ? "text-foreground hover:text-secondary hover:bg-secondary/10"
+                        : "text-white hover:text-white hover:bg-white/20",
+                      activeHash === item.href &&
+                        (scrolled
+                          ? "font-bold text-secondary underline underline-offset-4 decoration-secondary"
+                          : "font-bold text-white underline underline-offset-4"),
+                    )}
+                    asChild
                   >
-                    {item.label}
-                  </a>
-                </Button>
-              ))}
+                    <a
+                      href={item.href}
+                      aria-current={
+                        activeHash === item.href ? "page" : undefined
+                      }
+                    >
+                      {item.label}
+                    </a>
+                  </Button>
+                ),
+              )}
             </NavigationMenuList>
           </NavigationMenu>
         </nav>
@@ -130,25 +169,41 @@ export function Header() {
                 aria-label="Мобильная навигация"
               >
                 {navItems.map((item) => (
-                  <Button
-                    key={item.href}
-                    variant="ghost"
-                    className={cn(
-                      "justify-start",
-                      activeHash === item.href &&
-                        "font-bold text-secondary underline underline-offset-4 decoration-secondary",
-                    )}
-                    asChild
-                  >
-                    <a
-                      href={item.href}
-                      {...(activeHash === item.href && {
-                        "aria-current": "page",
-                      })}
+                  <div key={item.href}>
+                    <Button
+                      variant="ghost"
+                      className={cn(
+                        "justify-start w-full",
+                        activeHash === item.href &&
+                          "font-bold text-secondary underline underline-offset-4 decoration-secondary",
+                      )}
+                      asChild
                     >
-                      {item.label}
-                    </a>
-                  </Button>
+                      <a
+                        href={item.href}
+                        {...(activeHash === item.href && {
+                          "aria-current": "page",
+                        })}
+                      >
+                        {item.label}
+                      </a>
+                    </Button>
+                    {item.children && (
+                      <div className="ml-4 flex flex-col gap-0.5">
+                        {item.children.map((child) => (
+                          <Button
+                            key={child.href}
+                            variant="ghost"
+                            size="sm"
+                            className="justify-start text-muted-foreground hover:text-foreground"
+                            asChild
+                          >
+                            <Link href={child.href}>{child.label}</Link>
+                          </Button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 ))}
                 <Button variant="default" className="mt-2" asChild>
                   <a href={headerCta.href}>{headerCta.label}</a>
