@@ -1,93 +1,63 @@
+export type ServiceCategory =
+  | "geodesy"
+  | "geotechnical"
+  | "drilling"
+  | "hydrogeology"
+  | "equipment";
+
 export type Service = {
   id: string;
-  title: string;
   icon: string; // relative path under public/assets/images
-  description: string;
+  category: ServiceCategory;
 };
 
 export const services: Service[] = [
   {
     id: "engineering-geodesy",
-    title: "Инженерная геодезия",
     icon: "/assets/images/geo-icon-01.png",
-    description: "Геодезическое сопровождение строительства и проектирования",
+    category: "geodesy",
   },
-  {
-    id: "topo",
-    title: "Топографическая съёмка",
-    icon: "/assets/images/geo-icon-02.png",
-    description: "Создание топопланов для проектных и кадастровых работ",
-  },
+  { id: "topo", icon: "/assets/images/geo-icon-02.png", category: "geodesy" },
   {
     id: "stakeout",
-    title: "Вынос в натуру",
     icon: "/assets/images/geo-icon-03.png",
-    description: "Разметка осей зданий и инженерных сетей",
-  },
-  {
-    id: "geo-support",
-    title: "Геодезическое сопровождение",
-    icon: "/assets/images/geo-icon-04.png",
-    description: "Постоянный контроль точности строительных работ",
+    category: "geodesy",
   },
   {
     id: "cadastral",
-    title: "Кадастровая съёмка",
     icon: "/assets/images/geo-icon-05.png",
-    description: "Документы для регистрации земли и объектов",
+    category: "geodesy",
   },
-  {
-    id: "facade",
-    title: "Съёмка фасадов",
-    icon: "/assets/images/geo-icon-06.png",
-    description: "Высокоточные измерения зданий и сооружений",
-  },
-  {
-    id: "scan3d",
-    title: "3D-сканирование",
-    icon: "/assets/images/geo-icon-07.png",
-    description: "Цифровые модели местности и зданий",
-  },
+  { id: "facade", icon: "/assets/images/geo-icon-06.png", category: "geodesy" },
+  { id: "scan3d", icon: "/assets/images/geo-icon-07.png", category: "geodesy" },
   {
     id: "landscape",
-    title: "Геодезия для ландшафта",
     icon: "/assets/images/geo-icon-09.png",
-    description: "Планировка участков и подготовка под благоустройство",
+    category: "geodesy",
   },
   {
     id: "vertical",
-    title: "Контроль вертикальности",
     icon: "/assets/images/geo-icon-10.png",
-    description: "Мониторинг конструкций на предмет отклонений",
+    category: "geodesy",
   },
   {
     id: "geo-survey",
-    title: "Инженерно-геологические изыскания",
     icon: "/assets/images/geo-icon-11.png",
-    description: "Бурение скважин, лабораторные анализы, отчёты",
+    category: "geotechnical",
   },
   {
     id: "tacheometry",
-    title: "Тахеометрическая съёмка",
     icon: "/assets/images/geo-icon-12.png",
-    description: "Построение планов и вычисление объёмов",
+    category: "geodesy",
   },
   {
     id: "asbuilt",
-    title: "Исполнительная съёмка",
     icon: "/assets/images/geo-icon-13.png",
-    description: "Фактическое расположение построенных объектов",
+    category: "geodesy",
   },
   {
-    id: "core-boxes",
-    title: "Керновые ящики PQ/HQ/NQ",
+    id: "field-supplies",
     icon: "/assets/images/geo-icon-14.png",
-    description: "Прочные стандартизированные ящики для керна",
-  },
-  {
-    id: "sample-bags",
-    title: "Мешки для проб",
-    icon: "/assets/images/geo-icon-15.png",
-    description: "Пошив мешков для отбора и хранения образцов",
+    category: "equipment",
   },
 ];

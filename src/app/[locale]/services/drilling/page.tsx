@@ -1,0 +1,74 @@
+import type { Metadata } from "next";
+import { services } from "@/entities/service/services";
+import { ServiceCard } from "@/entities/service/ServiceCard";
+import { PageHeader } from "@/widgets/page-header/PageHeader";
+import { CtaBanner } from "@/widgets/cta-banner/CtaBanner";
+import { getTranslations } from "next-intl/server";
+
+const filtered = services.filter((s) => s.category === "drilling");
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const tCat = await getTranslations({
+    locale,
+    namespace: "categories.drilling",
+  });
+  return {
+    title: `${tCat("label")} — GeoExploration`,
+    description: tCat("description"),
+    openGraph: {
+      title: `${tCat("label")} — GeoExploration`,
+      description: tCat("description"),
+    },
+  };
+}
+
+export default async function DrillingPage() {
+  const t = await getTranslations("servicePages.drilling");
+  const tCat = await getTranslations("categories.drilling");
+  const tBread = await getTranslations("breadcrumbs");
+
+  return (
+    <>
+      <PageHeader
+        title={tCat("label")}
+        subtitle={tCat("description")}
+        breadcrumbs={[
+          { label: tBread("home"), href: "/" },
+          { label: tBread("services") },
+          { label: tCat("label") },
+        ]}
+      />
+
+      {filtered.length > 0 ? (
+        <section className="py-16">
+          <div className="mx-auto max-w-6xl px-8">
+            <div className="grid gap-6 md:grid-cols-3">
+              {filtered.map((s) => (
+                <ServiceCard key={s.id} service={s} />
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      <section className="bg-muted/40 py-16">
+        <div className="mx-auto max-w-4xl px-8">
+          <h2 className="mb-8 text-2xl font-bold tracking-tight">
+            {t("detailsHeading")}
+          </h2>
+          <div className="space-y-4 text-muted-foreground">
+            <p>{t("p1")}</p>
+            <p>{t("p2")}</p>
+          </div>
+        </div>
+      </section>
+
+      <CtaBanner />
+    </>
+  );
+}

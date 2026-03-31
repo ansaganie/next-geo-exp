@@ -1,45 +1,62 @@
 import React from "react";
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 
-export function AboutSection() {
+export async function AboutSection() {
+  const t = await getTranslations("about");
   return (
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="bg-muted/30 py-16"
+      className="bg-muted/40 py-20"
     >
-      <div className="mx-auto max-w-6xl px-8 grid gap-10 md:grid-cols-2">
-        <div>
+      <div className="mx-auto max-w-6xl px-8 grid gap-12 md:grid-cols-2 items-center">
+        <div className="overflow-hidden rounded-xl">
           <Image
             src="/assets/images/about-left-image.png"
-            alt="GeoExploration оборудование"
+            alt={t("imageAlt")}
             width={560}
             height={420}
-            className="rounded"
+            className="rounded-xl object-cover transition-transform duration-500 hover:scale-105"
           />
         </div>
         <div className="flex flex-col justify-center">
-          <h2 id="about-heading" className="mb-4 text-2xl font-semibold">
-            Комплексные инженерные решения — от геодезии до бурения
+          <p className="mb-2 text-sm font-medium uppercase tracking-widest text-secondary">
+            {t("eyebrow")}
+          </p>
+          <h2
+            id="about-heading"
+            className="mb-5 text-3xl font-bold tracking-tight text-foreground"
+          >
+            {t("heading")}
           </h2>
-          <p className="mb-6 text-sm leading-relaxed">
-            Мы предоставляем полный спектр профессиональных услуг: геодезия,
-            топография, инженерно-геологические изыскания, бурение скважин.
-            Работаем для частных и корпоративных клиентов: от подготовки участка
-            до сопровождения строительства.
+          <p className="mb-8 text-sm leading-relaxed text-muted-foreground">
+            {t("description")}
           </p>
           <div className="grid grid-cols-3 gap-4">
-            <div className="flex flex-col items-center rounded border p-3">
-              <div className="text-lg font-bold">300+</div>
-              <div className="text-xs">Объектов в год</div>
+            <div className="flex flex-col items-center justify-center rounded-lg border border-border/40 bg-card px-4 py-5 text-center">
+              <div className="text-2xl font-bold text-primary">
+                {t("stat1Value")}
+              </div>
+              <div className="mt-1 text-xs text-muted-foreground">
+                {t("stat1Label")}
+              </div>
             </div>
-            <div className="flex flex-col items-center rounded border p-3">
-              <div className="text-lg font-bold">200+</div>
-              <div className="text-xs">Инженерных съёмок</div>
+            <div className="flex flex-col items-center justify-center rounded-lg border border-border/40 bg-card px-4 py-5 text-center">
+              <div className="text-2xl font-bold text-primary">
+                {t("stat2Value")}
+              </div>
+              <div className="mt-1 text-xs text-muted-foreground">
+                {t("stat2Label")}
+              </div>
             </div>
-            <div className="flex flex-col items-center rounded border p-3">
-              <div className="text-lg font-bold">500+</div>
-              <div className="text-xs">Довольных клиентов</div>
+            <div className="flex flex-col items-center justify-center rounded-lg border border-border/40 bg-card px-4 py-5 text-center">
+              <div className="text-2xl font-bold text-primary">
+                {t("stat3Value")}
+              </div>
+              <div className="mt-1 text-xs text-muted-foreground">
+                {t("stat3Label")}
+              </div>
             </div>
           </div>
         </div>

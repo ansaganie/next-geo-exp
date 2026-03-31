@@ -13,15 +13,24 @@ import {
   CarouselApi,
 } from "@/shared/ui/carousel";
 import { cn } from "@/shared/lib/utils";
+import { useTranslations } from "next-intl";
 
 export function HeroCarousel() {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
+  const t = useTranslations("hero");
+
+  // Get translated slide data
+  const translatedSlides = slides.map((slide) => ({
+    ...slide,
+    title: t(`slides.${slide.id}.title`),
+    points: t.raw(`slides.${slide.id}.points`) as string[],
+  }));
 
   const autoplayPlugin = useRef(
     Autoplay({
       delay: 10000,
-    })
+    }),
   );
 
   useEffect(() => {
@@ -47,7 +56,7 @@ export function HeroCarousel() {
     <section
       id="top"
       aria-labelledby="hero-heading"
-      className="min-h-screen flex items-center overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden"
     >
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
@@ -60,15 +69,16 @@ export function HeroCarousel() {
           quality={90}
           sizes="100vw"
         />
-        {/* Subtle overlay + gentle vignette for balanced contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/45 via-background/25 to-transparent" />
+        {/* Earthy warm overlay with depth */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(22,19%,24%)]/70 via-[hsl(22,19%,24%)]/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 w-full py-16 md:py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <h2 id="hero-heading" className="sr-only">
-            Ключевые услуги GeoExploration
+            {t("heading")}
           </h2>
 
           <Carousel
@@ -78,23 +88,23 @@ export function HeroCarousel() {
             className="w-full"
           >
             <CarouselContent>
-              {slides.map((slide: Slide) => (
+              {translatedSlides.map((slide: Slide) => (
                 <CarouselItem key={slide.id}>
                   <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
                     {/* Content Column */}
                     <Card className="border-none bg-transparent shadow-none">
                       <CardContent className="p-0 flex flex-col justify-center space-y-6">
                         {/* Title */}
-                        <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight drop-shadow-lg">
+                        <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-white drop-shadow-lg">
                           {slide.title}
                         </h3>
 
                         {/* Points List */}
-                        <ul className="space-y-3 text-base md:text-lg drop-shadow">
+                        <ul className="space-y-3 text-base md:text-lg text-white/90 drop-shadow">
                           {slide.points.map((point: string, idx: number) => (
                             <li key={idx} className="flex items-start gap-3">
-                              <div className="mt-1 flex-shrink-0 rounded-full bg-primary/10 p-1">
-                                <CheckCircle2 className="h-4 w-4" />
+                              <div className="mt-1 flex-shrink-0 rounded-full bg-secondary/20 p-1">
+                                <CheckCircle2 className="h-4 w-4 text-secondary" />
                               </div>
                               <span className="leading-relaxed">{point}</span>
                             </li>
@@ -124,7 +134,7 @@ export function HeroCarousel() {
 
             {/* Custom Numbered Dots Navigation */}
             <div className="mt-8 flex justify-center gap-3">
-              {slides.map((slide, index) => (
+              {translatedSlides.map((slide, index) => (
                 <Button
                   key={slide.id}
                   onClick={() => api?.scrollTo(index)}
@@ -133,11 +143,14 @@ export function HeroCarousel() {
                   className={cn(
                     "w-10 h-10 rounded-md font-semibold text-sm transition-all duration-300 hover:cursor-pointer",
                     current === index
-                      ? "shadow-md"
-                      : "text-primary hover:text-primary bg-background/70 backdrop-blur-sm hover:bg-background/90",
-                    "hover:scale-105"
+                      ? "bg-secondary text-secondary-foreground shadow-md hover:bg-secondary/90"
+                      : "text-white border-white/40 hover:text-white bg-white/10 backdrop-blur-sm hover:bg-white/20",
+                    "hover:scale-105",
                   )}
-                  aria-label={`Go to slide ${index + 1}: ${slide.title}`}
+                  aria-label={t("goToSlide", {
+                    index: index + 1,
+                    title: slide.title,
+                  })}
                   aria-current={current === index}
                 >
                   {index + 1}

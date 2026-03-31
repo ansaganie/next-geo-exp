@@ -2,20 +2,36 @@ import { siInstagram, siWhatsapp, type SimpleIcon } from "simple-icons";
 import { Phone, Mail } from "lucide-react";
 import type { ComponentType, SVGProps } from "react";
 
-export type NavLink = { label: string; href: string };
+export type NavLink = {
+  /** i18n key resolved via `nav.<key>` namespace */
+  labelKey: string;
+  href: string;
+  children?: NavLink[];
+};
 
 export const navLinks: NavLink[] = [
-  { label: "Услуги", href: "#services" },
-  { label: "Портфолио", href: "#portfolio" },
-  { label: "О нас", href: "#about" },
-  { label: "Контакты", href: "#contact-us" },
+  {
+    labelKey: "services",
+    href: "/#services",
+    children: [
+      { labelKey: "geodesy", href: "/services/geodesy" },
+      { labelKey: "geotechnical", href: "/services/geotechnical" },
+      { labelKey: "drilling", href: "/services/drilling" },
+      { labelKey: "hydrogeology", href: "/services/hydrogeology" },
+      { labelKey: "equipment", href: "/services/equipment" },
+    ],
+  },
+  { labelKey: "portfolio", href: "/#portfolio" },
+  { labelKey: "about", href: "/#about" },
+  { labelKey: "contacts", href: "/#contact-us" },
 ];
 
 export const serviceLinks: NavLink[] = [
-  { label: "Бурение скважин на воду", href: "#services" },
-  { label: "Инженерно-геологические изыскания", href: "#services" },
-  { label: "Геодезия и топография", href: "#services" },
-  { label: "Вынос в натуру", href: "#services" },
+  { labelKey: "geodesy", href: "/services/geodesy" },
+  { labelKey: "geotechnical", href: "/services/geotechnical" },
+  { labelKey: "drilling", href: "/services/drilling" },
+  { labelKey: "hydrogeology", href: "/services/hydrogeology" },
+  { labelKey: "equipment", href: "/services/equipment" },
 ];
 
 export type ContactLink = {
@@ -59,6 +75,6 @@ export const contactLinks: ContactLink[] = [
 ];
 
 export const headerCta = {
-  label: "Оставить заявку",
-  href: "#contact-us",
+  labelKey: "submitRequest",
+  href: "/#contact-us",
 };
