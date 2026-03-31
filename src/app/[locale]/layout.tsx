@@ -107,8 +107,8 @@ export default async function LocaleLayout({
   const t = await getTranslations("common");
 
   return (
-    <html lang={locale} suppressHydrationWarning>
-      <body
+    <div lang={locale}>
+      <div
         className={cn(
           inter.variable,
           "min-h-screen bg-background font-sans antialiased text-foreground",
@@ -154,7 +154,7 @@ export default async function LocaleLayout({
             />
           </ThemeProvider>
         </NextIntlClientProvider>
-      </body>
-    </html>
+      </div>
+    </div>
   );
 }

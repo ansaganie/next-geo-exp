@@ -1,8 +1,12 @@
 import type { ReactNode } from "react";
 
-// Locale-specific rendering (html, body, fonts, providers) is handled
-// by src/app/[locale]/layout.tsx.  This root layout exists only to
-// satisfy the Next.js requirement that every app has a root layout.
+// Root layout renders the minimal document shell.
+// Locale-specific providers, fonts, and metadata are handled
+// by src/app/[locale]/layout.tsx which renders inside <body>.
 export default function RootLayout({ children }: { children: ReactNode }) {
-  return children;
+  return (
+    <html suppressHydrationWarning>
+      <body>{children}</body>
+    </html>
+  );
 }

@@ -52,9 +52,24 @@ export function Header() {
     };
     onScroll();
     setActiveHash(window.location.hash);
+
+    // Also update active hash on scroll (for section-based navigation)
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveHash(`/#${entry.target.id}`);
+          }
+        }
+      },
+      { rootMargin: "-40% 0px -50% 0px" },
+    );
+    const sections = document.querySelectorAll("section[id]");
+    sections.forEach((s) => observer.observe(s));
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("hashchange", onHashChange);
     return () => {
+      observer.disconnect();
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("hashchange", onHashChange);
     };

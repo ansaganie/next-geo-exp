@@ -80,28 +80,33 @@ export function ContactSection() {
               )}
             </div>
             <div className="mt-4 space-y-1 text-sm">
-              <div>
-                <a
-                  href={`tel:${process.env.NEXT_PUBLIC_PHONE_MAIN}`}
-                  className="font-medium text-foreground transition-colors hover:text-secondary"
-                >
-                  {process.env.NEXT_PUBLIC_PHONE_DISPLAY}
-                </a>
-              </div>
-              <div>
-                <a
-                  href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}
-                  className="text-muted-foreground transition-colors hover:text-secondary"
-                >
-                  {process.env.NEXT_PUBLIC_EMAIL}
-                </a>
-              </div>
+              {process.env.NEXT_PUBLIC_PHONE_MAIN && (
+                <div>
+                  <a
+                    href={`tel:${process.env.NEXT_PUBLIC_PHONE_MAIN}`}
+                    className="font-medium text-foreground transition-colors hover:text-secondary"
+                  >
+                    {process.env.NEXT_PUBLIC_PHONE_DISPLAY ||
+                      process.env.NEXT_PUBLIC_PHONE_MAIN}
+                  </a>
+                </div>
+              )}
+              {process.env.NEXT_PUBLIC_EMAIL && (
+                <div>
+                  <a
+                    href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}
+                    className="text-muted-foreground transition-colors hover:text-secondary"
+                  >
+                    {process.env.NEXT_PUBLIC_EMAIL}
+                  </a>
+                </div>
+              )}
             </div>
           </div>
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="space-y-4 rounded-xl border border-border/60 bg-card p-6 shadow-sm"
-            aria-describedby="form-status"
+            aria-describedby={status !== "idle" ? "form-status" : undefined}
           >
             <Input
               placeholder={t("name")}
