@@ -48,10 +48,12 @@ export function Header() {
       setScrolled(window.scrollY > 0);
     };
     const onHashChange = () => {
-      setActiveHash(window.location.hash);
+      const hash = window.location.hash;
+      setActiveHash(hash ? `/${hash}` : "");
     };
     onScroll();
-    setActiveHash(window.location.hash);
+    const initialHash = window.location.hash;
+    setActiveHash(initialHash ? `/${initialHash}` : "");
 
     // Also update active hash on scroll (for section-based navigation)
     const observer = new IntersectionObserver(

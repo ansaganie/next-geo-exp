@@ -107,7 +107,7 @@ export default async function LocaleLayout({
   const t = await getTranslations("common");
 
   return (
-    <div lang={locale}>
+    <div>
       <div
         className={cn(
           inter.variable,
@@ -126,7 +126,7 @@ export default async function LocaleLayout({
             >
               {t("skipToContent")}
             </a>
-            <div id="main">{children}</div>
+            {children}
             <script
               type="application/ld+json"
               dangerouslySetInnerHTML={{

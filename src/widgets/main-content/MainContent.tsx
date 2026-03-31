@@ -7,13 +7,13 @@ import { ContactSection } from "@/widgets/contact/ContactSection";
 
 export function MainContent() {
   return (
-    <div className="flex-1">
+    <main id="main" className="flex-1">
       <HeroCarousel />
       <ServicesGrid />
       <AboutSection />
       <PortfolioSection />
       <VideoTestimonials />
       <ContactSection />
-    </div>
+    </main>
   );
 }
