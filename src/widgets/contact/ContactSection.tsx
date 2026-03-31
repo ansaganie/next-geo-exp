@@ -21,13 +21,27 @@ export function ContactSection() {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitting, isSubmitSuccessful },
+    formState: { errors, isSubmitting },
   } = useForm({ resolver: zodResolver(schema) });
 
+  const [status, setStatus] = React.useState<"idle" | "success" | "error">(
+    "idle",
+  );
+
   async function onSubmit(data: z.infer<typeof schema>) {
-    // Placeholder: integrate /api/lead later
-    console.log("Lead submitted", data);
-    reset();
+    setStatus("idle");
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error("Request failed");
+      setStatus("success");
+      reset();
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -96,11 +110,18 @@ export function ContactSection() {
             {...register("comment")}
           />
           <Button type="submit" disabled={isSubmitting}>
-            Отправить
+            {isSubmitting ? "Отправка..." : "Отправить"}
           </Button>
-          <p id="form-status" className="text-xs text-muted-foreground">
-            {isSubmitSuccessful ? "Заявка отправлена (демо)." : ""}
-          </p>
+          {status === "success" && (
+            <p id="form-status" className="text-xs text-green-600">
+              Заявка успешно отправлена!
+            </p>
+          )}
+          {status === "error" && (
+            <p id="form-status" className="text-xs text-red-600">
+              Ошибка при отправке. Попробуйте ещё раз.
+            </p>
+          )}
         </form>
       </div>
     </section>
