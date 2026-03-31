@@ -212,9 +212,9 @@
   },
   "serviceItems": {
     "engineering-geodesy": {
-      "title": "Engineering Geodesy",
-      "description": "Geodetic support for construction and design",
-      "details": "Geodetic work at all construction stages: from axis layout to as-built surveys. Precision control of assembly and construction using modern electronic total stations and GNSS receivers."
+      "title": "Engineering Geodesy & Support",
+      "description": "Geodetic support for construction, design and precision control",
+      "details": "Geodetic work at all construction stages: from axis layout to as-built surveys. Permanent geodetic presence on the construction site: monitoring axes, elevations, verticality of structures, and compliance with design decisions."
     },
     "topo": {
       "title": "Topographic Survey",
@@ -226,11 +226,7 @@
       "description": "Marking building axes and utility networks",
       "details": "Transferring design coordinates to the ground: building axes, land parcel boundaries, utility routes. Fixing points on the ground with a stakeout report."
     },
-    "geo-support": {
-      "title": "Geodetic Support",
-      "description": "Continuous quality control of construction work",
-      "details": "Permanent geodetic presence on the construction site: monitoring axes, elevations, verticality of structures, and compliance with design decisions."
-    },
+
     "cadastral": {
       "title": "Cadastral Survey",
       "description": "Documentation for land and property registration",
@@ -271,15 +267,10 @@
       "description": "Actual positioning of constructed objects",
       "details": "Recording the actual position of constructed buildings, structures, and utility networks. Compiling as-built drawings for commissioning."
     },
-    "core-boxes": {
-      "title": "PQ/HQ/NQ Core Boxes",
-      "description": "Durable standardized core storage boxes",
-      "details": "Manufacturing and supply of PQ, HQ, and NQ standard core boxes from durable polypropylene. Designed for storing and transporting core material during drilling operations."
-    },
-    "sample-bags": {
-      "title": "Sample Bags",
-      "description": "Custom bags for sampling and specimen storage",
-      "details": "Custom manufacturing of various-size bags for collecting, labelling, and storing soil, rock, and mineral specimens."
+    "field-supplies": {
+      "title": "Core Boxes & Sample Bags",
+      "description": "Supply of PQ/HQ/NQ core boxes and sample bags",
+      "details": "Manufacturing and supply of PQ, HQ, and NQ standard core boxes from durable polypropylene, plus custom bags for collecting, labelling, and storing soil, rock, and mineral specimens."
     }
   },
   "nav": {

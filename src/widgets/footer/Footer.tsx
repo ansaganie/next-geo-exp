@@ -28,7 +28,7 @@ export async function Footer() {
           {/* Company Info */}
           <div className="space-y-4" aria-labelledby="footer-company-heading">
             <Image
-              src="/assets/images/Logofooter.png"
+              src="/assets/images/logo-light.svg"
               alt={t("logoAlt")}
               width={150}
               height={50}

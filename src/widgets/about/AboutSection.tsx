@@ -11,7 +11,7 @@ export async function AboutSection() {
       className="bg-muted/40 py-20"
     >
       <div className="mx-auto max-w-6xl px-8 grid gap-12 md:grid-cols-2 items-center">
-        <div className="overflow-hidden rounded-xl shadow-lg">
+        <div className="overflow-hidden rounded-xl">
           <Image
             src="/assets/images/about-left-image.png"
             alt={t("imageAlt")}
@@ -26,7 +26,7 @@ export async function AboutSection() {
           </p>
           <h2
             id="about-heading"
-            className="mb-5 text-3xl font-bold tracking-tight"
+            className="mb-5 text-3xl font-bold tracking-tight text-foreground"
           >
             {t("heading")}
           </h2>
@@ -34,15 +34,15 @@ export async function AboutSection() {
             {t("description")}
           </p>
           <div className="grid grid-cols-3 gap-4">
-            <div className="flex flex-col items-center rounded-xl border border-secondary/20 bg-card p-4 shadow-sm transition-shadow hover:shadow-md">
-              <div className="text-2xl font-bold text-secondary">
+            <div className="flex flex-col items-center justify-center rounded-lg border border-border/40 bg-card px-4 py-5 text-center">
+              <div className="text-2xl font-bold text-primary">
                 {t("stat1Value")}
               </div>
               <div className="mt-1 text-xs text-muted-foreground">
                 {t("stat1Label")}
               </div>
             </div>
-            <div className="flex flex-col items-center rounded-xl border border-primary/20 bg-card p-4 shadow-sm transition-shadow hover:shadow-md">
+            <div className="flex flex-col items-center justify-center rounded-lg border border-border/40 bg-card px-4 py-5 text-center">
               <div className="text-2xl font-bold text-primary">
                 {t("stat2Value")}
               </div>
@@ -50,8 +50,8 @@ export async function AboutSection() {
                 {t("stat2Label")}
               </div>
             </div>
-            <div className="flex flex-col items-center rounded-xl border border-accent/20 bg-card p-4 shadow-sm transition-shadow hover:shadow-md">
-              <div className="text-2xl font-bold text-accent">
+            <div className="flex flex-col items-center justify-center rounded-lg border border-border/40 bg-card px-4 py-5 text-center">
+              <div className="text-2xl font-bold text-primary">
                 {t("stat3Value")}
               </div>
               <div className="mt-1 text-xs text-muted-foreground">

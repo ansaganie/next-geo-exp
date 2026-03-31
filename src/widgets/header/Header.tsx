@@ -82,11 +82,7 @@ export function Header() {
         <div className="mr-8 flex">
           <Link href="/" className={"flex items-center transition-all py-2"}>
             <Image
-              src={
-                scrolled
-                  ? "/assets/images/Logoblack.png"
-                  : "/assets/images/Logo.png"
-              }
+              src="/assets/images/logo.svg"
               alt={t("logoAlt")}
               width={scrolled ? 140 : 220}
               height={scrolled ? 40 : 60}
@@ -114,7 +110,7 @@ export function Header() {
                           "px-3 py-2 text-sm font-medium transition-colors gap-1",
                           scrolled
                             ? "text-foreground hover:text-secondary hover:bg-secondary/10"
-                            : "text-white hover:text-white hover:bg-white/20",
+                            : "text-foreground hover:text-secondary hover:bg-secondary/10",
                         )}
                       >
                         {tNav(item.labelKey)}
@@ -142,11 +138,9 @@ export function Header() {
                       "px-3 py-2 text-sm font-medium transition-colors",
                       scrolled
                         ? "text-foreground hover:text-secondary hover:bg-secondary/10"
-                        : "text-white hover:text-white hover:bg-white/20",
+                        : "text-foreground hover:text-secondary hover:bg-secondary/10",
                       activeHash === item.href &&
-                        (scrolled
-                          ? "font-bold text-secondary underline underline-offset-4 decoration-secondary"
-                          : "font-bold text-white underline underline-offset-4"),
+                        "font-bold text-secondary underline underline-offset-4 decoration-secondary",
                     )}
                     asChild
                   >
@@ -180,7 +174,7 @@ export function Header() {
                     <Button
                       variant="ghost"
                       className={cn(
-                        "justify-start w-full",
+                        "justify-start w-full whitespace-normal text-left",
                         activeHash === item.href &&
                           "font-bold text-secondary underline underline-offset-4 decoration-secondary",
                       )}
@@ -202,7 +196,7 @@ export function Header() {
                             key={child.href}
                             variant="ghost"
                             size="sm"
-                            className="justify-start text-muted-foreground hover:text-foreground"
+                            className="justify-start text-muted-foreground hover:text-foreground whitespace-normal text-left h-auto py-1.5"
                             asChild
                           >
                             <Link href={child.href}>
@@ -218,6 +212,51 @@ export function Header() {
                   <a href={headerCta.href}>{tNav(headerCta.labelKey)}</a>
                 </Button>
               </nav>
+              {mounted && (
+                <div className="mt-4 flex items-center gap-2 border-t border-border/60 pt-4">
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="gap-1 hover:text-foreground"
+                        aria-label={t("language")}
+                      >
+                        <Globe className="h-4 w-4" aria-hidden="true" />
+                        <span className="text-xs uppercase">{locale}</span>
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="start">
+                      {routing.locales.map((loc) => (
+                        <DropdownMenuItem
+                          key={loc}
+                          onClick={() => switchLocale(loc)}
+                          className={cn(loc === locale && "font-bold")}
+                        >
+                          {localeLabels[loc]}
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() =>
+                      setTheme(theme === "dark" ? "light" : "dark")
+                    }
+                    className="hover:text-foreground"
+                    aria-label={
+                      theme === "dark" ? t("lightTheme") : t("darkTheme")
+                    }
+                  >
+                    {theme === "dark" ? (
+                      <Sun className="h-4 w-4" />
+                    ) : (
+                      <Moon className="h-4 w-4" />
+                    )}
+                  </Button>
+                </div>
+              )}
             </SheetContent>
           </Sheet>
         </div>
@@ -231,10 +270,10 @@ export function Header() {
                     variant="ghost"
                     size="sm"
                     className={cn(
-                      "gap-1 transition-colors",
+                      "gap-1 transition-colors hover:text-foreground",
                       scrolled
                         ? "text-foreground hover:bg-secondary/10"
-                        : "text-white hover:bg-white/20",
+                        : "text-foreground hover:bg-secondary/10",
                     )}
                     aria-label={t("language")}
                   >
@@ -259,10 +298,10 @@ export function Header() {
                 size="icon"
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 className={cn(
-                  "transition-colors",
+                  "transition-colors hover:text-foreground",
                   scrolled
                     ? "text-foreground hover:bg-secondary/10"
-                    : "text-white hover:bg-white/20",
+                    : "text-foreground hover:bg-secondary/10",
                 )}
                 aria-label={theme === "dark" ? t("lightTheme") : t("darkTheme")}
               >
