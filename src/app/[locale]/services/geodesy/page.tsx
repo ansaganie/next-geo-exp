@@ -1,37 +1,39 @@
 import type { Metadata } from "next";
-import { services, serviceCategories } from "@/entities/service/services";
+import { services } from "@/entities/service/services";
 import { ServiceCard } from "@/entities/service/ServiceCard";
 import { PageHeader } from "@/widgets/page-header/PageHeader";
 import { CtaBanner } from "@/widgets/cta-banner/CtaBanner";
 import { getTranslations } from "next-intl/server";
 
-const cat = serviceCategories.geodesy;
 const filtered = services.filter((s) => s.category === "geodesy");
 
 export async function generateMetadata(): Promise<Metadata> {
+  const tCat = await getTranslations("categories.geodesy");
   return {
-    title: `${cat.label} — GeoExploration`,
-    description: cat.description,
+    title: `${tCat("label")} — GeoExploration`,
+    description: tCat("description"),
     openGraph: {
-      title: `${cat.label} — GeoExploration`,
-      description: cat.description,
+      title: `${tCat("label")} — GeoExploration`,
+      description: tCat("description"),
     },
   };
 }
 
 export default async function GeodesyPage() {
   const t = await getTranslations("servicePages.geodesy");
+  const tCat = await getTranslations("categories.geodesy");
   const tBread = await getTranslations("breadcrumbs");
+  const tItems = await getTranslations("serviceItems");
 
   return (
     <>
       <PageHeader
-        title={cat.label}
-        subtitle={cat.description}
+        title={tCat("label")}
+        subtitle={tCat("description")}
         breadcrumbs={[
           { label: tBread("home"), href: "/" },
           { label: tBread("services") },
-          { label: cat.label },
+          { label: tCat("label") },
         ]}
       />
 
@@ -53,9 +55,11 @@ export default async function GeodesyPage() {
           <div className="space-y-6">
             {filtered.map((s) => (
               <div key={s.id} className="space-y-1">
-                <h3 className="text-lg font-semibold">{s.title}</h3>
+                <h3 className="text-lg font-semibold">
+                  {tItems(`${s.id}.title`)}
+                </h3>
                 <p className="text-muted-foreground">
-                  {s.details || s.description}
+                  {tItems(`${s.id}.details`)}
                 </p>
               </div>
             ))}

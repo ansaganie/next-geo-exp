@@ -1,0 +1,297 @@
+{
+  "metadata": {
+    "title": "GeoExploration – Geological & Engineering Services",
+    "description": "Professional engineering-geological surveys, water well drilling, geodesy, and topographic mapping across Kazakhstan.",
+    "ogDescription": "Engineering-geological surveys, water well drilling, geodetic and topographic services in Kazakhstan.",
+    "ogImageAlt": "GeoExploration – Geological & Engineering Services"
+  },
+  "common": {
+    "skipToContent": "Skip to content",
+    "company": "GeoExploration",
+    "allRightsReserved": "All rights reserved."
+  },
+  "header": {
+    "skipToMain": "Skip to main content",
+    "logoAlt": "GeoExploration company logo",
+    "mainNav": "Main navigation",
+    "mobileNav": "Mobile navigation",
+    "mainMenu": "Main navigation menu",
+    "menu": "Menu",
+    "allServices": "All services",
+    "lightTheme": "Light theme",
+    "darkTheme": "Dark theme",
+    "language": "Language"
+  },
+  "footer": {
+    "heading": "GeoExploration site footer",
+    "logoAlt": "GeoExploration company logo",
+    "tagline": "Professional geological and geodetic services",
+    "services": "Services",
+    "contacts": "Contacts",
+    "goToSection": "Go to section: {label}"
+  },
+  "hero": {
+    "heading": "GeoExploration key services",
+    "goToSlide": "Go to slide {index}: {title}",
+    "slides": {
+      "drilling": {
+        "title": "Hydrogeological well drilling",
+        "points": [
+          "Drilling for private needs (irrigation, private houses)",
+          "Geophysical well drilling",
+          "Core drilling",
+          "Auger drilling",
+          "Cable-tool drilling"
+        ]
+      },
+      "geo-survey": {
+        "title": "Drilling and engineering-geological wells",
+        "points": [
+          "Disturbed and undisturbed structure sampling",
+          "Field tests: plate load, SPT, CPT, DPT",
+          "Full range of laboratory testing",
+          "Technical report preparation and delivery"
+        ]
+      },
+      "geodesy": {
+        "title": "Measurements for determining land parcel boundaries",
+        "points": [
+          "Development of maps, plans, and diagrams",
+          "Compilation of topographic maps and plans",
+          "Verification of object positioning accuracy on site",
+          "Determination of terrain, natural and man-made object placement",
+          "Geodetic construction support",
+          "Layout of foundations, roads, and other structures",
+          "Design accuracy control",
+          "Aerial photography and laser scanning",
+          "Specialized geodetic research"
+        ]
+      },
+      "hydrogeology": {
+        "title": "Obtaining permits for special water use",
+        "points": [
+          "Hydrogeological research",
+          "Water intake well design",
+          "Groundwater monitoring operations",
+          "Report compilation",
+          "Reassessment of groundwater deposit reserves",
+          "Water inflow forecasting"
+        ]
+      }
+    }
+  },
+  "servicesGrid": {
+    "eyebrow": "What we offer",
+    "heading": "Our services"
+  },
+  "about": {
+    "eyebrow": "About us",
+    "heading": "Comprehensive engineering solutions — from geodesy to drilling",
+    "description": "We provide a full range of professional services: geodesy, topography, engineering-geological surveys, and well drilling. We work with private and corporate clients — from site preparation to construction supervision.",
+    "imageAlt": "GeoExploration equipment",
+    "stat1Value": "300+",
+    "stat1Label": "Projects per year",
+    "stat2Value": "200+",
+    "stat2Label": "Engineering surveys",
+    "stat3Value": "500+",
+    "stat3Label": "Satisfied clients"
+  },
+  "portfolio": {
+    "eyebrow": "Portfolio",
+    "heading": "Our work and projects",
+    "viewMore": "View more",
+    "items": {
+      "topo-1": {
+        "title": "Topographic Survey",
+        "subtitle": "Cadastral & design work"
+      },
+      "drill-1": {
+        "title": "Well Drilling",
+        "subtitle": "Engineering-geological surveys"
+      },
+      "gps-1": {
+        "title": "GPS/RTK Survey",
+        "subtitle": "High-precision reference"
+      },
+      "geo-work-1": {
+        "title": "Geological Work",
+        "subtitle": "Reports & laboratory"
+      }
+    }
+  },
+  "video": {
+    "eyebrow": "Media",
+    "heading": "Videos",
+    "items": {
+      "v1": {
+        "title": "Geodetic Project",
+        "subtitle": "Precise terrain survey & engineering solutions"
+      },
+      "v2": {
+        "title": "Topographic Survey",
+        "subtitle": "Creating plans & maps for design work"
+      },
+      "v3": {
+        "title": "Staking Out",
+        "subtitle": "Transferring design points to the ground"
+      },
+      "v4": {
+        "title": "Engineering Surveys",
+        "subtitle": "Data preparation for design & construction"
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "Get in touch",
+    "heading": "Leave your details — we'll contact you",
+    "mapTitle": "GeoExploration office on the map",
+    "name": "First name",
+    "surname": "Last name",
+    "phone": "Phone (+7XXXXXXXXXX)",
+    "comment": "Comment (optional)",
+    "submit": "Submit request",
+    "submitting": "Submitting...",
+    "success": "Request submitted successfully!",
+    "error": "Submission error. Please try again.",
+    "minChars": "Minimum 2 characters",
+    "phoneFormat": "Format +7XXXXXXXXXX or 8XXXXXXXXXX"
+  },
+  "cta": {
+    "heading": "Need a consultation?",
+    "description": "Contact us for a free project assessment. Our specialists will respond within 24 hours.",
+    "button": "Contact us",
+    "ariaLabel": "Call to action"
+  },
+  "breadcrumbs": {
+    "label": "Breadcrumbs",
+    "home": "Home",
+    "services": "Services"
+  },
+  "servicePages": {
+    "drilling": {
+      "detailsHeading": "About well drilling",
+      "p1": "GeoExploration performs exploration, hydrogeological, and engineering-geological well drilling up to 200 meters deep. We use core, auger, and rotary drilling depending on geological conditions and client objectives.",
+      "p2": "All work is carried out with a full documentation cycle: maintaining drilling logs, collecting soil and water samples, describing cores, and compiling geological-technical cross-sections."
+    },
+    "geodesy": {
+      "detailsHeading": "More about our services"
+    },
+    "geotechnical": {
+      "detailsHeading": "More about our services"
+    },
+    "hydrogeology": {
+      "detailsHeading": "About hydrogeology",
+      "p1": "Hydrogeological work includes the search and assessment of underground water resources. We conduct exploration drilling, pumping tests, determine well yield, and test water quality.",
+      "p2": "Based on study results, we develop a water intake well design with sanitary protection zone calculations and prepare all required permits and documentation."
+    },
+    "equipment": {
+      "detailsHeading": "More about products"
+    }
+  },
+  "categories": {
+    "geodesy": {
+      "label": "Geodesy & Topography",
+      "description": "Full range of geodetic services: topographic surveys, staking out, cadastral surveys, 3D scanning, and construction quality control."
+    },
+    "geotechnical": {
+      "label": "Engineering-Geological Surveys",
+      "description": "Comprehensive engineering-geological soil investigations, laboratory analyses, and technical report preparation for design."
+    },
+    "drilling": {
+      "label": "Well Drilling",
+      "description": "Exploration, hydrogeological, and engineering-geological well drilling with a full documentation cycle."
+    },
+    "hydrogeology": {
+      "label": "Hydrogeology",
+      "description": "Search and assessment of underground water resources, water intake well design and installation."
+    },
+    "equipment": {
+      "label": "Equipment & Materials",
+      "description": "Supply of specialized equipment: PQ/HQ/NQ standard core boxes and sample bags."
+    }
+  },
+  "serviceItems": {
+    "engineering-geodesy": {
+      "title": "Engineering Geodesy",
+      "description": "Geodetic support for construction and design",
+      "details": "Geodetic work at all construction stages: from axis layout to as-built surveys. Precision control of assembly and construction using modern electronic total stations and GNSS receivers."
+    },
+    "topo": {
+      "title": "Topographic Survey",
+      "description": "Creating topographic plans for design and cadastral work",
+      "details": "Creating topographic plans at scales 1:500 – 1:2000 for building design, utility networks, and site landscaping. Working with the national coordinate system."
+    },
+    "stakeout": {
+      "title": "Staking Out",
+      "description": "Marking building axes and utility networks",
+      "details": "Transferring design coordinates to the ground: building axes, land parcel boundaries, utility routes. Fixing points on the ground with a stakeout report."
+    },
+    "geo-support": {
+      "title": "Geodetic Support",
+      "description": "Continuous quality control of construction work",
+      "details": "Permanent geodetic presence on the construction site: monitoring axes, elevations, verticality of structures, and compliance with design decisions."
+    },
+    "cadastral": {
+      "title": "Cadastral Survey",
+      "description": "Documentation for land and property registration",
+      "details": "Preparation of land surveying and cadastral documentation for property registration, lease, and other land parcel transactions."
+    },
+    "facade": {
+      "title": "Facade Survey",
+      "description": "High-precision measurements of buildings and structures",
+      "details": "Measurement of building and structure facades for reconstruction, restoration, and design purposes. Creating facade drawings with architectural element details."
+    },
+    "scan3d": {
+      "title": "3D Scanning",
+      "description": "Digital models of terrain and buildings",
+      "details": "Laser scanning of objects and territories to create precise three-dimensional models. Used for BIM design, deformation monitoring, and architectural measurement."
+    },
+    "landscape": {
+      "title": "Landscape Geodesy",
+      "description": "Site planning and landscaping preparation",
+      "details": "Topographic work for landscape design: vertical planning, earthwork volume calculations, and landscaping project preparation."
+    },
+    "vertical": {
+      "title": "Verticality Control",
+      "description": "Monitoring structures for deviations",
+      "details": "Determining deviations of building structures from vertical. Monitoring deformations of buildings and structures during operation."
+    },
+    "geo-survey": {
+      "title": "Engineering-Geological Surveys",
+      "description": "Well drilling, laboratory analyses, reports",
+      "details": "Full range of engineering-geological surveys: exploration well drilling, soil sampling, laboratory testing, and cone penetration testing. Technical reporting per SP and GOST standards."
+    },
+    "tacheometry": {
+      "title": "Tacheometric Survey",
+      "description": "Building plans and computing volumes",
+      "details": "Ground survey using electronic total stations for creating terrain plans, computing earthwork volumes, and compiling longitudinal profiles."
+    },
+    "asbuilt": {
+      "title": "As-Built Survey",
+      "description": "Actual positioning of constructed objects",
+      "details": "Recording the actual position of constructed buildings, structures, and utility networks. Compiling as-built drawings for commissioning."
+    },
+    "core-boxes": {
+      "title": "PQ/HQ/NQ Core Boxes",
+      "description": "Durable standardized core storage boxes",
+      "details": "Manufacturing and supply of PQ, HQ, and NQ standard core boxes from durable polypropylene. Designed for storing and transporting core material during drilling operations."
+    },
+    "sample-bags": {
+      "title": "Sample Bags",
+      "description": "Custom bags for sampling and specimen storage",
+      "details": "Custom manufacturing of various-size bags for collecting, labelling, and storing soil, rock, and mineral specimens."
+    }
+  },
+  "nav": {
+    "services": "Services",
+    "geodesy": "Geodesy & Topography",
+    "geotechnical": "Engineering-Geological Surveys",
+    "drilling": "Well Drilling",
+    "hydrogeology": "Hydrogeology",
+    "equipment": "Equipment & Materials",
+    "portfolio": "Portfolio",
+    "about": "About us",
+    "contacts": "Contacts",
+    "submitRequest": "Submit request"
+  }
+}

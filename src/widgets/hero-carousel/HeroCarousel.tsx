@@ -20,6 +20,13 @@ export function HeroCarousel() {
   const [current, setCurrent] = useState(0);
   const t = useTranslations("hero");
 
+  // Get translated slide data
+  const translatedSlides = slides.map((slide) => ({
+    ...slide,
+    title: t(`slides.${slide.id}.title`),
+    points: t.raw(`slides.${slide.id}.points`) as string[],
+  }));
+
   const autoplayPlugin = useRef(
     Autoplay({
       delay: 10000,
@@ -81,7 +88,7 @@ export function HeroCarousel() {
             className="w-full"
           >
             <CarouselContent>
-              {slides.map((slide: Slide) => (
+              {translatedSlides.map((slide: Slide) => (
                 <CarouselItem key={slide.id}>
                   <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
                     {/* Content Column */}
@@ -127,7 +134,7 @@ export function HeroCarousel() {
 
             {/* Custom Numbered Dots Navigation */}
             <div className="mt-8 flex justify-center gap-3">
-              {slides.map((slide, index) => (
+              {translatedSlides.map((slide, index) => (
                 <Button
                   key={slide.id}
                   onClick={() => api?.scrollTo(index)}

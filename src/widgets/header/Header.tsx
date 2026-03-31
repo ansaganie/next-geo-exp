@@ -15,9 +15,11 @@ import {
   SheetContent,
   SheetTitle,
 } from "@/shared/ui/sheet";
-import { Menu, Moon, Sun, ChevronDown } from "lucide-react";
+import { Menu, Moon, Sun, ChevronDown, Globe } from "lucide-react";
 import { navLinks, headerCta } from "@/shared/lib/links";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
+import { useRouter, usePathname } from "@/i18n/navigation";
+import { routing, localeLabels } from "@/i18n/routing";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -31,6 +33,14 @@ export function Header() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const t = useTranslations("header");
+  const tNav = useTranslations("nav");
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  function switchLocale(newLocale: string) {
+    router.replace(pathname, { locale: newLocale });
+  }
 
   useEffect(() => {
     setMounted(true);
@@ -107,7 +117,7 @@ export function Header() {
                             : "text-white hover:text-white hover:bg-white/20",
                         )}
                       >
-                        {item.label}
+                        {tNav(item.labelKey)}
                         <ChevronDown className="h-3 w-3" aria-hidden="true" />
                       </Button>
                     </DropdownMenuTrigger>
@@ -119,7 +129,7 @@ export function Header() {
                       </DropdownMenuItem>
                       {item.children.map((child) => (
                         <DropdownMenuItem key={child.href} asChild>
-                          <Link href={child.href}>{child.label}</Link>
+                          <Link href={child.href}>{tNav(child.labelKey)}</Link>
                         </DropdownMenuItem>
                       ))}
                     </DropdownMenuContent>
@@ -146,7 +156,7 @@ export function Header() {
                         activeHash === item.href ? "page" : undefined
                       }
                     >
-                      {item.label}
+                      {tNav(item.labelKey)}
                     </a>
                   </Button>
                 ),
@@ -182,7 +192,7 @@ export function Header() {
                           "aria-current": "page",
                         })}
                       >
-                        {item.label}
+                        {tNav(item.labelKey)}
                       </a>
                     </Button>
                     {item.children && (
@@ -195,7 +205,9 @@ export function Header() {
                             className="justify-start text-muted-foreground hover:text-foreground"
                             asChild
                           >
-                            <Link href={child.href}>{child.label}</Link>
+                            <Link href={child.href}>
+                              {tNav(child.labelKey)}
+                            </Link>
                           </Button>
                         ))}
                       </div>
@@ -203,7 +215,7 @@ export function Header() {
                   </div>
                 ))}
                 <Button variant="default" className="mt-2" asChild>
-                  <a href={headerCta.href}>{headerCta.label}</a>
+                  <a href={headerCta.href}>{tNav(headerCta.labelKey)}</a>
                 </Button>
               </nav>
             </SheetContent>
@@ -212,31 +224,62 @@ export function Header() {
 
         <div className="hidden md:flex items-center gap-2">
           {mounted && (
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className={cn(
-                "transition-colors",
-                scrolled
-                  ? "text-foreground hover:bg-secondary/10"
-                  : "text-white hover:bg-white/20",
-              )}
-              aria-label={theme === "dark" ? t("lightTheme") : t("darkTheme")}
-            >
-              {theme === "dark" ? (
-                <Sun className="h-4 w-4" />
-              ) : (
-                <Moon className="h-4 w-4" />
-              )}
-            </Button>
+            <>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className={cn(
+                      "gap-1 transition-colors",
+                      scrolled
+                        ? "text-foreground hover:bg-secondary/10"
+                        : "text-white hover:bg-white/20",
+                    )}
+                    aria-label={t("language")}
+                  >
+                    <Globe className="h-4 w-4" aria-hidden="true" />
+                    <span className="text-xs uppercase">{locale}</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  {routing.locales.map((loc) => (
+                    <DropdownMenuItem
+                      key={loc}
+                      onClick={() => switchLocale(loc)}
+                      className={cn(loc === locale && "font-bold")}
+                    >
+                      {localeLabels[loc]}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className={cn(
+                  "transition-colors",
+                  scrolled
+                    ? "text-foreground hover:bg-secondary/10"
+                    : "text-white hover:bg-white/20",
+                )}
+                aria-label={theme === "dark" ? t("lightTheme") : t("darkTheme")}
+              >
+                {theme === "dark" ? (
+                  <Sun className="h-4 w-4" />
+                ) : (
+                  <Moon className="h-4 w-4" />
+                )}
+              </Button>
+            </>
           )}
           <Button
             size="sm"
             asChild
             className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-lg"
           >
-            <a href={headerCta.href}>{headerCta.label}</a>
+            <a href={headerCta.href}>{tNav(headerCta.labelKey)}</a>
           </Button>
         </div>
       </div>

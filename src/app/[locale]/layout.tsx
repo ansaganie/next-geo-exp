@@ -29,6 +29,12 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata" });
 
+  const ogLocaleMap: Record<string, string> = {
+    ru: "ru_RU",
+    kk: "kk_KZ",
+    en: "en_US",
+  };
+
   return {
     title: t("title"),
     description: t("description"),
@@ -45,13 +51,20 @@ export async function generateMetadata({
       "изыскания Казахстан",
     ],
     metadataBase: new URL("https://geoexploration.kz"),
-    alternates: { canonical: "https://geoexploration.kz" },
+    alternates: {
+      canonical: "https://geoexploration.kz",
+      languages: {
+        ru: "https://geoexploration.kz",
+        kk: "https://geoexploration.kz/kk",
+        en: "https://geoexploration.kz/en",
+      },
+    },
     openGraph: {
       title: t("title"),
       description: t("ogDescription"),
       url: "https://geoexploration.kz",
       siteName: "GeoExploration",
-      locale: "ru_RU",
+      locale: ogLocaleMap[locale] ?? "ru_RU",
       type: "website",
       images: [
         {

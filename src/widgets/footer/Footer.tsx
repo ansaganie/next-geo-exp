@@ -11,6 +11,7 @@ import { getTranslations } from "next-intl/server";
 export async function Footer() {
   const t = await getTranslations("footer");
   const tCommon = await getTranslations("common");
+  const tNav = await getTranslations("nav");
 
   return (
     <footer
@@ -46,13 +47,15 @@ export async function Footer() {
               role="list"
             >
               {serviceLinks.map((service) => (
-                <li key={service.label}>
+                <li key={service.href}>
                   <Link
                     href={service.href}
                     className="hover:text-accent-foreground transition-colors"
-                    aria-label={t("goToSection", { label: service.label })}
+                    aria-label={t("goToSection", {
+                      label: tNav(service.labelKey),
+                    })}
                   >
-                    {service.label}
+                    {tNav(service.labelKey)}
                   </Link>
                 </li>
               ))}

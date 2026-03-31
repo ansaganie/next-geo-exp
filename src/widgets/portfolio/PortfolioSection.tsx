@@ -34,7 +34,7 @@ export function PortfolioSection() {
                   <div className="relative overflow-hidden">
                     <Image
                       src={item.image}
-                      alt={item.title}
+                      alt={t(`items.${item.id}.title`)}
                       width={640}
                       height={480}
                       className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -47,9 +47,11 @@ export function PortfolioSection() {
                     </div>
                   </div>
                   <div className="p-4">
-                    <h3 className="text-sm font-semibold">{item.title}</h3>
+                    <h3 className="text-sm font-semibold">
+                      {t(`items.${item.id}.title`)}
+                    </h3>
                     <p className="mt-1 text-xs text-muted-foreground">
-                      {item.subtitle}
+                      {t(`items.${item.id}.subtitle`)}
                     </p>
                   </div>
                 </div>

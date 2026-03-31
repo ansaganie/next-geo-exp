@@ -2,37 +2,36 @@ import { siInstagram, siWhatsapp, type SimpleIcon } from "simple-icons";
 import { Phone, Mail } from "lucide-react";
 import type { ComponentType, SVGProps } from "react";
 
-export type NavLink = { label: string; href: string; children?: NavLink[] };
+export type NavLink = {
+  /** i18n key resolved via `nav.<key>` namespace */
+  labelKey: string;
+  href: string;
+  children?: NavLink[];
+};
 
 export const navLinks: NavLink[] = [
   {
-    label: "Услуги",
+    labelKey: "services",
     href: "#services",
     children: [
-      { label: "Геодезия и топография", href: "/services/geodesy" },
-      {
-        label: "Инженерно-геологические изыскания",
-        href: "/services/geotechnical",
-      },
-      { label: "Бурение скважин", href: "/services/drilling" },
-      { label: "Гидрогеология", href: "/services/hydrogeology" },
-      { label: "Оборудование и материалы", href: "/services/equipment" },
+      { labelKey: "geodesy", href: "/services/geodesy" },
+      { labelKey: "geotechnical", href: "/services/geotechnical" },
+      { labelKey: "drilling", href: "/services/drilling" },
+      { labelKey: "hydrogeology", href: "/services/hydrogeology" },
+      { labelKey: "equipment", href: "/services/equipment" },
     ],
   },
-  { label: "Портфолио", href: "#portfolio" },
-  { label: "О нас", href: "#about" },
-  { label: "Контакты", href: "#contact-us" },
+  { labelKey: "portfolio", href: "#portfolio" },
+  { labelKey: "about", href: "#about" },
+  { labelKey: "contacts", href: "#contact-us" },
 ];
 
 export const serviceLinks: NavLink[] = [
-  { label: "Геодезия и топография", href: "/services/geodesy" },
-  {
-    label: "Инженерно-геологические изыскания",
-    href: "/services/geotechnical",
-  },
-  { label: "Бурение скважин", href: "/services/drilling" },
-  { label: "Гидрогеология", href: "/services/hydrogeology" },
-  { label: "Оборудование и материалы", href: "/services/equipment" },
+  { labelKey: "geodesy", href: "/services/geodesy" },
+  { labelKey: "geotechnical", href: "/services/geotechnical" },
+  { labelKey: "drilling", href: "/services/drilling" },
+  { labelKey: "hydrogeology", href: "/services/hydrogeology" },
+  { labelKey: "equipment", href: "/services/equipment" },
 ];
 
 export type ContactLink = {
@@ -76,6 +75,6 @@ export const contactLinks: ContactLink[] = [
 ];
 
 export const headerCta = {
-  label: "Оставить заявку",
+  labelKey: "submitRequest",
   href: "#contact-us",
 };

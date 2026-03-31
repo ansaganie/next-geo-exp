@@ -29,14 +29,16 @@ export function VideoTestimonials() {
               <iframe
                 className="h-full w-full"
                 src={`https://www.youtube.com/embed/${current.youtubeId}`}
-                title={current.title}
+                title={t(`items.${current.id}.title`)}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
             </div>
-            <div className="mt-4 text-base font-semibold">{current.title}</div>
+            <div className="mt-4 text-base font-semibold">
+              {t(`items.${current.id}.title`)}
+            </div>
             <div className="text-sm text-muted-foreground">
-              {current.subtitle}
+              {t(`items.${current.id}.subtitle`)}
             </div>
           </div>
           <div className="space-y-3">
@@ -51,7 +53,9 @@ export function VideoTestimonials() {
                 }`}
                 aria-pressed={v.id === active}
               >
-                <span className="font-medium leading-tight">{v.title}</span>
+                <span className="font-medium leading-tight">
+                  {t(`items.${v.id}.title`)}
+                </span>
               </button>
             ))}
           </div>
