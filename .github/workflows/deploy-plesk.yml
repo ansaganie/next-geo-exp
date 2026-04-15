@@ -57,6 +57,13 @@ jobs:
           username: ${{ secrets.PLESK_FTP_USERNAME }}
           password: ${{ secrets.PLESK_FTP_PASSWORD }}
           protocol: ftps
+          security: loose
           local-dir: .next/standalone/
           server-dir: /httpdocs/
           dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/*.map
+            server.js
+            package.json
