@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GeoExploration Frontend
 
-## Getting Started
+Next.js 15 application with i18n (ru/kk/en), deployed as a Node.js standalone bundle to Plesk via GitHub Actions + FTPS.
 
-First, run the development server:
+## Local Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Create `.env.local` in the project root with the values below (see [Environment Variables](#environment-variables)).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`output: "standalone"` is set in `next.config.ts`. `bun run build` produces a self-contained standalone bundle:
 
-## Learn More
+```
+.next/standalone/   ← server.js + minimal node_modules (default entry point)
+.next/static/       ← client JS/CSS  (copied in by CI)
+public/             ← static assets  (copied in by CI)
+```
 
-To learn more about Next.js, take a look at the following resources:
+Start the raw standalone bundle locally:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+node .next/standalone/server.js
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## GitHub Actions Deployment
 
-## Deploy on Vercel
+Workflow: `.github/workflows/deploy-plesk.yml`  
+Trigger: push to `dev`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Flow:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Install dependencies (`bun install --frozen-lockfile`)
+2. Lint
+3. Build — `NEXT_PUBLIC_*` secrets are injected here and baked into the client bundle
+4. Copy `.next/static/` and `public/` into `.next/standalone/`
+5. Copy `server.js` → `app.js` (Plesk startup file)
+6. Upload `.next/standalone/` as a versioned artifact (14-day retention)
+7. Deploy `.next/standalone/` via FTPS to `/httpdocs/` on Plesk
+
+## Plesk Node.js App Setup (one-time, manual)
+
+1. In Plesk panel → **Node.js**, create an application:
+   - Application root: `/httpdocs`
+   - Startup file: `app.js`
+   - Node.js version: 20+
+2. Set runtime environment variables in Plesk:
+   - `NODE_ENV=production`
+   - `PORT=3000`
+   - `TELEGRAM_BOT_TOKEN`
+   - `TELEGRAM_CHAT_ID`
+3. After first deploy, restart the Node.js app manually. Subsequent deploys restart automatically via Passenger.
+
+## Environment Variables
+
+### Build-time (`NEXT_PUBLIC_*`, baked into client bundle)
+
+Set as GitHub Actions secrets (or Variables — these values are public):
+
+| Variable | Description |
+|---|---|
+| `NEXT_PUBLIC_PHONE_MAIN` | Phone number in E.164 format, e.g. `+77755020555` |
+| `NEXT_PUBLIC_PHONE_DISPLAY` | Formatted display phone, e.g. `+7 (775) 502-05-55` |
+| `NEXT_PUBLIC_WHATSAPP_BASE` | Full WhatsApp link with pre-filled message |
+| `NEXT_PUBLIC_INSTAGRAM_URL` | Instagram profile URL |
+| `NEXT_PUBLIC_EMAIL` | Contact email address |
+| `NEXT_PUBLIC_MAP_IFRAME_SRC` | Yandex Maps embed `src` attribute |
+
+### Runtime (server-side only, set in Plesk — never in CI)
+
+| Variable | Description |
+|---|---|
+| `TELEGRAM_BOT_TOKEN` | Bot token from @BotFather |
+| `TELEGRAM_CHAT_ID` | Target chat/group ID (obtain via @userinfobot) |
+
+### FTP (GitHub Actions secrets)
+
+| Secret | Description |
+|---|---|
+| `FTP_SERVER` | Plesk hostname, e.g. `pkz33.hoster.kz` |
+| `FTP_PORT` | FTPS port (typically `21` for explicit mode) |
+| `FTP_USERNAME` | Plesk FTP account username |
+| `FTP_PASSWORD` | Plesk FTP account password |
+
