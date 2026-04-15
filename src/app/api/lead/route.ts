@@ -8,19 +8,34 @@ const schema = z.object({
   comment: z.string().optional(),
 });
 
-// Simple in-memory rate limiter: max 5 requests per IP per 60 seconds
+// In-memory rate limiter: max 5 requests per IP per 60 seconds.
+// Expired entries are pruned every 5 minutes to prevent unbounded growth
+// on long-running standalone servers with many unique IPs.
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+
+const WINDOW_MS = 60_000;
+const MAX_REQUESTS = 5;
+const PRUNE_INTERVAL_MS = 5 * 60_000;
+
+function pruneExpired(): void {
+  const now = Date.now();
+  for (const [ip, entry] of rateLimitMap) {
+    if (now > entry.resetAt) rateLimitMap.delete(ip);
+  }
+}
+
+setInterval(pruneExpired, PRUNE_INTERVAL_MS).unref();
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
   const entry = rateLimitMap.get(ip);
 
   if (!entry || now > entry.resetAt) {
-    rateLimitMap.set(ip, { count: 1, resetAt: now + 60_000 });
+    rateLimitMap.set(ip, { count: 1, resetAt: now + WINDOW_MS });
     return false;
   }
 
-  if (entry.count >= 5) return true;
+  if (entry.count >= MAX_REQUESTS) return true;
 
   entry.count++;
   return false;
@@ -28,7 +43,9 @@ function isRateLimited(ip: string): boolean {
 
 export async function POST(req: NextRequest) {
   const ip =
-    req.headers.get("x-forwarded-for")?.split(",")[0].trim() ?? "unknown";
+    req.headers.get("x-forwarded-for")?.split(",")?.[0]?.trim() ||
+    req.headers.get("x-real-ip")?.trim() ||
+    "unknown";
 
   if (isRateLimited(ip)) {
     return NextResponse.json({ error: "Too many requests" }, { status: 429 });
@@ -63,7 +80,7 @@ export async function POST(req: NextRequest) {
   }
 
   const text = [
-    "📩 *Новая заявка с сайта GeoExploration*",
+    "📩 Новая заявка с сайта GeoExploration",
     `👤 Имя: ${name} ${surname}`,
     `📞 Телефон: ${phone}`,
     comment ? `💬 Комментарий: ${comment}` : null,
@@ -79,7 +96,6 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify({
         chat_id: chatId,
         text,
-        parse_mode: "Markdown",
       }),
     },
   );
