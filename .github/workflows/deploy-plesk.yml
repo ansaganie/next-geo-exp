@@ -55,7 +55,7 @@ jobs:
           port: ${{ secrets.PLESK_FTP_PORT }}
           username: ${{ secrets.PLESK_FTP_USERNAME }}
           password: ${{ secrets.PLESK_FTP_PASSWORD }}
-          protocol: ftp
+          protocol: ftps
           local-dir: .next/standalone/
           server-dir: /httpdocs/
           dangerous-clean-slate: false
