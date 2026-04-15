@@ -2,10 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
 const schema = z.object({
-  name: z.string().min(2),
-  surname: z.string().min(2),
+  name: z.string().min(2).max(100),
+  surname: z.string().min(2).max(100),
   phone: z.string().regex(/^(?:\+7|8)\d{10}$/i),
-  comment: z.string().optional(),
+  comment: z.string().max(1000).optional(),
 });
 
 // In-memory rate limiter: max 5 requests per IP per 60 seconds.
