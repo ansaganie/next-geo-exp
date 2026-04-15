@@ -49,6 +49,9 @@ jobs:
           path: .next/standalone/
           retention-days: 14
 
+      - name: Install lftp
+        run: sudo apt-get install -y lftp
+
       - name: Deploy via FTPS
         env:
           FTP_SERVER: ${{ secrets.PLESK_FTP_SERVER }}
