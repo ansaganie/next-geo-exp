@@ -12,15 +12,15 @@ Create `.env.local` in the project root with the values below (see [Environment 
 
 ## Production Build
 
-`output: "standalone"` is set in `next.config.ts`. `bun run build` produces a self-contained deployment bundle:
+`output: "standalone"` is set in `next.config.ts`. `bun run build` produces a self-contained standalone bundle:
 
 ```
-.next/standalone/   ← server.js + minimal node_modules (entry point: app.js)
+.next/standalone/   ← server.js + minimal node_modules (default entry point)
 .next/static/       ← client JS/CSS  (copied in by CI)
 public/             ← static assets  (copied in by CI)
 ```
 
-Start locally:
+Start the raw standalone bundle locally:
 
 ```bash
 node .next/standalone/server.js
