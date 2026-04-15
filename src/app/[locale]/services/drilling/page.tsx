@@ -3,7 +3,7 @@ import { services } from "@/entities/service/services";
 import { ServiceCard } from "@/entities/service/ServiceCard";
 import { PageHeader } from "@/widgets/page-header/PageHeader";
 import { CtaBanner } from "@/widgets/cta-banner/CtaBanner";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 const filtered = services.filter((s) => s.category === "drilling");
 
@@ -27,7 +27,13 @@ export async function generateMetadata({
   };
 }
 
-export default async function DrillingPage() {
+export default async function DrillingPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations("servicePages.drilling");
   const tCat = await getTranslations("categories.drilling");
   const tBread = await getTranslations("breadcrumbs");

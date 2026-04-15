@@ -16,6 +16,9 @@ const schema = z.object({
 });
 
 export function ContactSection() {
+  const leadEndpoint =
+    process.env.NEXT_PUBLIC_LEAD_ENDPOINT || "/api/lead.php";
+
   const {
     register,
     handleSubmit,
@@ -31,7 +34,7 @@ export function ContactSection() {
   async function onSubmit(data: z.infer<typeof schema>) {
     setStatus("idle");
     try {
-      const res = await fetch("/api/lead", {
+      const res = await fetch(leadEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
