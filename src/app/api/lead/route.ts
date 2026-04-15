@@ -24,7 +24,10 @@ function pruneExpired(): void {
   }
 }
 
-setInterval(pruneExpired, PRUNE_INTERVAL_MS).unref();
+const pruneTimer = setInterval(pruneExpired, PRUNE_INTERVAL_MS);
+if (typeof pruneTimer === "object" && pruneTimer !== null && "unref" in pruneTimer) {
+  (pruneTimer as { unref(): void }).unref();
+}
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
@@ -45,9 +48,11 @@ export async function POST(req: NextRequest) {
   const ip =
     req.headers.get("x-forwarded-for")?.split(",")?.[0]?.trim() ||
     req.headers.get("x-real-ip")?.trim() ||
-    "unknown";
+    null;
 
-  if (isRateLimited(ip)) {
+  // Skip rate limiting when IP cannot be determined rather than
+  // collapsing all anonymous clients into one shared bucket.
+  if (ip !== null && isRateLimited(ip)) {
     return NextResponse.json({ error: "Too many requests" }, { status: 429 });
   }
 

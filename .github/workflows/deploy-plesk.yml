@@ -36,6 +36,7 @@ jobs:
 
       - name: Copy static assets into standalone bundle
         run: |
+          mkdir -p .next/standalone/.next
           cp -r .next/static .next/standalone/.next/static
           cp -r public .next/standalone/public
           cp .next/standalone/server.js .next/standalone/app.js
