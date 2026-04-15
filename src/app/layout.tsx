@@ -1,14 +1,15 @@
 import type { ReactNode } from "react";
+import { headers } from "next/headers";
 
-// Root layout renders the minimal document shell.
-// Locale-aware content is handled in the nested [locale] segment.
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: ReactNode;
 }) {
+  const headersList = await headers();
+  const lang = headersList.get("x-next-intl-locale") ?? "ru";
   return (
-    <html lang="ru" suppressHydrationWarning>
+    <html lang={lang} suppressHydrationWarning>
       <body>{children}</body>
     </html>
   );

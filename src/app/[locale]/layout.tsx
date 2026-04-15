@@ -35,7 +35,7 @@ export async function generateMetadata({
     en: "en_US",
   };
 
-  const localePrefix = `/${locale}`;
+  const localePrefix = locale === "ru" ? "" : `/${locale}`;
   const canonicalUrl = `https://geoexploration.kz${localePrefix}`;
 
   return {
@@ -57,7 +57,7 @@ export async function generateMetadata({
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        ru: "https://geoexploration.kz/ru",
+        ru: "https://geoexploration.kz",
         kk: "https://geoexploration.kz/kk",
         en: "https://geoexploration.kz/en",
       },
