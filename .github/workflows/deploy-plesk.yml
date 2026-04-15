@@ -50,13 +50,24 @@ jobs:
           retention-days: 14
 
       - name: Deploy via FTPS
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.PLESK_FTP_SERVER }}
-          port: ${{ secrets.PLESK_FTP_PORT }}
-          username: ${{ secrets.PLESK_FTP_USERNAME }}
-          password: ${{ secrets.PLESK_FTP_PASSWORD }}
-          protocol: ftps
-          local-dir: .next/standalone/
-          server-dir: /httpdocs/
-          dangerous-clean-slate: false
+        env:
+          FTP_SERVER: ${{ secrets.PLESK_FTP_SERVER }}
+          FTP_PORT: ${{ secrets.PLESK_FTP_PORT }}
+          FTP_USER: ${{ secrets.PLESK_FTP_USERNAME }}
+          FTP_PASS: ${{ secrets.PLESK_FTP_PASSWORD }}
+        run: |
+          lftp -c "
+            set ftp:ssl-force true;
+            set ftp:ssl-protect-data true;
+            set ssl:verify-certificate false;
+            set ftp:passive-mode true;
+            set net:max-retries 5;
+            set net:reconnect-interval-base 5;
+            set net:reconnect-interval-multiplier 1;
+            set net:timeout 30;
+            open -u '$FTP_USER','$FTP_PASS' ftp://$FTP_SERVER:$FTP_PORT;
+            mirror --reverse --delete --verbose --parallel=2 \
+              --exclude-glob .git \
+              .next/standalone/ /httpdocs/;
+            bye
+          "
