@@ -40,6 +40,7 @@ jobs:
           mkdir -p .next/standalone/.next
           cp -r .next/static .next/standalone/.next/static
           cp -r public .next/standalone/public
+          cp src/app/favicon.ico .next/standalone/public/favicon.ico
           cp .next/standalone/server.js .next/standalone/app.js
 
       - name: Upload build artifact

@@ -101,6 +101,7 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify({
         chat_id: chatId,
         text,
+        parse_mode: 'HTML'
       }),
     },
   );
