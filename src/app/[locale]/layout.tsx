@@ -152,6 +152,24 @@ export default async function LocaleLayout({
                 }),
               }}
             />
+            <script
+              type="speculationrules"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  prefetch: [
+                    {
+                      where: {
+                        and: [
+                          { href_matches: "/*" },
+                          { not: { href_matches: "/api/*" } },
+                        ],
+                      },
+                      eagerness: "moderate",
+                    },
+                  ],
+                }),
+              }}
+            />
           </ThemeProvider>
         </NextIntlClientProvider>
       </div>

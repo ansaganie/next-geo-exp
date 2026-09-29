@@ -48,7 +48,7 @@ export function ContactSection() {
     <section
       id="contact-us"
       aria-labelledby="contact-heading"
-      className="py-20"
+      className="py-20 section-deferred"
     >
       <div className="mx-auto max-w-6xl px-8">
         <div className="mb-12 text-center">
@@ -70,7 +70,10 @@ export function ContactSection() {
                 <iframe
                   src={process.env.NEXT_PUBLIC_MAP_IFRAME_SRC}
                   title={t("mapTitle")}
-                  className="h-72 w-full"
+                  width="600"
+                  height="288"
+                  loading="lazy"
+                  className="h-72 w-full border-0"
                   allowFullScreen
                 />
               ) : (

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { ChevronRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
@@ -15,7 +16,7 @@ export async function PageHeader({
   title,
   subtitle,
   breadcrumbs,
-  bgImage = "/assets/images/bgbg.png",
+  bgImage = "/assets/images/bgbg.webp",
 }: PageHeaderProps) {
   const t = await getTranslations("breadcrumbs");
   return (
@@ -24,9 +25,13 @@ export async function PageHeader({
       aria-label={title}
     >
       {bgImage && (
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: `url(${bgImage})` }}
+        <Image
+          src={bgImage}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover opacity-20"
           aria-hidden="true"
         />
       )}

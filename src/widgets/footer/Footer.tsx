@@ -15,7 +15,7 @@ export async function Footer() {
 
   return (
     <footer
-      className="border-t border-border/60 bg-accent text-accent-foreground"
+      className="border-t border-border/60 bg-accent text-accent-foreground section-deferred"
       aria-labelledby="footer-heading"
       role="contentinfo"
     >

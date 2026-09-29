@@ -101,11 +101,14 @@ export function Header() {
             <Image
               src="/assets/images/logo.svg"
               alt={t("logoAlt")}
-              width={scrolled ? 140 : 220}
-              height={scrolled ? 40 : 60}
+              width={220}
+              height={60}
               priority
               sizes="(max-width: 768px) 140px, 220px"
-              className="transition-all"
+              className={cn(
+                "w-auto transition-all duration-300",
+                scrolled ? "h-8 md:h-10" : "h-10 md:h-12",
+              )}
             />
           </Link>
         </div>
@@ -279,7 +282,7 @@ export function Header() {
         </div>
 
         <div className="hidden md:flex items-center gap-2">
-          {mounted && (
+          {mounted ? (
             <>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -329,6 +332,8 @@ export function Header() {
                 )}
               </Button>
             </>
+          ) : (
+            <div className="w-[88px] h-9" aria-hidden="true" />
           )}
           <Button
             size="sm"
