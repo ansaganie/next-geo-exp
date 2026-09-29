@@ -28,8 +28,22 @@ node .next/standalone/server.js
 
 ## GitHub Actions Deployment
 
+### Vercel Deployment
+
+Workflow: `.github/workflows/deploy-vercel.yml`  
+Trigger: push to `main`
+
+Flow:
+1. Install dependencies (`bun install --frozen-lockfile`)
+2. Lint (`bun run lint`)
+3. Pull Vercel environment and project info
+4. Build project via Vercel CLI (`vercel build --prod`)
+5. Deploy prebuilt artifacts (`vercel deploy --prebuilt --prod`)
+
+### Plesk Deployment
+
 Workflow: `.github/workflows/deploy-plesk.yml`  
-Trigger: push to `dev`
+Trigger: push to `main`
 
 Flow:
 
