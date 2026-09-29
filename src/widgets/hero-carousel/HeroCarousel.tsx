@@ -61,12 +61,12 @@ export function HeroCarousel() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/assets/images/bgbg.png"
+          src="/assets/images/bgbg.webp"
           alt=""
           fill
           className="object-cover"
           priority
-          quality={90}
+          quality={80}
           sizes="100vw"
         />
         {/* Earthy warm overlay with depth */}
@@ -88,7 +88,7 @@ export function HeroCarousel() {
             className="w-full"
           >
             <CarouselContent>
-              {translatedSlides.map((slide: Slide) => (
+              {translatedSlides.map((slide: Slide, index: number) => (
                 <CarouselItem key={slide.id}>
                   <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
                     {/* Content Column */}
@@ -123,6 +123,8 @@ export function HeroCarousel() {
                             fill
                             className="object-cover"
                             sizes="(max-width: 1024px) 0vw, 33vw"
+                            loading={index === 0 ? "eager" : "lazy"}
+                            {...(index > 0 ? { fetchPriority: "low" as const } : {})}
                           />
                         </div>
                       </CardContent>

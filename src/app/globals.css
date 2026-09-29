@@ -73,6 +73,16 @@
   ::file-selector-button {
     border-color: var(--color-gray-200, currentcolor);
   }
+
+  body {
+    font-size-adjust: from-font;
+  }
+}
+
+/* Modern Web Guidance: Defer rendering off-screen sections with intrinsic sizing */
+.section-deferred {
+  content-visibility: auto;
+  contain-intrinsic-size: auto none auto 600px;
 }
 
 :root {

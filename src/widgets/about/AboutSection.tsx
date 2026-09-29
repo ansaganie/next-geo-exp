@@ -8,15 +8,17 @@ export async function AboutSection() {
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="bg-muted/40 py-20"
+      className="bg-muted/40 py-20 section-deferred"
     >
       <div className="mx-auto max-w-6xl px-8 grid gap-12 md:grid-cols-2 items-center">
         <div className="overflow-hidden rounded-xl">
           <Image
-            src="/assets/images/about-left-image.png"
+            src="/assets/images/about-left-image.webp"
             alt={t("imageAlt")}
             width={560}
             height={420}
+            sizes="(max-width: 768px) 100vw, 560px"
+            loading="lazy"
             className="rounded-xl object-cover transition-transform duration-500 hover:scale-105"
           />
         </div>

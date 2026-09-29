@@ -6,7 +6,7 @@ import { getTranslations } from "next-intl/server";
 export async function ServicesGrid() {
   const t = await getTranslations("servicesGrid");
   return (
-    <section id="services" aria-labelledby="services-heading" className="py-20">
+    <section id="services" aria-labelledby="services-heading" className="py-20 section-deferred">
       <div className="mx-auto max-w-6xl px-8">
         <div className="mb-12 text-center">
           <p className="mb-2 text-sm font-medium uppercase tracking-widest text-secondary">
