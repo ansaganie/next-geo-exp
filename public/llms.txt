@@ -1,0 +1,23 @@
+# GeoExploration
+
+> Comprehensive engineering-geological surveys, geodetic surveying, hydrogeology, water well drilling, and field exploration supplies in Kazakhstan.
+
+GeoExploration provides comprehensive engineering and geological services for civil construction, mining, and infrastructure projects across the Republic of Kazakhstan.
+
+## Services
+
+- [Engineering-Geological Survey](https://geoexploration.kz/en/services/geotechnical): Field drilling, soil sampling, laboratory analysis, and normative technical reports for construction and industrial design.
+- [Geodesy and Topography](https://geoexploration.kz/en/services/geodesy): Land surveying, topographic mapping, electronic tacheometry, and volumetric calculations for earthworks.
+- [Water Well Drilling](https://geoexploration.kz/en/services/drilling): Drilling of industrial and domestic water supply wells, pumping tests, and sanitary zone establishment.
+- [Hydrogeology](https://geoexploration.kz/en/services/hydrogeology): Assessment of groundwater reserves, aquifer dynamics, and hydrological regime monitoring.
+
+## Field Supplies
+
+- [Core Box](https://geoexploration.kz/en/services/equipment): Rigid polypropylene storage tray designed to preserve and catalog cylindrical rock core samples in PQ, HQ, and NQ dimensions.
+- [Sample Bag](https://geoexploration.kz/en/services/equipment): Reinforced fabric container custom-manufactured for collecting, tagging, and transporting soil, crushed rock, and mineral specimens from the field to laboratories.
+
+## Key Links
+
+- [Official Website](https://geoexploration.kz/en)
+- [Company Portfolio](https://geoexploration.kz/en#portfolio)
+- [Contact GeoExploration](https://geoexploration.kz/en#contact-us)

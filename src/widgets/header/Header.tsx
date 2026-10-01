@@ -8,6 +8,7 @@ import { cn } from "@/shared/lib/utils";
 import {
   NavigationMenu,
   NavigationMenuList,
+  NavigationMenuItem,
 } from "@/shared/ui/navigation-menu";
 import {
   Sheet,
@@ -120,61 +121,56 @@ export function Header() {
         >
           <NavigationMenu className="w-full justify-center">
             <NavigationMenuList className="flex items-center gap-2">
-              {navItems.map((item) =>
-                item.children ? (
-                  <DropdownMenu key={item.href}>
-                    <DropdownMenuTrigger asChild>
-                      <Button
-                        variant="ghost"
-                        className={cn(
-                          "px-3 py-2 text-sm font-medium transition-colors gap-1",
-                          scrolled
-                            ? "text-foreground hover:text-secondary hover:bg-secondary/10"
-                            : "text-foreground hover:text-secondary hover:bg-secondary/10",
-                        )}
+              {navItems.map((item) => (
+                <NavigationMenuItem key={item.href}>
+                  {item.children ? (
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button
+                          variant="ghost"
+                          className={cn(
+                            "px-3 py-2 text-sm font-medium transition-colors gap-1 text-foreground hover:text-secondary hover:bg-secondary/10",
+                          )}
+                        >
+                          {tNav(item.labelKey)}
+                          <ChevronDown className="h-3 w-3" aria-hidden="true" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="start" className="w-64">
+                        <DropdownMenuItem asChild>
+                          <Link href={item.href} className="font-medium">
+                            {t("allServices")}
+                          </Link>
+                        </DropdownMenuItem>
+                        {item.children.map((child) => (
+                          <DropdownMenuItem key={child.href} asChild>
+                            <Link href={child.href}>{tNav(child.labelKey)}</Link>
+                          </DropdownMenuItem>
+                        ))}
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  ) : (
+                    <Button
+                      variant="ghost"
+                      className={cn(
+                        "px-3 py-2 text-sm font-medium transition-colors text-foreground hover:text-secondary hover:bg-secondary/10",
+                        activeHash === item.href &&
+                          "font-bold text-secondary underline underline-offset-4 decoration-secondary",
+                      )}
+                      asChild
+                    >
+                      <Link
+                        href={item.href}
+                        aria-current={
+                          activeHash === item.href ? "page" : undefined
+                        }
                       >
                         {tNav(item.labelKey)}
-                        <ChevronDown className="h-3 w-3" aria-hidden="true" />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="start" className="w-64">
-                      <DropdownMenuItem asChild>
-                        <Link href={item.href} className="font-medium">
-                          {t("allServices")}
-                        </Link>
-                      </DropdownMenuItem>
-                      {item.children.map((child) => (
-                        <DropdownMenuItem key={child.href} asChild>
-                          <Link href={child.href}>{tNav(child.labelKey)}</Link>
-                        </DropdownMenuItem>
-                      ))}
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                ) : (
-                  <Button
-                    key={item.href}
-                    variant="ghost"
-                    className={cn(
-                      "px-3 py-2 text-sm font-medium transition-colors",
-                      scrolled
-                        ? "text-foreground hover:text-secondary hover:bg-secondary/10"
-                        : "text-foreground hover:text-secondary hover:bg-secondary/10",
-                      activeHash === item.href &&
-                        "font-bold text-secondary underline underline-offset-4 decoration-secondary",
-                    )}
-                    asChild
-                  >
-                    <Link
-                      href={item.href}
-                      aria-current={
-                        activeHash === item.href ? "page" : undefined
-                      }
-                    >
-                      {tNav(item.labelKey)}
-                    </Link>
-                  </Button>
-                ),
-              )}
+                      </Link>
+                    </Button>
+                  )}
+                </NavigationMenuItem>
+              ))}
             </NavigationMenuList>
           </NavigationMenu>
         </nav>
@@ -240,7 +236,7 @@ export function Header() {
                         variant="ghost"
                         size="sm"
                         className="gap-1 hover:text-foreground"
-                        aria-label={t("language")}
+                        aria-label={`${t("language")}: ${locale.toUpperCase()}`}
                       >
                         <Globe className="h-4 w-4" aria-hidden="true" />
                         <span className="text-xs uppercase">{locale}</span>
@@ -295,7 +291,7 @@ export function Header() {
                         ? "text-foreground hover:bg-secondary/10"
                         : "text-foreground hover:bg-secondary/10",
                     )}
-                    aria-label={t("language")}
+                    aria-label={`${t("language")}: ${locale.toUpperCase()}`}
                   >
                     <Globe className="h-4 w-4" aria-hidden="true" />
                     <span className="text-xs uppercase">{locale}</span>
