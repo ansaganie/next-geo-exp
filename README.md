@@ -1,6 +1,6 @@
 # GeoExploration Frontend
 
-Next.js 15 application with i18n (ru/kk/en), deployed to Vercel (https://geoexploration.kz) via GitHub Actions.
+Next.js 15 application with i18n (ru/kk/en), deployed to Vercel (<https://geoexploration.kz>) via GitHub Actions.
 
 ## Local Development
 
@@ -39,6 +39,24 @@ Domain: [geoexploration.kz](https://geoexploration.kz) ([next-geo-exp.vercel.app
 Workflow: `.github/workflows/deploy-plesk.yml`  
 Trigger: manual (`workflow_dispatch`)
 
+### Vercel Deployment
+
+Workflow: `.github/workflows/deploy-vercel.yml`  
+Trigger: push to `main`
+
+Flow:
+
+1. Install dependencies (`bun install --frozen-lockfile`)
+2. Lint (`bun run lint`)
+3. Pull Vercel environment and project info
+4. Build project via Vercel CLI (`vercel build --prod`)
+5. Deploy prebuilt artifacts (`vercel deploy --prebuilt --prod`)
+
+### Plesk Deployment
+
+Workflow: `.github/workflows/deploy-plesk.yml`  
+Trigger: push to `main`
+
 Flow:
 
 1. Install dependencies (`bun install --frozen-lockfile`)
@@ -69,7 +87,7 @@ Flow:
 Set as GitHub Actions secrets (or Variables — these values are public):
 
 | Variable | Description |
-|---|---|
+| --- | --- |
 | `NEXT_PUBLIC_PHONE_MAIN` | Phone number in E.164 format, e.g. `+77755020555` |
 | `NEXT_PUBLIC_PHONE_DISPLAY` | Formatted display phone, e.g. `+7 (775) 502-05-55` |
 | `NEXT_PUBLIC_WHATSAPP_BASE` | Full WhatsApp link with pre-filled message |
@@ -80,16 +98,15 @@ Set as GitHub Actions secrets (or Variables — these values are public):
 ### Runtime (server-side only, set in Plesk — never in CI)
 
 | Variable | Description |
-|---|---|
+| --- | --- |
 | `TELEGRAM_BOT_TOKEN` | Bot token from @BotFather |
 | `TELEGRAM_CHAT_ID` | Target chat/group ID (obtain via @userinfobot) |
 
 ### FTP (GitHub Actions secrets)
 
 | Secret | Description |
-|---|---|
+| --- | --- |
 | `FTP_SERVER` | Plesk hostname, e.g. `pkz33.hoster.kz` |
 | `FTP_PORT` | FTPS port (typically `21` for explicit mode) |
 | `FTP_USERNAME` | Plesk FTP account username |
 | `FTP_PASSWORD` | Plesk FTP account password |
-
