@@ -27,22 +27,11 @@ node .next/standalone/server.js
 ```
 
 ## GitHub Actions Deployment
-
 ### Vercel (Production)
 
 Workflow: `.github/workflows/deploy-vercel.yml`  
 Trigger: push to `main`  
 Domain: [geoexploration.kz](https://geoexploration.kz) ([next-geo-exp.vercel.app](https://next-geo-exp.vercel.app))
-
-### Plesk (Manual Fallback)
-
-Workflow: `.github/workflows/deploy-plesk.yml`  
-Trigger: manual (`workflow_dispatch`)
-
-### Vercel Deployment
-
-Workflow: `.github/workflows/deploy-vercel.yml`  
-Trigger: push to `main`
 
 Flow:
 
@@ -52,10 +41,10 @@ Flow:
 4. Build project via Vercel CLI (`vercel build --prod`)
 5. Deploy prebuilt artifacts (`vercel deploy --prebuilt --prod`)
 
-### Plesk Deployment
+### Plesk (Manual Fallback)
 
 Workflow: `.github/workflows/deploy-plesk.yml`  
-Trigger: push to `main`
+Trigger: manual (`workflow_dispatch`)
 
 Flow:
 
