@@ -1,6 +1,6 @@
 # GeoExploration Frontend
 
-Next.js 15 application with i18n (ru/kk/en), deployed as a Node.js standalone bundle to Plesk via GitHub Actions + FTPS.
+Next.js 15 application with i18n (ru/kk/en), deployed to Vercel (https://geoexploration.kz) via GitHub Actions.
 
 ## Local Development
 
@@ -28,8 +28,16 @@ node .next/standalone/server.js
 
 ## GitHub Actions Deployment
 
+### Vercel (Production)
+
+Workflow: `.github/workflows/deploy-vercel.yml`  
+Trigger: push to `main`  
+Domain: [geoexploration.kz](https://geoexploration.kz) ([next-geo-exp.vercel.app](https://next-geo-exp.vercel.app))
+
+### Plesk (Manual Fallback)
+
 Workflow: `.github/workflows/deploy-plesk.yml`  
-Trigger: push to `dev`
+Trigger: manual (`workflow_dispatch`)
 
 Flow:
 
