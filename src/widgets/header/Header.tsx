@@ -129,10 +129,7 @@ export function Header() {
                         <Button
                           variant="ghost"
                           className={cn(
-                            "px-3 py-2 text-sm font-medium transition-colors gap-1",
-                            scrolled
-                              ? "text-foreground hover:text-secondary hover:bg-secondary/10"
-                              : "text-foreground hover:text-secondary hover:bg-secondary/10",
+                            "px-3 py-2 text-sm font-medium transition-colors gap-1 text-foreground hover:text-secondary hover:bg-secondary/10",
                           )}
                         >
                           {tNav(item.labelKey)}
@@ -156,10 +153,7 @@ export function Header() {
                     <Button
                       variant="ghost"
                       className={cn(
-                        "px-3 py-2 text-sm font-medium transition-colors",
-                        scrolled
-                          ? "text-foreground hover:text-secondary hover:bg-secondary/10"
-                          : "text-foreground hover:text-secondary hover:bg-secondary/10",
+                        "px-3 py-2 text-sm font-medium transition-colors text-foreground hover:text-secondary hover:bg-secondary/10",
                         activeHash === item.href &&
                           "font-bold text-secondary underline underline-offset-4 decoration-secondary",
                       )}

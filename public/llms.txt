@@ -1,16 +1,20 @@
 # GeoExploration
 
-> Professional engineering-geological surveys, water well drilling, geodesy, and topographic mapping across Kazakhstan.
+> Comprehensive engineering-geological surveys, geodetic surveying, hydrogeology, water well drilling, and field exploration supplies in Kazakhstan.
 
 GeoExploration provides comprehensive engineering and geological services for civil construction, mining, and infrastructure projects across the Republic of Kazakhstan.
 
 ## Services
 
-- [Engineering-Geological Surveys](https://geoexploration.kz/en/services/geotechnical): Drilling exploratory boreholes, laboratory soil testing, and normative engineering reports.
-- [Geodesy and Topographic Mapping](https://geoexploration.kz/en/services/geodesy): Topographic surveys, geodetic networks, executive surveying, and volume calculation.
-- [Water Well Drilling](https://geoexploration.kz/en/services/drilling): Drilling water supply and exploratory wells with pumping tests and sanitary protection zones.
-- [Hydrogeology](https://geoexploration.kz/en/services/hydrogeology): Aquifer testing, groundwater monitoring, and water balance assessments.
-- [Equipment & Geological Supplies](https://geoexploration.kz/en/services/equipment): Production of PQ/HQ/NQ core boxes, customized sampling bags, and field exploration gear.
+- [Engineering-Geological Survey](https://geoexploration.kz/en/services/geotechnical): Field drilling, soil sampling, laboratory analysis, and normative technical reports for construction and industrial design.
+- [Geodesy and Topography](https://geoexploration.kz/en/services/geodesy): Land surveying, topographic mapping, electronic tacheometry, and volumetric calculations for earthworks.
+- [Water Well Drilling](https://geoexploration.kz/en/services/drilling): Drilling of industrial and domestic water supply wells, pumping tests, and sanitary zone establishment.
+- [Hydrogeology](https://geoexploration.kz/en/services/hydrogeology): Assessment of groundwater reserves, aquifer dynamics, and hydrological regime monitoring.
+
+## Field Supplies
+
+- [Core Box](https://geoexploration.kz/en/services/equipment): Rigid polypropylene storage tray designed to preserve and catalog cylindrical rock core samples in PQ, HQ, and NQ dimensions.
+- [Sample Bag](https://geoexploration.kz/en/services/equipment): Reinforced fabric container custom-manufactured for collecting, tagging, and transporting soil, crushed rock, and mineral specimens from the field to laboratories.
 
 ## Key Links
 
