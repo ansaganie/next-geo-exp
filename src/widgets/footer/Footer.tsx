@@ -15,7 +15,7 @@ export async function Footer() {
 
   return (
     <footer
-      className="border-t border-border/60 bg-accent text-accent-foreground section-deferred"
+      className="border-t border-border/60 bg-accent text-accent-foreground"
       aria-labelledby="footer-heading"
       role="contentinfo"
     >
@@ -34,7 +34,7 @@ export async function Footer() {
               height={50}
               loading="lazy"
             />
-            <p className="text-sm text-accent-foreground/70">{t("tagline")}</p>
+            <p className="text-sm text-accent-foreground/90">{t("tagline")}</p>
           </div>
 
           {/* Services */}
@@ -121,7 +121,7 @@ export async function Footer() {
 
         <Separator className="my-8" />
 
-        <div className="text-center text-sm text-accent-foreground/60">
+        <div className="text-center text-sm text-accent-foreground/90">
           © {new Date().getFullYear()} GeoExploration.{" "}
           {tCommon("allRightsReserved")}
         </div>

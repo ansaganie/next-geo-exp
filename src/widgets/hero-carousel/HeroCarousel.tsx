@@ -66,7 +66,8 @@ export function HeroCarousel() {
           fill
           className="object-cover"
           priority
-          quality={80}
+          fetchPriority="high"
+          quality={70}
           sizes="100vw"
         />
         {/* Earthy warm overlay with depth */}
@@ -88,7 +89,7 @@ export function HeroCarousel() {
             className="w-full"
           >
             <CarouselContent>
-              {translatedSlides.map((slide: Slide, index: number) => (
+              {translatedSlides.map((slide: Slide) => (
                 <CarouselItem key={slide.id}>
                   <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
                     {/* Content Column */}
@@ -123,8 +124,8 @@ export function HeroCarousel() {
                             fill
                             className="object-cover"
                             sizes="(max-width: 1024px) 0vw, 33vw"
-                            loading={index === 0 ? "eager" : "lazy"}
-                            {...(index > 0 ? { fetchPriority: "low" as const } : {})}
+                            loading="lazy"
+                            fetchPriority="low"
                           />
                         </div>
                       </CardContent>

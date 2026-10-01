@@ -18,9 +18,9 @@ export async function ServiceCard({ service }: { service: Service }) {
             height={48}
           />
         </div>
-        <h4 className="text-sm font-semibold leading-tight text-foreground">
+        <h3 className="text-sm font-semibold leading-tight text-foreground">
           {t(`${service.id}.title`)}
-        </h4>
+        </h3>
         <p className="text-xs leading-relaxed text-muted-foreground">
           {t(`${service.id}.description`)}
         </p>

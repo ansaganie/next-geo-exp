@@ -105,15 +105,14 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
   const messages = await getMessages();
   const t = await getTranslations("common");
+  const tMeta = await getTranslations({ locale, namespace: "metadata" });
 
   return (
-    <div>
-      <div
-        className={cn(
-          inter.variable,
-          "min-h-screen bg-background font-sans antialiased text-foreground",
-        )}
-      >
+    <html lang={locale} className={cn(inter.variable)} suppressHydrationWarning>
+      <head>
+        <meta name="description" content={tMeta("description")} />
+      </head>
+      <body className="min-h-screen bg-background font-sans antialiased text-foreground">
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             attribute="class"
@@ -172,7 +171,7 @@ export default async function LocaleLayout({
             />
           </ThemeProvider>
         </NextIntlClientProvider>
-      </div>
-    </div>
+      </body>
+    </html>
   );
 }

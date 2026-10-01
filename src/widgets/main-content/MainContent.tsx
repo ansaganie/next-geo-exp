@@ -1,9 +1,22 @@
+import dynamic from "next/dynamic";
 import { HeroCarousel } from "@/widgets/hero-carousel/HeroCarousel";
 import { ServicesGrid } from "@/widgets/services-grid/ServicesGrid";
 import { AboutSection } from "@/widgets/about/AboutSection";
 import { PortfolioSection } from "@/widgets/portfolio/PortfolioSection";
-import { VideoTestimonials } from "@/widgets/video-testimonials/VideoTestimonials";
-import { ContactSection } from "@/widgets/contact/ContactSection";
+
+const VideoTestimonials = dynamic(
+  () =>
+    import("@/widgets/video-testimonials/VideoTestimonials").then(
+      (mod) => mod.VideoTestimonials,
+    ),
+  { ssr: true },
+);
+
+const ContactSection = dynamic(
+  () =>
+    import("@/widgets/contact/ContactSection").then((mod) => mod.ContactSection),
+  { ssr: true },
+);
 
 export function MainContent() {
   return (
