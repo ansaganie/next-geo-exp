@@ -54,17 +54,12 @@
         ]
       },
       "geodesy": {
-        "title": "Measurements for determining land parcel boundaries",
+        "title": "Geodesy and Topography",
         "points": [
-          "Development of maps, plans, and diagrams",
-          "Compilation of topographic maps and plans",
-          "Verification of object positioning accuracy on site",
-          "Determination of terrain, natural and man-made object placement",
-          "Geodetic construction support",
-          "Layout of foundations, roads, and other structures",
-          "Design accuracy control",
-          "Aerial photography and laser scanning",
-          "Specialized geodetic research"
+          "Topographic survey and mapping: creation of plans, maps, and digital elevation models",
+          "Engineering geodetic construction support: axis stakeout, layout, and accuracy control",
+          "Cadastral work and boundary survey: land parcel boundary definition, site object positioning",
+          "Aerial photography and 3D laser scanning: high-precision surveys and 3D models"
         ]
       },
       "hydrogeology": {

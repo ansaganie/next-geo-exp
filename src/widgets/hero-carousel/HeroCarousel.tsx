@@ -56,7 +56,7 @@ export function HeroCarousel() {
     <section
       id="top"
       aria-labelledby="hero-heading"
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative min-h-[calc(100svh-4rem)] flex items-center overflow-hidden"
     >
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
@@ -76,7 +76,7 @@ export function HeroCarousel() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full py-16 md:py-24 lg:py-32">
+      <div className="relative z-10 w-full py-8 sm:py-10 md:py-12 lg:py-14">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <h2 id="hero-heading" className="sr-only">
             {t("heading")}
@@ -91,17 +91,17 @@ export function HeroCarousel() {
             <CarouselContent>
               {translatedSlides.map((slide: Slide) => (
                 <CarouselItem key={slide.id}>
-                  <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
+                  <div className="grid gap-6 lg:grid-cols-2 lg:gap-10 items-center">
                     {/* Content Column */}
                     <Card className="border-none bg-transparent shadow-none">
-                      <CardContent className="p-0 flex flex-col justify-center space-y-6">
+                      <CardContent className="p-0 flex flex-col justify-center space-y-4 md:space-y-5">
                         {/* Title */}
-                        <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-white drop-shadow-lg">
+                        <h3 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight tracking-tight text-white drop-shadow-lg">
                           {slide.title}
                         </h3>
 
                         {/* Points List */}
-                        <ul className="space-y-3 text-base md:text-lg text-white/90 drop-shadow">
+                        <ul className="space-y-2 md:space-y-2.5 text-sm md:text-base text-white/90 drop-shadow">
                           {slide.points.map((point: string, idx: number) => (
                             <li key={idx} className="flex items-start gap-3">
                               <div className="mt-1 flex-shrink-0 rounded-full bg-secondary/20 p-1">
@@ -116,7 +116,7 @@ export function HeroCarousel() {
 
                     {/* Visual Column - Portfolio Images */}
                     <Card className="hidden lg:flex items-center justify-center border-none bg-transparent shadow-none">
-                      <CardContent className="p-0 relative w-full max-w-md aspect-[4/3]">
+                      <CardContent className="p-0 relative w-full max-w-sm xl:max-w-md aspect-[4/3]">
                         <div className="absolute inset-0 overflow-hidden rounded-lg shadow-lg">
                           <Image
                             src={slide.image}
@@ -136,7 +136,7 @@ export function HeroCarousel() {
             </CarouselContent>
 
             {/* Custom Numbered Dots Navigation */}
-            <div className="mt-8 flex justify-center gap-3">
+            <div className="mt-6 md:mt-8 flex justify-center gap-3">
               {translatedSlides.map((slide, index) => (
                 <Button
                   key={slide.id}
