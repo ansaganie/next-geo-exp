@@ -55,7 +55,7 @@ Flow:
 ### Plesk Deployment
 
 Workflow: `.github/workflows/deploy-plesk.yml`  
-Trigger: push to `main`
+Trigger: manual (`workflow_dispatch`)
 
 Flow:
 
