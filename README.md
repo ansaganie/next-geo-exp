@@ -44,6 +44,8 @@ Trigger: manual (`workflow_dispatch`)
 Workflow: `.github/workflows/deploy-vercel.yml`  
 Trigger: push to `main`
 
+Vercel's own Git integration is disabled for `main` in `vercel.json` (`git.deploymentEnabled.main: false`), so this workflow is the only production deploy path. Vercel preview deployments for other branches are unaffected.
+
 Flow:
 
 1. Install dependencies (`bun install --frozen-lockfile`)
