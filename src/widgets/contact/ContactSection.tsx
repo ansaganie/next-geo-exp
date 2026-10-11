@@ -6,6 +6,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/shared/ui/input";
 import { Textarea } from "@/shared/ui/textarea";
 import { Button } from "@/shared/ui/button";
+import { BrandIcon } from "@/shared/ui/brand-icon";
+import { Phone, Mail, Clock } from "lucide-react";
+import { siWhatsapp } from "simple-icons";
 import { useTranslations } from "next-intl";
 
 const schema = z.object({
@@ -27,6 +30,16 @@ export function ContactSection() {
     "idle",
   );
   const t = useTranslations("contact");
+
+  const phoneMain = process.env.NEXT_PUBLIC_PHONE_MAIN || "+77755020555";
+  const phoneDisplay =
+    process.env.NEXT_PUBLIC_PHONE_DISPLAY ||
+    process.env.NEXT_PUBLIC_PHONE_MAIN ||
+    "+7 (775) 502-05-55";
+  const email = process.env.NEXT_PUBLIC_EMAIL || "info@geoexploration.kz";
+  const whatsappHref =
+    process.env.NEXT_PUBLIC_WHATSAPP_BASE ||
+    `https://wa.me/${phoneMain.replace(/\D/g, "")}`;
 
   async function onSubmit(data: z.infer<typeof schema>) {
     setStatus("idle");
@@ -64,46 +77,87 @@ export function ContactSection() {
           <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-secondary/60" />
         </div>
         <div className="grid gap-10 md:grid-cols-2">
-          <div>
-            <div className="overflow-hidden rounded-xl border border-border/60 shadow-sm">
-              {process.env.NEXT_PUBLIC_MAP_IFRAME_SRC ? (
-                <iframe
-                  src={process.env.NEXT_PUBLIC_MAP_IFRAME_SRC}
-                  title={t("mapTitle")}
-                  width="600"
-                  height="288"
-                  loading="lazy"
-                  className="h-72 w-full border-0"
-                  allowFullScreen
-                />
-              ) : (
-                <div className="flex h-72 w-full items-center justify-center bg-muted text-muted-foreground text-sm">
-                  {t("mapTitle")}
+          <div className="flex flex-col justify-between rounded-xl border border-border/60 bg-card p-6 shadow-sm">
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-xl font-semibold tracking-tight text-foreground">
+                  {t("cardTitle")}
+                </h3>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {t("cardDescription")}
+                </p>
+              </div>
+
+              <div className="space-y-4 text-sm">
+                <div className="flex items-start gap-3">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-secondary/10 text-secondary">
+                    <Phone className="h-4 w-4" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground">
+                      {t("phoneLabel")}
+                    </p>
+                    <a
+                      href={`tel:${phoneMain}`}
+                      className="font-medium text-foreground transition-colors hover:text-secondary"
+                    >
+                      {phoneDisplay}
+                    </a>
+                  </div>
                 </div>
-              )}
+
+                <div className="flex items-start gap-3">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-secondary/10 text-secondary">
+                    <Mail className="h-4 w-4" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground">
+                      {t("emailLabel")}
+                    </p>
+                    <a
+                      href={`mailto:${email}`}
+                      className="font-medium text-foreground transition-colors hover:text-secondary"
+                    >
+                      {email}
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-secondary/10 text-secondary">
+                    <Clock className="h-4 w-4" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground">
+                      {t("workingHoursLabel")}
+                    </p>
+                    <p className="font-medium text-foreground">
+                      {t("workingHours")}
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="mt-4 space-y-1 text-sm">
-              {process.env.NEXT_PUBLIC_PHONE_MAIN && (
-                <div>
-                  <a
-                    href={`tel:${process.env.NEXT_PUBLIC_PHONE_MAIN}`}
-                    className="font-medium text-foreground transition-colors hover:text-secondary"
-                  >
-                    {process.env.NEXT_PUBLIC_PHONE_DISPLAY ||
-                      process.env.NEXT_PUBLIC_PHONE_MAIN}
-                  </a>
-                </div>
-              )}
-              {process.env.NEXT_PUBLIC_EMAIL && (
-                <div>
-                  <a
-                    href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}
-                    className="text-muted-foreground transition-colors hover:text-secondary"
-                  >
-                    {process.env.NEXT_PUBLIC_EMAIL}
-                  </a>
-                </div>
-              )}
+
+            <div className="mt-6 pt-6 border-t border-border/60">
+              <Button
+                asChild
+                className="w-full bg-[#25D366] text-white hover:bg-[#25D366]/90 rounded-lg shadow-xs font-medium gap-2"
+              >
+                <a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={t("whatsappAction")}
+                >
+                  <BrandIcon
+                    icon={siWhatsapp}
+                    className="h-4 w-4 fill-current"
+                    aria-hidden="true"
+                  />
+                  <span>{t("whatsappAction")}</span>
+                </a>
+              </Button>
             </div>
           </div>
           <form
