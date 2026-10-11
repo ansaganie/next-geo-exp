@@ -20,7 +20,7 @@ When creating components, content, or features, consider this geological/enginee
 - **Framework**: Next.js 15 (App Router in `src/app/`)
 - **Build Tool**: Turbopack (via `bun dev` or `next dev --turbopack`)
 - **Styling**: Tailwind CSS + shadcn/ui (design tokens via CSS variables)
-- **Architecture**: Feature Sliced Design (FSD) — domain & layer oriented
+- **Architecture**: Feature Sliced Design (FSD) - domain & layer oriented
 - **Components**: shadcn/ui ("new-york" style) + Lucide icons
 - **Fonts**: Inter (variable, Cyrillic support) via `next/font` (Geist deprecated here)
 - **Language**: TypeScript (strict)
@@ -42,7 +42,7 @@ Layer rules:
 - `shared` can be imported anywhere.
 - `entities` expose domain components/data; do NOT import `widgets`/`features`.
 - `widgets` compose `entities` + `shared` (optionally `features`).
-- `features` encapsulate interaction logic (forms, filters) — can use `entities` & `shared`.
+- `features` encapsulate interaction logic (forms, filters) - can use `entities` & `shared`.
 - `processes` orchestrate multi-step flows (none implemented yet).
 
 ### What Changed From Legacy Structure
@@ -98,7 +98,7 @@ Defined in `tsconfig.json`:
 | `@/processes/*` | `./src/processes/*` |
 | `@/app/*`       | `./src/app/*`       |
 
-Legacy aliases (`@/components`, `@/lib`, `@/ui`) are deprecated — use the mappings above.
+Legacy aliases (`@/components`, `@/lib`, `@/ui`) are deprecated - use the mappings above.
 
 ## Critical Files
 
@@ -148,7 +148,7 @@ className={cn("base-classes", condition && "conditional-class", className)}
 - **react-hook-form + zod**: Form validation (contact form, future features).
 - **shadcn/ui**: Source of UI primitives under `shared/ui`.
 
-cvA is bundled in shadcn — no manual usage needed currently.
+cvA is bundled in shadcn - no manual usage needed currently.
 
 Focus on composition via FSD layers, minimizing cross-layer imports.
 
@@ -165,7 +165,7 @@ The project has fully transitioned to FSD:
 
 - Pick target layer first (shared/entity/widget/feature).
 - Prefer data colocated with entity (`entities/<name>/`), unless shared globally.
-- Avoid deep relative paths — use aliases.
+- Avoid deep relative paths - use aliases.
 - Keep `shared/ui` focused: primitives only, no business rules.
 - Keep `widgets` dumb: assemble, don’t implement domain logic.
 - Introduce `features` only when logic spans multiple entities or requires user interaction state.

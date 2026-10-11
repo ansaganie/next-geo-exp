@@ -81,8 +81,8 @@
   },
   "about": {
     "eyebrow": "About us",
-    "heading": "Comprehensive engineering solutions — from geodesy to drilling",
-    "description": "We provide a full range of professional services: geodesy, topography, engineering-geological surveys, and well drilling. We work with private and corporate clients — from site preparation to construction supervision.",
+    "heading": "Comprehensive engineering solutions - from geodesy to drilling",
+    "description": "We provide a full range of professional services: geodesy, topography, engineering-geological surveys, and well drilling. We work with private and corporate clients - from site preparation to construction supervision.",
     "imageAlt": "GeoExploration equipment",
     "stat1Value": "300+",
     "stat1Label": "Projects per year",
@@ -138,7 +138,7 @@
   },
   "contact": {
     "eyebrow": "Get in touch",
-    "heading": "Leave your details — we'll contact you",
+    "heading": "Leave your details - we'll contact you",
     "mapTitle": "GeoExploration office on the map",
     "name": "First name",
     "surname": "Last name",
@@ -204,6 +204,9 @@
       "label": "Equipment & Materials",
       "description": "Supply of specialized equipment: PQ/HQ/NQ standard core boxes and sample bags."
     }
+  },
+  "serviceCard": {
+    "learnMore": "Learn more"
   },
   "serviceItems": {
     "engineering-geodesy": {

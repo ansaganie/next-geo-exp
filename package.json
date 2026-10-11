@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "sync:ruleset": "bun scripts/sync-ruleset.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
