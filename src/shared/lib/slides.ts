@@ -16,7 +16,7 @@ export const slides: Slide[] = [
       "Шнековое бурение",
       "Ударно-канатное бурение",
     ],
-    image: "/assets/images/portfolio-02.jpg",
+    image: "/assets/images/portfolio-02.webp",
   },
   {
     id: "geo-survey",
@@ -27,7 +27,7 @@ export const slides: Slide[] = [
       "Полный комплекс лабораторных испытаний",
       "Подготовка и выдача технического отчета",
     ],
-    image: "/assets/images/portfolio-01.jpg",
+    image: "/assets/images/portfolio-01.webp",
   },
   {
     id: "geodesy",
@@ -38,7 +38,7 @@ export const slides: Slide[] = [
       "Кадастровые работы и межевание: определение и вынос границ земельных участков, привязка объектов",
       "Аэрофотосъемка и 3D-лазерное сканирование: высокоточные измерения и создание 3D-моделей",
     ],
-    image: "/assets/images/portfolio-03.jpg",
+    image: "/assets/images/portfolio-03.webp",
   },
   {
     id: "hydrogeology",
@@ -51,6 +51,6 @@ export const slides: Slide[] = [
       "Переоценка запасов месторождений подземных вод",
       "Прогноз водопритоков",
     ],
-    image: "/assets/images/portfolio-04.jpg",
+    image: "/assets/images/portfolio-04.webp",
   },
 ];

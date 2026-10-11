@@ -18,10 +18,10 @@ export async function generateMetadata({
     namespace: "categories.geotechnical",
   });
   return {
-    title: `${tCat("label")} — GeoExploration`,
+    title: `${tCat("label")} - GeoExploration`,
     description: tCat("description"),
     openGraph: {
-      title: `${tCat("label")} — GeoExploration`,
+      title: `${tCat("label")} - GeoExploration`,
       description: tCat("description"),
     },
   };
@@ -49,7 +49,7 @@ export default async function GeotechnicalPage() {
         <div className="mx-auto max-w-6xl px-8">
           <div className="grid gap-6 md:grid-cols-3">
             {filtered.map((s) => (
-              <ServiceCard key={s.id} service={s} />
+              <ServiceCard key={s.id} service={s} linked={false} />
             ))}
           </div>
         </div>

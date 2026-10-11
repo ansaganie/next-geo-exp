@@ -61,7 +61,7 @@ Flow:
 
 1. Install dependencies (`bun install --frozen-lockfile`)
 2. Lint
-3. Build — `NEXT_PUBLIC_*` secrets are injected here and baked into the client bundle
+3. Build - `NEXT_PUBLIC_*` secrets are injected here and baked into the client bundle
 4. Copy `.next/static/` and `public/` into `.next/standalone/`
 5. Copy `server.js` → `app.js` (Plesk startup file)
 6. Upload `.next/standalone/` as a versioned artifact (14-day retention)
@@ -84,7 +84,7 @@ Flow:
 
 ### Build-time (`NEXT_PUBLIC_*`, baked into client bundle)
 
-Set as GitHub Actions secrets (or Variables — these values are public):
+Set as GitHub Actions secrets (or Variables - these values are public):
 
 | Variable | Description |
 | --- | --- |
@@ -95,7 +95,7 @@ Set as GitHub Actions secrets (or Variables — these values are public):
 | `NEXT_PUBLIC_EMAIL` | Contact email address |
 | `NEXT_PUBLIC_MAP_IFRAME_SRC` | Yandex Maps embed `src` attribute |
 
-### Runtime (server-side only, set in Plesk — never in CI)
+### Runtime (server-side only, set in Plesk - never in CI)
 
 | Variable | Description |
 | --- | --- |

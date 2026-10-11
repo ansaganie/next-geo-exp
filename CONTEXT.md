@@ -2,7 +2,10 @@
 
 Comprehensive engineering-geological surveys, geodetic surveying, hydrogeology, water well drilling, and field exploration supplies in Kazakhstan.
 
-## Services
+## Service Categories
+
+A **Service Category** is a broad line of work. Each **Service** (a specific offering shown as its own card, e.g. Topographic Survey, Staking Out, 3D Scanning) belongs to exactly one Service Category. Field Supplies is also a Service Category.
+_Avoid_: Using "service" for the broad area
 
 **Engineering-Geological Survey**:
 Field drilling, soil sampling, laboratory analysis, and normative technical reports for construction and industrial design.

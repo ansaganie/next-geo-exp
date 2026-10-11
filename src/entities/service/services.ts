@@ -1,3 +1,5 @@
+import type { GeoIconName } from "@/shared/ui/geo-icon";
+
 export type ServiceCategory =
   | "geodesy"
   | "geotechnical"
@@ -7,57 +9,57 @@ export type ServiceCategory =
 
 export type Service = {
   id: string;
-  icon: string; // relative path under public/assets/images
+  icon: GeoIconName;
   category: ServiceCategory;
 };
 
 export const services: Service[] = [
   {
     id: "engineering-geodesy",
-    icon: "/assets/images/geo-icon-01.png",
+    icon: "engineering-geodesy",
     category: "geodesy",
   },
-  { id: "topo", icon: "/assets/images/geo-icon-02.png", category: "geodesy" },
+  { id: "topo", icon: "topo", category: "geodesy" },
   {
     id: "stakeout",
-    icon: "/assets/images/geo-icon-03.png",
+    icon: "stakeout",
     category: "geodesy",
   },
   {
     id: "cadastral",
-    icon: "/assets/images/geo-icon-05.png",
+    icon: "cadastral",
     category: "geodesy",
   },
-  { id: "facade", icon: "/assets/images/geo-icon-06.png", category: "geodesy" },
-  { id: "scan3d", icon: "/assets/images/geo-icon-07.png", category: "geodesy" },
+  { id: "facade", icon: "facade", category: "geodesy" },
+  { id: "scan3d", icon: "scan3d", category: "geodesy" },
   {
     id: "landscape",
-    icon: "/assets/images/geo-icon-09.png",
+    icon: "landscape",
     category: "geodesy",
   },
   {
     id: "vertical",
-    icon: "/assets/images/geo-icon-10.png",
+    icon: "vertical",
     category: "geodesy",
   },
   {
     id: "geo-survey",
-    icon: "/assets/images/geo-icon-11.png",
+    icon: "geo-survey",
     category: "geotechnical",
   },
   {
     id: "tacheometry",
-    icon: "/assets/images/geo-icon-12.png",
+    icon: "tacheometry",
     category: "geodesy",
   },
   {
     id: "asbuilt",
-    icon: "/assets/images/geo-icon-13.png",
+    icon: "asbuilt",
     category: "geodesy",
   },
   {
     id: "field-supplies",
-    icon: "/assets/images/geo-icon-14.png",
+    icon: "field-supplies",
     category: "equipment",
   },
 ];
