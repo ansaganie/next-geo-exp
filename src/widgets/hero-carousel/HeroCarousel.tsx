@@ -123,7 +123,7 @@ export function HeroCarousel() {
                             alt={slide.title}
                             fill
                             className="object-cover"
-                            sizes="(max-width: 1024px) 0vw, 33vw"
+                            sizes="(max-width: 1024px) 0vw, (max-width: 1280px) 384px, 448px"
                             loading="lazy"
                             fetchPriority="low"
                           />

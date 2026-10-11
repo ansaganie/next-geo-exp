@@ -57,7 +57,7 @@ export function PortfolioSection() {
                       alt={t(`items.${item.id}.title`)}
                       width={640}
                       height={480}
-                      sizes="(max-width: 640px) 85vw, (max-width: 1024px) 50vw, 33vw"
+                      sizes="(max-width: 640px) 85vw, (max-width: 1024px) 50vw, 384px"
                       loading="lazy"
                       className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
