@@ -15,6 +15,21 @@ export type Service = {
 
 export const services: Service[] = [
   {
+    id: "core-drilling",
+    icon: "core-drilling",
+    category: "drilling",
+  },
+  {
+    id: "water-well-drilling",
+    icon: "water-well-drilling",
+    category: "drilling",
+  },
+  {
+    id: "geotechnical-drilling",
+    icon: "geotechnical-drilling",
+    category: "drilling",
+  },
+  {
     id: "engineering-geodesy",
     icon: "engineering-geodesy",
     category: "geodesy",

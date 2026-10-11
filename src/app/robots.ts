@@ -8,6 +8,11 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/api/"],
       },
+      {
+        userAgent: "Yandex",
+        allow: "/",
+        disallow: ["/api/"],
+      },
     ],
     sitemap: "https://geoexploration.kz/sitemap.xml",
   };
