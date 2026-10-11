@@ -4,6 +4,33 @@ import type { ReactNode, SVGProps } from "react";
 // Icons never contain text, letters or digits — the site is trilingual (ru/kk/en).
 const geoIcons = {
   // Services
+  "core-drilling": (
+    <>
+      <rect x="7" y="3" width="10" height="14" rx="1" />
+      <path d="M10 3v14M14 3v14" />
+      <path d="M5 21h14" />
+      <path d="M7 17l2.5 4M17 17l-2.5 4M12 17v4" />
+    </>
+  ),
+  "water-well-drilling": (
+    <>
+      <path d="M4 21h16" />
+      <path d="M7 21L11 4h2l4 17" />
+      <path d="M8.5 13h7M9.5 8h5" />
+      <path d="M12 13v8" />
+      <path d="M18 10s-2.5 2.5-2.5 4.5a2.5 2.5 0 0 0 5 0C20.5 12.5 18 10 18 10z" />
+    </>
+  ),
+  "geotechnical-drilling": (
+    <>
+      <path d="M3 10h18" />
+      <path d="M3 15h18" />
+      <path d="M3 20h18" />
+      <path d="M12 2v18" />
+      <path d="M9 5l3-3 3 3" />
+      <path d="M10 10v6h4v-6" />
+    </>
+  ),
   "engineering-geodesy": (
     <>
       <path d="M8 3v6h8V3" />

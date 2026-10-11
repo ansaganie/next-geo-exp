@@ -17,12 +17,24 @@ export async function generateMetadata({
     locale,
     namespace: "categories.geotechnical",
   });
+  const localePrefix = locale === "kk" ? "" : `/${locale}`;
+  const canonicalUrl = `https://geoexploration.kz${localePrefix}/services/geotechnical`;
+
   return {
     title: `${tCat("label")} - GeoExploration`,
     description: tCat("description"),
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        kk: "https://geoexploration.kz/services/geotechnical",
+        ru: "https://geoexploration.kz/ru/services/geotechnical",
+        en: "https://geoexploration.kz/en/services/geotechnical",
+      },
+    },
     openGraph: {
       title: `${tCat("label")} - GeoExploration`,
       description: tCat("description"),
+      url: canonicalUrl,
     },
   };
 }

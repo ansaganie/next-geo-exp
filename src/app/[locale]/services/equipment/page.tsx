@@ -17,12 +17,24 @@ export async function generateMetadata({
     locale,
     namespace: "categories.equipment",
   });
+  const localePrefix = locale === "kk" ? "" : `/${locale}`;
+  const canonicalUrl = `https://geoexploration.kz${localePrefix}/services/equipment`;
+
   return {
     title: `${tCat("label")} - GeoExploration`,
     description: tCat("description"),
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        kk: "https://geoexploration.kz/services/equipment",
+        ru: "https://geoexploration.kz/ru/services/equipment",
+        en: "https://geoexploration.kz/en/services/equipment",
+      },
+    },
     openGraph: {
       title: `${tCat("label")} - GeoExploration`,
       description: tCat("description"),
+      url: canonicalUrl,
     },
   };
 }

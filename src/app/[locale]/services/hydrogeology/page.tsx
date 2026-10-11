@@ -17,12 +17,24 @@ export async function generateMetadata({
     locale,
     namespace: "categories.hydrogeology",
   });
+  const localePrefix = locale === "kk" ? "" : `/${locale}`;
+  const canonicalUrl = `https://geoexploration.kz${localePrefix}/services/hydrogeology`;
+
   return {
     title: `${tCat("label")} - GeoExploration`,
     description: tCat("description"),
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        kk: "https://geoexploration.kz/services/hydrogeology",
+        ru: "https://geoexploration.kz/ru/services/hydrogeology",
+        en: "https://geoexploration.kz/en/services/hydrogeology",
+      },
+    },
     openGraph: {
       title: `${tCat("label")} - GeoExploration`,
       description: tCat("description"),
+      url: canonicalUrl,
     },
   };
 }

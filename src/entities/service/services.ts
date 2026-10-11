@@ -7,6 +7,14 @@ export type ServiceCategory =
   | "hydrogeology"
   | "equipment";
 
+export const serviceCategories: ServiceCategory[] = [
+  "drilling",
+  "geotechnical",
+  "geodesy",
+  "hydrogeology",
+  "equipment",
+];
+
 export type Service = {
   id: string;
   icon: GeoIconName;
@@ -14,6 +22,21 @@ export type Service = {
 };
 
 export const services: Service[] = [
+  {
+    id: "core-drilling",
+    icon: "core-drilling",
+    category: "drilling",
+  },
+  {
+    id: "water-well-drilling",
+    icon: "water-well-drilling",
+    category: "drilling",
+  },
+  {
+    id: "geotechnical-drilling",
+    icon: "geotechnical-drilling",
+    category: "drilling",
+  },
   {
     id: "engineering-geodesy",
     icon: "engineering-geodesy",

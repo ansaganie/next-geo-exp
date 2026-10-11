@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "title": "GeoExploration – Geological & Engineering Services",
-    "description": "Professional engineering-geological surveys, water well drilling, geodesy, and topographic mapping across Kazakhstan.",
-    "ogDescription": "Engineering-geological surveys, water well drilling, geodetic and topographic services in Kazakhstan.",
-    "ogImageAlt": "GeoExploration – Geological & Engineering Services"
+    "title": "GeoExploration – Borehole & Core Drilling in Astana, Kazakhstan | Geological Services",
+    "description": "Professional water well drilling, wireline core drilling, and engineering-geological surveys in Astana and across Kazakhstan. Dedicated URB-2A2 rig fleet.",
+    "ogDescription": "Water well drilling, core drilling, geodetic and geotechnical services in Astana and Kazakhstan.",
+    "ogImageAlt": "GeoExploration – Drilling & Geological Engineering Services"
   },
   "common": {
     "skipToContent": "Skip to content",
@@ -35,13 +35,13 @@
     "goToSlide": "Go to slide {index}: {title}",
     "slides": {
       "drilling": {
-        "title": "Hydrogeological well drilling",
+        "title": "Borehole & Core Drilling in Astana and Kazakhstan",
         "points": [
-          "Drilling for private needs (irrigation, private houses)",
-          "Geophysical well drilling",
-          "Core drilling",
-          "Auger drilling",
-          "Cable-tool drilling"
+          "Wireline core drilling (PQ, HQ, NQ standard core recovery up to 100%)",
+          "Turnkey water well drilling (uPVC/steel casing with screen filters)",
+          "Engineering-geological drilling for building foundations",
+          "Fleet of URB-2A2 all-terrain rigs and Boart Longyear equipment",
+          "Pumping test analysis, yield measurement, and official borehole passport"
         ]
       },
       "geo-survey": {
@@ -172,9 +172,59 @@
   },
   "servicePages": {
     "drilling": {
-      "detailsHeading": "About well drilling",
-      "p1": "GeoExploration performs exploration, hydrogeological, and engineering-geological well drilling up to 200 meters deep. We use core, auger, and rotary drilling depending on geological conditions and client objectives.",
-      "p2": "All work is carried out with a full documentation cycle: maintaining drilling logs, collecting soil and water samples, describing cores, and compiling geological-technical cross-sections."
+      "metaTitle": "Borehole & Core Drilling in Astana, Kazakhstan – Water Wells | GeoExploration",
+      "metaDescription": "Turnkey water well drilling and wireline core drilling in Astana and across Kazakhstan. URB-2A2 rigs, depths up to 250 m, PQ/HQ/NQ core recovery, borehole passports.",
+      "pageHeading": "Borehole & Core Drilling in Astana and Kazakhstan",
+      "pageSubtitle": "Turnkey water well drilling, high-precision wireline core drilling, and engineering-geological boreholes with official technical passports.",
+      "detailsHeading": "Drilling Operations & Technology",
+      "p1": "GeoExploration carries out turnkey water well drilling, wireline core drilling with high core recovery, and geotechnical investigation boreholes up to 250 meters deep across Astana, the Akmola region, and all territories of Kazakhstan. Our proprietary drilling fleet (all-terrain URB-2A2 rigs, Boart Longyear equipment) allows us to tackle complex geological conditions.",
+      "p2": "All operations strictly adhere to Kazakhstan national standards: comprehensive geophysical logging, core and soil monolith recovery, installation of certified uPVC and steel casing, pumping tests, and full borehole passport issuance.",
+      "servicesEyebrow": "Our Offerings",
+      "servicesHeading": "Drilling Services & Methods",
+      "coreSection": {
+        "eyebrow": "Drilling Technology",
+        "title": "Wireline Core Drilling (PQ / HQ / NQ Standard Recovery)",
+        "description": "Core drilling is essential for detailed stratigraphic investigation, mineral exploration, and geotechnical foundation assessments, recovering intact cylindrical rock specimens (cores) while preserving natural structural features. We deploy wireline double-tube core barrels with diamond crowns, delivering 95-100% core recovery even in fractured geological formations.",
+        "badge": "High Precision",
+        "bullet1": "SSK (wireline) retrieval systems for continuous, uninterrupted core recovery",
+        "bullet2": "Storage in heavy-duty polypropylene core boxes with photo documentation",
+        "bullet3": "Laboratory testing of rock mechanical properties, density, and fracturing"
+      },
+      "specs": {
+        "title": "Fleet Capabilities & Technical Specifications",
+        "spec1Label": "Maximum Drilling Depth",
+        "spec1Value": "up to 250 m",
+        "spec2Label": "Borehole Diameters",
+        "spec2Value": "from 76 to 219 mm",
+        "spec3Label": "Drilling Rigs",
+        "spec3Value": "URB-2A2 (KamAZ/Ural), Boart Longyear",
+        "spec4Label": "Casing Diameters & Types",
+        "spec4Value": "125–219 mm (potable uPVC, steel GOST)"
+      },
+      "stages": {
+        "eyebrow": "Workflow",
+        "title": "Borehole Drilling Workflow Stages",
+        "stage1Title": "1. Geological Analysis & Site Reconnaissance",
+        "stage1Desc": "Review of local hydrogeological archives and on-site engineering assessment to locate the optimal drilling point.",
+        "stage2Title": "2. Drilling & Stratum Sampling",
+        "stage2Desc": "Borehole drilling using selected methods (core, rotary, or auger) with real-time stratigraphic and aquifer logging.",
+        "stage3Title": "3. Casing & Screen Installation",
+        "stage3Desc": "Installation of casing strings, factory slotted screens, and clean gravel pack filtration zones.",
+        "stage4Title": "4. Pumping Tests & Passport Delivery",
+        "stage4Desc": "Development pumping to clear water, static and dynamic water level testing, yield measurement, and official passport handover."
+      },
+      "faq": {
+        "eyebrow": "Questions & Answers",
+        "title": "Frequently Asked Questions About Drilling",
+        "q1": "What is the typical water well depth in Astana and the surrounding region?",
+        "a1": "In Astana and the Akmola region, sandy aquifers typically range between 25 and 45 meters, while deep artesian aquifers in fractured bedrock reach 60 to 120 meters. Precise depths are determined using geological maps and test boreholes.",
+        "q2": "When is wireline core drilling required?",
+        "a2": "Core drilling is mandatory for mineral deposit exploration and for geotechnical surveys supporting multi-story buildings and industrial infrastructure, where intact rock strength and fracture orientation must be analyzed.",
+        "q3": "Do you provide an official borehole technical passport?",
+        "a3": "Yes. Following drilling and pumping test completion, clients receive a full technical passport detailing exact borehole depth, geological cross-section, casing construction, water yield, and recommended pump specifications.",
+        "q4": "Do you work across all regions of Kazakhstan?",
+        "a4": "Yes, our mobile drilling crews with all-terrain 6x6 vehicles operate across all regions of Kazakhstan, including remote industrial and mining project sites."
+      }
     },
     "geodesy": {
       "detailsHeading": "More about our services"
@@ -201,8 +251,8 @@
       "description": "Comprehensive engineering-geological soil investigations, laboratory analyses, and technical report preparation for design."
     },
     "drilling": {
-      "label": "Well Drilling",
-      "description": "Exploration, hydrogeological, and engineering-geological well drilling with a full documentation cycle."
+      "label": "Borehole Drilling",
+      "description": "Water well drilling, wireline core drilling, and geotechnical boreholes in Astana and Kazakhstan with full technical documentation."
     },
     "hydrogeology": {
       "label": "Hydrogeology",
@@ -217,6 +267,21 @@
     "learnMore": "Learn more"
   },
   "serviceItems": {
+    "core-drilling": {
+      "title": "Core Drilling",
+      "description": "High-precision wireline core drilling with intact PQ/HQ/NQ sample recovery for exploration",
+      "details": "Diamond and carbide core drilling with core recovery rates up to 95-100%. Extraction of rock core specimens in PQ, HQ, and NQ dimensions for stratigraphic analysis, rock mechanics testing, and mineral reserve estimation across Kazakhstan."
+    },
+    "water-well-drilling": {
+      "title": "Water Well Drilling",
+      "description": "Turnkey industrial and domestic water supply well drilling in Astana and regions",
+      "details": "Full-cycle drilling of artesian and sand water wells in Astana and the Akmola region. Installation of steel and uPVC casing strings, slotted screens, pumping tests, hydrogeological reports, and official borehole passports."
+    },
+    "geotechnical-drilling": {
+      "title": "Engineering-Geological Drilling",
+      "description": "Borehole drilling for structural foundations with layer-by-layer soil monolith sampling",
+      "details": "Field borehole drilling for residential, commercial, and industrial construction. Stratigraphic sampling of soil monoliths, in-situ field testing (plate load, SPT), and laboratory analysis adhering to Kazakhstan building codes."
+    },
     "engineering-geodesy": {
       "title": "Engineering Geodesy & Support",
       "description": "Geodetic support for construction, design and precision control",
@@ -283,7 +348,7 @@
     "services": "Services",
     "geodesy": "Geodesy & Topography",
     "geotechnical": "Engineering-Geological Surveys",
-    "drilling": "Well Drilling",
+    "drilling": "Borehole Drilling",
     "hydrogeology": "Hydrogeology",
     "equipment": "Equipment & Materials",
     "portfolio": "Portfolio",

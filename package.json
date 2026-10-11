@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "sync:ruleset": "bun scripts/sync-ruleset.ts"
+    "sync:ruleset": "bun scripts/sync-ruleset.ts",
+    "indexnow": "bun scripts/submit-indexnow.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

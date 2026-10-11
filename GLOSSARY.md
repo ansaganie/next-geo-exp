@@ -15,13 +15,27 @@ _Avoid_: Soil study, ground check
 Land surveying, topographic mapping, electronic tacheometry, and volumetric calculations for earthworks.
 _Avoid_: Land measurement, cartography
 
-**Water Well Drilling**:
-Drilling of industrial and domestic water supply wells, pumping tests, and sanitary zone establishment.
-_Avoid_: Water digging, borehole punching
+**Borehole Drilling**:
+Mechanical drilling operations encompassing domestic and industrial water well installation, mineral core extraction, and geotechnical site boreholes.
+_Avoid_: Hole digging, drill service
 
 **Hydrogeology**:
 Assessment of groundwater reserves, aquifer dynamics, and hydrological regime monitoring.
 _Avoid_: Water study
+
+## Drilling Services
+
+**Core Drilling**:
+Rotary exploration drilling using hollow bits to recover intact cylindrical rock cores (PQ/HQ/NQ) for stratigraphic and mineral evaluation.
+_Avoid_: Rock punching, tube drilling
+
+**Water Well Drilling**:
+Drilling, filter installation, casing, and pump-testing of domestic and industrial water supply wells.
+_Avoid_: Water digging, borehole punching
+
+**Geotechnical Drilling**:
+Borehole drilling dedicated to structural foundation investigations, standard penetration testing (SPT), and undisturbed soil sampling (monoliths).
+_Avoid_: Soil piercing, ground probe
 
 ## Field Supplies
 

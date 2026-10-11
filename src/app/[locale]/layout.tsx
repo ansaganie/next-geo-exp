@@ -40,38 +40,43 @@ export async function generateMetadata({
 
   const keywordsByLocale: Record<string, string[]> = {
     kk: [
-      "геология",
-      "инженерлік-геологиялық зерттеулер",
-      "ұңғыма бұрғылау",
+      "астанада ұңғыма бұрғылау",
+      "қазақстанда ұңғыма бұрғылау",
       "суға ұңғыма бұрғылау",
-      "геодезия",
-      "топографиялық түсірілім",
-      "кадастрлық жұмыстар",
-      "GeoExploration",
-      "зерттеулер Қазақстан",
+      "бағаналық бұрғылау",
+      "колонковое бурение астана",
+      "инженерлік-геологиялық зерттеулер",
       "геология Қазақстан",
+      "геодезия Астана",
+      "топографиялық түсірілім",
+      "GeoExploration",
+      "ұңғыма бұрғылау",
     ],
     ru: [
-      "геология",
-      "инженерно-геологические изыскания",
       "бурение скважин",
-      "бурение воды",
-      "геодезия",
+      "бурение в астане",
+      "бурение в казахстане",
+      "бурение на воду",
+      "колонковое бурение",
+      "бурение скважин астана",
+      "бурение скважин на воду казахстан",
+      "инженерно-геологические изыскания",
+      "геология астана",
+      "геодезия и топография",
       "топографическая съемка",
-      "кадастровые работы",
       "GeoExploration",
       "изыскания Казахстан",
     ],
     en: [
-      "geology",
-      "engineering-geological surveys",
-      "borehole drilling",
+      "borehole drilling astana",
+      "drilling kazakhstan",
+      "core drilling kazakhstan",
       "water well drilling",
-      "geodesy",
+      "engineering-geological surveys",
+      "geology kazakhstan",
+      "geodesy astana",
       "topographic mapping",
-      "cadastral work",
       "GeoExploration",
-      "investigations Kazakhstan",
     ],
   };
 
@@ -88,6 +93,10 @@ export async function generateMetadata({
         ru: "https://geoexploration.kz/ru",
         en: "https://geoexploration.kz/en",
       },
+    },
+    verification: {
+      google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
+      yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
     },
     openGraph: {
       title: t("title"),
@@ -132,13 +141,9 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
   const messages = await getMessages();
   const t = await getTranslations("common");
-  const tMeta = await getTranslations({ locale, namespace: "metadata" });
 
   return (
     <html lang={locale} className={cn(inter.variable)} suppressHydrationWarning>
-      <head>
-        <meta name="description" content={tMeta("description")} />
-      </head>
       <body className="min-h-screen bg-background font-sans antialiased text-foreground">
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
@@ -158,14 +163,56 @@ export default async function LocaleLayout({
               dangerouslySetInnerHTML={{
                 __html: JSON.stringify({
                   "@context": "https://schema.org",
-                  "@type": "Organization",
+                  "@type": ["LocalBusiness", "ProfessionalService"],
+                  "@id": "https://geoexploration.kz/#organization",
                   name: "GeoExploration",
                   url: "https://geoexploration.kz",
                   logo: "https://geoexploration.kz/assets/images/Logo.png",
+                  image: "https://geoexploration.kz/assets/images/Logo.png",
+                  telephone: process.env.NEXT_PUBLIC_PHONE_MAIN || "+77755020555",
+                  email: process.env.NEXT_PUBLIC_EMAIL || "info@geoexploration.kz",
+                  priceRange: "$$",
+                  address: {
+                    "@type": "PostalAddress",
+                    streetAddress: "г. Астана",
+                    addressLocality: "Астана",
+                    addressRegion: "Астана",
+                    addressCountry: "KZ",
+                  },
+                  geo: {
+                    "@type": "GeoCoordinates",
+                    latitude: 51.169392,
+                    longitude: 71.449074,
+                  },
+                  openingHoursSpecification: [
+                    {
+                      "@type": "OpeningHoursSpecification",
+                      dayOfWeek: [
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday",
+                      ],
+                      opens: "09:00",
+                      closes: "18:00",
+                    },
+                  ],
+                  areaServed: [
+                    {
+                      "@type": "City",
+                      name: "Astana",
+                    },
+                    {
+                      "@type": "Country",
+                      name: "Kazakhstan",
+                    },
+                  ],
                   contactPoint: [
                     {
                       "@type": "ContactPoint",
-                      telephone: process.env.NEXT_PUBLIC_PHONE_MAIN || "",
+                      telephone:
+                        process.env.NEXT_PUBLIC_PHONE_MAIN || "+77755020555",
                       contactType: "customer service",
                       areaServed: "KZ",
                       availableLanguage: ["ru", "kk", "en"],

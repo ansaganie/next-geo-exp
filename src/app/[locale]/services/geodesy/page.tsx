@@ -17,12 +17,24 @@ export async function generateMetadata({
     locale,
     namespace: "categories.geodesy",
   });
+  const localePrefix = locale === "kk" ? "" : `/${locale}`;
+  const canonicalUrl = `https://geoexploration.kz${localePrefix}/services/geodesy`;
+
   return {
     title: `${tCat("label")} - GeoExploration`,
     description: tCat("description"),
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        kk: "https://geoexploration.kz/services/geodesy",
+        ru: "https://geoexploration.kz/ru/services/geodesy",
+        en: "https://geoexploration.kz/en/services/geodesy",
+      },
+    },
     openGraph: {
       title: `${tCat("label")} - GeoExploration`,
       description: tCat("description"),
+      url: canonicalUrl,
     },
   };
 }
