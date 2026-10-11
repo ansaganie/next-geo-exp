@@ -245,7 +245,7 @@ GeoExploration is a Kazakhstan company that does engineering-geological surveys,
 **Themes:** light (default) and dark. Both are first-class, and every component and icon must be legible in both.
 
 **Domain vocabulary:**
-- **Service Category:** a broad line of work. The five are Geodesy & Topography, Engineering-Geological Surveys, Water Well Drilling, Hydrogeology, and Equipment & Materials (field supplies).
+- **Service Category:** a broad line of work. The five are Geodesy & Topography, Engineering-Geological Surveys, Borehole Drilling, Hydrogeology, and Equipment & Materials (field supplies).
 - **Service:** a specific offering that belongs to one Service Category and is shown as its own card, e.g. Topographic Survey, Staking Out, 3D Scanning, Verticality Control, As-Built Survey, Core Boxes & Sample Bags.
 - **Core Box:** a polypropylene tray that stores cylindrical rock core samples. **Sample Bag:** a reinforced fabric bag for soil and mineral specimens.
 

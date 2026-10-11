@@ -1,5 +1,5 @@
 import { describe, it, expect } from "bun:test";
-import { services } from "./services";
+import { services, serviceCategories } from "./services";
 
 describe("services registry", () => {
   it("places core-drilling, water-well-drilling, and geotechnical-drilling at the top of services", () => {
@@ -18,6 +18,16 @@ describe("services registry", () => {
       "core-drilling",
       "water-well-drilling",
       "geotechnical-drilling",
+    ]);
+  });
+
+  it("exports canonical serviceCategories matching the domain model", () => {
+    expect(serviceCategories).toEqual([
+      "drilling",
+      "geotechnical",
+      "geodesy",
+      "hydrogeology",
+      "equipment",
     ]);
   });
 });

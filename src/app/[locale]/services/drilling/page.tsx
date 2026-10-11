@@ -137,8 +137,17 @@ export default async function DrillingPage() {
 
       {/* Primary Drilling Services Grid */}
       {filtered.length > 0 ? (
-        <section className="py-16">
+        <section className="py-20">
           <div className="mx-auto max-w-6xl px-8">
+            <div className="mb-12 text-center">
+              <p className="mb-2 text-sm font-medium uppercase tracking-widest text-secondary">
+                {t("servicesEyebrow")}
+              </p>
+              <h2 className="text-3xl font-bold tracking-tight text-foreground">
+                {t("servicesHeading")}
+              </h2>
+              <div className="mx-auto mt-4 h-1 w-16 bg-secondary" />
+            </div>
             <div className="grid gap-6 md:grid-cols-3">
               {filtered.map((s) => (
                 <ServiceCard key={s.id} service={s} linked={false} />
@@ -149,13 +158,20 @@ export default async function DrillingPage() {
       ) : null}
 
       {/* Featured Core Drilling Pillar Section */}
-      <section id="core-drilling" className="scroll-mt-20 border-y border-border/40 bg-muted/20 py-20">
+      <section
+        id="core-drilling"
+        className="scroll-mt-20 border-y border-border/40 bg-muted/20 py-20"
+      >
         <div className="mx-auto max-w-6xl px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             <div className="space-y-6 lg:col-span-7">
-              <div className="inline-flex items-center gap-2 rounded-full border border-secondary/30 bg-secondary/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-secondary">
-                <ShieldCheck className="size-4" />
-                {t("coreSection.badge")}
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="rounded-md bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-wider text-secondary-foreground">
+                  {t("coreSection.badge")}
+                </span>
+                <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+                  {t("coreSection.eyebrow")}
+                </span>
               </div>
               <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
                 {t("coreSection.title")}
@@ -179,7 +195,7 @@ export default async function DrillingPage() {
               </ul>
             </div>
 
-            <div className="rounded-2xl border border-border/60 bg-card p-6 shadow-sm lg:col-span-5">
+            <div className="rounded-xl border border-border/60 bg-card p-6 shadow-xs lg:col-span-5">
               <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-card-foreground">
                 <Layers className="size-5 text-secondary" />
                 {t("specs.title")}
@@ -208,11 +224,14 @@ export default async function DrillingPage() {
       </section>
 
       {/* Drilling Technology and Regional Capabilities */}
-      <section className="py-16">
+      <section className="py-20">
         <div className="mx-auto max-w-4xl px-8">
-          <h2 className="mb-6 text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-            {t("detailsHeading")}
-          </h2>
+          <div className="mb-10 text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground">
+              {t("detailsHeading")}
+            </h2>
+            <div className="mx-auto mt-4 h-1 w-16 bg-secondary" />
+          </div>
           <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
             <p>{t("p1")}</p>
             <p>{t("p2")}</p>
@@ -221,18 +240,21 @@ export default async function DrillingPage() {
       </section>
 
       {/* Workflow Stages */}
-      <section className="bg-muted/30 py-16">
+      <section className="bg-muted/30 py-20">
         <div className="mx-auto max-w-6xl px-8">
           <div className="mb-12 text-center">
-            <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+            <p className="mb-2 text-sm font-medium uppercase tracking-widest text-secondary">
+              {t("stages.eyebrow")}
+            </p>
+            <h2 className="text-3xl font-bold tracking-tight text-foreground">
               {t("stages.title")}
             </h2>
-            <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-secondary/60" />
+            <div className="mx-auto mt-4 h-1 w-16 bg-secondary" />
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <div className="rounded-xl border border-border/60 bg-card p-5 shadow-xs">
-              <div className="mb-3 flex size-9 items-center justify-center rounded-lg bg-secondary/15 text-secondary">
-                <Wrench className="size-5" />
+              <div className="mb-4 flex size-12 items-center justify-center rounded-[10px] bg-muted text-foreground">
+                <Wrench className="size-6 text-foreground" />
               </div>
               <h3 className="mb-2 text-base font-semibold text-card-foreground">
                 {t("stages.stage1Title")}
@@ -242,8 +264,8 @@ export default async function DrillingPage() {
               </p>
             </div>
             <div className="rounded-xl border border-border/60 bg-card p-5 shadow-xs">
-              <div className="mb-3 flex size-9 items-center justify-center rounded-lg bg-secondary/15 text-secondary">
-                <Layers className="size-5" />
+              <div className="mb-4 flex size-12 items-center justify-center rounded-[10px] bg-muted text-foreground">
+                <Layers className="size-6 text-foreground" />
               </div>
               <h3 className="mb-2 text-base font-semibold text-card-foreground">
                 {t("stages.stage2Title")}
@@ -253,8 +275,8 @@ export default async function DrillingPage() {
               </p>
             </div>
             <div className="rounded-xl border border-border/60 bg-card p-5 shadow-xs">
-              <div className="mb-3 flex size-9 items-center justify-center rounded-lg bg-secondary/15 text-secondary">
-                <ShieldCheck className="size-5" />
+              <div className="mb-4 flex size-12 items-center justify-center rounded-[10px] bg-muted text-foreground">
+                <ShieldCheck className="size-6 text-foreground" />
               </div>
               <h3 className="mb-2 text-base font-semibold text-card-foreground">
                 {t("stages.stage3Title")}
@@ -264,8 +286,8 @@ export default async function DrillingPage() {
               </p>
             </div>
             <div className="rounded-xl border border-border/60 bg-card p-5 shadow-xs">
-              <div className="mb-3 flex size-9 items-center justify-center rounded-lg bg-secondary/15 text-secondary">
-                <FileCheck2 className="size-5" />
+              <div className="mb-4 flex size-12 items-center justify-center rounded-[10px] bg-muted text-foreground">
+                <FileCheck2 className="size-6 text-foreground" />
               </div>
               <h3 className="mb-2 text-base font-semibold text-card-foreground">
                 {t("stages.stage4Title")}
@@ -282,10 +304,13 @@ export default async function DrillingPage() {
       <section className="py-20">
         <div className="mx-auto max-w-4xl px-8">
           <div className="mb-12 text-center">
-            <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+            <p className="mb-2 text-sm font-medium uppercase tracking-widest text-secondary">
+              {t("faq.eyebrow")}
+            </p>
+            <h2 className="text-3xl font-bold tracking-tight text-foreground">
               {t("faq.title")}
             </h2>
-            <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-secondary/60" />
+            <div className="mx-auto mt-4 h-1 w-16 bg-secondary" />
           </div>
 
           <div className="space-y-4">

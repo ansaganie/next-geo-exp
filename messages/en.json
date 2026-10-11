@@ -179,7 +179,10 @@
       "detailsHeading": "Drilling Operations & Technology",
       "p1": "GeoExploration carries out turnkey water well drilling, wireline core drilling with high core recovery, and geotechnical investigation boreholes up to 250 meters deep across Astana, the Akmola region, and all territories of Kazakhstan. Our proprietary drilling fleet (all-terrain URB-2A2 rigs, Boart Longyear equipment) allows us to tackle complex geological conditions.",
       "p2": "All operations strictly adhere to Kazakhstan national standards: comprehensive geophysical logging, core and soil monolith recovery, installation of certified uPVC and steel casing, pumping tests, and full borehole passport issuance.",
+      "servicesEyebrow": "Our Offerings",
+      "servicesHeading": "Drilling Services & Methods",
       "coreSection": {
+        "eyebrow": "Drilling Technology",
         "title": "Wireline Core Drilling (PQ / HQ / NQ Standard Recovery)",
         "description": "Core drilling is essential for detailed stratigraphic investigation, mineral exploration, and geotechnical foundation assessments, recovering intact cylindrical rock specimens (cores) while preserving natural structural features. We deploy wireline double-tube core barrels with diamond crowns, delivering 95-100% core recovery even in fractured geological formations.",
         "badge": "High Precision",
@@ -195,10 +198,11 @@
         "spec2Value": "from 76 to 219 mm",
         "spec3Label": "Drilling Rigs",
         "spec3Value": "URB-2A2 (KamAZ/Ural), Boart Longyear",
-        "spec4Label": "Casing Types",
-        "spec4Value": "Potable-grade uPVC, seamless steel (GOST)"
+        "spec4Label": "Casing Diameters & Types",
+        "spec4Value": "125–219 mm (potable uPVC, steel GOST)"
       },
       "stages": {
+        "eyebrow": "Workflow",
         "title": "Borehole Drilling Workflow Stages",
         "stage1Title": "1. Geological Analysis & Site Reconnaissance",
         "stage1Desc": "Review of local hydrogeological archives and on-site engineering assessment to locate the optimal drilling point.",
@@ -210,6 +214,7 @@
         "stage4Desc": "Development pumping to clear water, static and dynamic water level testing, yield measurement, and official passport handover."
       },
       "faq": {
+        "eyebrow": "Questions & Answers",
         "title": "Frequently Asked Questions About Drilling",
         "q1": "What is the typical water well depth in Astana and the surrounding region?",
         "a1": "In Astana and the Akmola region, sandy aquifers typically range between 25 and 45 meters, while deep artesian aquifers in fractured bedrock reach 60 to 120 meters. Precise depths are determined using geological maps and test boreholes.",
@@ -246,7 +251,7 @@
       "description": "Comprehensive engineering-geological soil investigations, laboratory analyses, and technical report preparation for design."
     },
     "drilling": {
-      "label": "Well Drilling",
+      "label": "Borehole Drilling",
       "description": "Water well drilling, wireline core drilling, and geotechnical boreholes in Astana and Kazakhstan with full technical documentation."
     },
     "hydrogeology": {
@@ -343,7 +348,7 @@
     "services": "Services",
     "geodesy": "Geodesy & Topography",
     "geotechnical": "Engineering-Geological Surveys",
-    "drilling": "Well Drilling",
+    "drilling": "Borehole Drilling",
     "hydrogeology": "Hydrogeology",
     "equipment": "Equipment & Materials",
     "portfolio": "Portfolio",

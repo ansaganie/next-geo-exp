@@ -1,29 +1,22 @@
 import type { MetadataRoute } from "next";
+import { routing } from "@/i18n/routing";
+import { serviceCategories } from "@/entities/service/services";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://geoexploration.kz";
   const lastModified = new Date();
 
-  const locales = ["kk", "ru", "en"] as const;
-  const categories = [
-    "drilling",
-    "geotechnical",
-    "geodesy",
-    "hydrogeology",
-    "equipment",
-  ];
+  const locales = routing.locales;
 
-  const getUrl = (locale: (typeof locales)[number], path: string = "") => {
-    const prefix = locale === "kk" ? "" : `/${locale}`;
+  const getUrl = (locale: string, path: string = "") => {
+    const prefix = locale === routing.defaultLocale ? "" : `/${locale}`;
     return `${baseUrl}${prefix}${path}`;
   };
 
   const getAlternates = (path: string = "") => ({
-    languages: {
-      kk: getUrl("kk", path),
-      ru: getUrl("ru", path),
-      en: getUrl("en", path),
-    },
+    languages: Object.fromEntries(
+      locales.map((loc) => [loc, getUrl(loc, path)]),
+    ),
   });
 
   const routes: MetadataRoute.Sitemap = [];
@@ -40,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
 
   // Service category pages
-  categories.forEach((category) => {
+  serviceCategories.forEach((category) => {
     locales.forEach((locale) => {
       const isDrilling = category === "drilling";
       const priority = isDrilling
