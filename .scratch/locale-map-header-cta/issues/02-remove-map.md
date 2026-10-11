@@ -1,7 +1,7 @@
 # 02: Remove Map and Restructure Contact Section
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Blocked by:
 
 ## Description

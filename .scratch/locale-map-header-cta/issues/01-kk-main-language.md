@@ -1,7 +1,7 @@
 # 01: Configure Kazakh (`kk`) as the Primary Website Language
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Blocked by:
 
 ## Description
