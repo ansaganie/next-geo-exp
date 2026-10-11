@@ -105,6 +105,7 @@ describe("Header mobile CTA button", () => {
     expect(mobileContainerHtml).toContain(`href="${headerCta.href}"`);
     expect(mobileContainerHtml).toContain("Өтінім қалдыру");
     expect(mobileContainerHtml).toContain("bg-secondary text-secondary-foreground");
+    expect(mobileContainerHtml).toContain("rounded-md");
     expect(mobileContainerHtml).toContain("text-xs px-2.5 h-8 sm:text-sm sm:px-3 sm:h-9 mr-2");
 
     // The CTA button must appear before the Sheet trigger menu button

@@ -7,9 +7,16 @@ import { Input } from "@/shared/ui/input";
 import { Textarea } from "@/shared/ui/textarea";
 import { Button } from "@/shared/ui/button";
 import { BrandIcon } from "@/shared/ui/brand-icon";
-import { Phone, Mail, Clock } from "lucide-react";
+import { Phone, Mail, Clock, MapPin } from "lucide-react";
 import { siWhatsapp } from "simple-icons";
 import { useTranslations } from "next-intl";
+import {
+  contactLinks,
+  phoneMain,
+  phoneDisplay,
+  email as defaultEmail,
+  whatsappHref as defaultWhatsappHref,
+} from "@/shared/lib/links";
 
 const schema = z.object({
   name: z.string().min(2, "minChars"),
@@ -31,15 +38,17 @@ export function ContactSection() {
   );
   const t = useTranslations("contact");
 
-  const phoneMain = process.env.NEXT_PUBLIC_PHONE_MAIN || "+77755020555";
-  const phoneDisplay =
-    process.env.NEXT_PUBLIC_PHONE_DISPLAY ||
-    process.env.NEXT_PUBLIC_PHONE_MAIN ||
-    "+7 (775) 502-05-55";
-  const email = process.env.NEXT_PUBLIC_EMAIL || "info@geoexploration.kz";
-  const whatsappHref =
-    process.env.NEXT_PUBLIC_WHATSAPP_BASE ||
-    `https://wa.me/${phoneMain.replace(/\D/g, "")}`;
+  const phoneContact = contactLinks.find((c) => c.id === "phone") ?? {
+    label: phoneDisplay,
+    href: `tel:${phoneMain}`,
+  };
+  const emailContact = contactLinks.find((c) => c.id === "email") ?? {
+    label: defaultEmail,
+    href: `mailto:${defaultEmail}`,
+  };
+  const whatsappContact = contactLinks.find((c) => c.id === "whatsapp") ?? {
+    href: defaultWhatsappHref,
+  };
 
   async function onSubmit(data: z.infer<typeof schema>) {
     setStatus("idle");
@@ -90,7 +99,7 @@ export function ContactSection() {
 
               <div className="space-y-4 text-sm">
                 <div className="flex items-start gap-3">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-secondary/10 text-secondary">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[10px] bg-muted text-foreground">
                     <Phone className="h-4 w-4" aria-hidden="true" />
                   </div>
                   <div>
@@ -98,16 +107,16 @@ export function ContactSection() {
                       {t("phoneLabel")}
                     </p>
                     <a
-                      href={`tel:${phoneMain}`}
+                      href={phoneContact.href}
                       className="font-medium text-foreground transition-colors hover:text-secondary"
                     >
-                      {phoneDisplay}
+                      {phoneContact.label}
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-secondary/10 text-secondary">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[10px] bg-muted text-foreground">
                     <Mail className="h-4 w-4" aria-hidden="true" />
                   </div>
                   <div>
@@ -115,16 +124,30 @@ export function ContactSection() {
                       {t("emailLabel")}
                     </p>
                     <a
-                      href={`mailto:${email}`}
+                      href={emailContact.href}
                       className="font-medium text-foreground transition-colors hover:text-secondary"
                     >
-                      {email}
+                      {emailContact.label}
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-secondary/10 text-secondary">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[10px] bg-muted text-foreground">
+                    <MapPin className="h-4 w-4" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground">
+                      {t("addressLabel")}
+                    </p>
+                    <p className="font-medium text-foreground">
+                      {t("address")}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[10px] bg-muted text-foreground">
                     <Clock className="h-4 w-4" aria-hidden="true" />
                   </div>
                   <div>
@@ -142,10 +165,10 @@ export function ContactSection() {
             <div className="mt-6 pt-6 border-t border-border/60">
               <Button
                 asChild
-                className="w-full bg-[#25D366] text-white hover:bg-[#25D366]/90 rounded-lg shadow-xs font-medium gap-2"
+                className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-md shadow-xs font-medium gap-2"
               >
                 <a
-                  href={whatsappHref}
+                  href={whatsappContact.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={t("whatsappAction")}
@@ -167,7 +190,7 @@ export function ContactSection() {
           >
             <Input
               placeholder={t("name")}
-              className="rounded-lg border-border/60 bg-background"
+              className="rounded-md border-border/60 bg-background"
               {...register("name")}
             />
             {errors.name && (
@@ -177,7 +200,7 @@ export function ContactSection() {
             )}
             <Input
               placeholder={t("surname")}
-              className="rounded-lg border-border/60 bg-background"
+              className="rounded-md border-border/60 bg-background"
               {...register("surname")}
             />
             {errors.surname && (
@@ -187,7 +210,7 @@ export function ContactSection() {
             )}
             <Input
               placeholder={t("phone")}
-              className="rounded-lg border-border/60 bg-background"
+              className="rounded-md border-border/60 bg-background"
               {...register("phone")}
             />
             {errors.phone && (
@@ -197,13 +220,13 @@ export function ContactSection() {
             )}
             <Textarea
               placeholder={t("comment")}
-              className="rounded-lg border-border/60 bg-background"
+              className="rounded-md border-border/60 bg-background"
               {...register("comment")}
             />
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-lg"
+              className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-md"
             >
               {isSubmitting ? t("submitting") : t("submit")}
             </Button>

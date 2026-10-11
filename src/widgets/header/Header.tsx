@@ -179,7 +179,7 @@ export function Header() {
           <Button
             size="sm"
             asChild
-            className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-lg text-xs px-2.5 h-8 sm:text-sm sm:px-3 sm:h-9 mr-2"
+            className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-md text-xs px-2.5 h-8 sm:text-sm sm:px-3 sm:h-9 mr-2"
           >
             <Link href={headerCta.href}>{tNav(headerCta.labelKey)}</Link>
           </Button>
@@ -338,7 +338,7 @@ export function Header() {
           <Button
             size="sm"
             asChild
-            className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-lg"
+            className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-md"
           >
             <Link href={headerCta.href}>{tNav(headerCta.labelKey)}</Link>
           </Button>
