@@ -1,7 +1,7 @@
 # 03: Move "Contact Us" CTA Button to Mobile App Header
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Blocked by: 01
 
 ## Description
