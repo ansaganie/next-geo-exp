@@ -30,19 +30,28 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "metadata" });
 
   const ogLocaleMap: Record<string, string> = {
-    ru: "ru_RU",
     kk: "kk_KZ",
+    ru: "ru_RU",
     en: "en_US",
   };
 
-  const localePrefix = locale === "ru" ? "" : `/${locale}`;
+  const localePrefix = locale === "kk" ? "" : `/${locale}`;
   const canonicalUrl = `https://geoexploration.kz${localePrefix}`;
 
-  return {
-    title: t("title"),
-    description: t("description"),
-    icons: { icon: "/favicon.ico" },
-    keywords: [
+  const keywordsByLocale: Record<string, string[]> = {
+    kk: [
+      "геология",
+      "инженерлік-геологиялық зерттеулер",
+      "ұңғыма бұрғылау",
+      "суға ұңғыма бұрғылау",
+      "геодезия",
+      "топографиялық түсірілім",
+      "кадастрлық жұмыстар",
+      "GeoExploration",
+      "зерттеулер Қазақстан",
+      "геология Қазақстан",
+    ],
+    ru: [
       "геология",
       "инженерно-геологические изыскания",
       "бурение скважин",
@@ -53,12 +62,30 @@ export async function generateMetadata({
       "GeoExploration",
       "изыскания Казахстан",
     ],
+    en: [
+      "geology",
+      "engineering-geological surveys",
+      "borehole drilling",
+      "water well drilling",
+      "geodesy",
+      "topographic mapping",
+      "cadastral work",
+      "GeoExploration",
+      "investigations Kazakhstan",
+    ],
+  };
+
+  return {
+    title: t("title"),
+    description: t("description"),
+    icons: { icon: "/favicon.ico" },
+    keywords: keywordsByLocale[locale] ?? keywordsByLocale.kk,
     metadataBase: new URL("https://geoexploration.kz"),
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        ru: "https://geoexploration.kz",
-        kk: "https://geoexploration.kz/kk",
+        kk: "https://geoexploration.kz",
+        ru: "https://geoexploration.kz/ru",
         en: "https://geoexploration.kz/en",
       },
     },
@@ -67,7 +94,7 @@ export async function generateMetadata({
       description: t("ogDescription"),
       url: canonicalUrl,
       siteName: "GeoExploration",
-      locale: ogLocaleMap[locale] ?? "ru_RU",
+      locale: ogLocaleMap[locale] ?? "kk_KZ",
       type: "website",
       images: [
         {
