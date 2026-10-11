@@ -28,5 +28,5 @@ Provide a clear, high-signal view of the change. Use the smallest visual format 
 
 - [ ] `bun run lint` passes without errors
 - [ ] `bun run build` passes without errors
-- [ ] Domain terms match glossary defined in [`CONTEXT.md`](../CONTEXT.md)
+- [ ] Domain terms match glossary defined in [`GLOSSARY.md`](../GLOSSARY.md)
 - [ ] Verified manually in local browser/dev server
