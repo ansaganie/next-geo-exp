@@ -16,7 +16,7 @@ const messages = {
     workingHoursLabel: "Жұмыс кестесі",
     workingHours: "Дс–Жм 09:00–18:00",
     addressLabel: "Мекенжай",
-    address: "Алматы қ., Қазақстан",
+    address: "Астана қ., Қазақстан",
     name: "Аты",
     surname: "Тегі",
     phone: "Телефон (+7XXXXXXXXXX)",
@@ -53,7 +53,7 @@ describe("ContactSection", () => {
     expect(html).toContain('href="mailto:');
     // Address / physical location note
     expect(html).toContain("Мекенжай");
-    expect(html).toContain("Алматы қ., Қазақстан");
+    expect(html).toContain("Астана қ., Қазақстан");
     // WhatsApp CTA button / link
     expect(html).toContain("wa.me");
     expect(html).toContain("WhatsApp арқылы жазу");
