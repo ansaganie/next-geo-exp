@@ -30,7 +30,6 @@ jobs:
           NEXT_PUBLIC_WHATSAPP_BASE: ${{ secrets.NEXT_PUBLIC_WHATSAPP_BASE }}
           NEXT_PUBLIC_INSTAGRAM_URL: ${{ secrets.NEXT_PUBLIC_INSTAGRAM_URL }}
           NEXT_PUBLIC_EMAIL: ${{ secrets.NEXT_PUBLIC_EMAIL }}
-          NEXT_PUBLIC_MAP_IFRAME_SRC: ${{ secrets.NEXT_PUBLIC_MAP_IFRAME_SRC }}
 
       - name: Copy static assets into standalone bundle
         run: |

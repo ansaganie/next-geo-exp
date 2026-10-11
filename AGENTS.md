@@ -12,4 +12,4 @@ Canonical triage roles (`needs-triage`, `needs-info`, `ready-for-agent`, `ready-
 
 ### Domain docs
 
-Single-context (`CONTEXT.md` and `docs/adr/` at repo root). See `docs/agents/domain.md`.
+Single-context (`GLOSSARY.md` and `docs/adr/` at repo root). See `docs/agents/domain.md`.
