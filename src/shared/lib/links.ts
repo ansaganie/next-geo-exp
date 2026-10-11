@@ -35,6 +35,7 @@ export const serviceLinks: NavLink[] = [
 ];
 
 export type ContactLink = {
+  id?: "whatsapp" | "phone" | "email" | "instagram";
   label: string;
   href: string;
   aria: string;
@@ -43,29 +44,45 @@ export type ContactLink = {
   icon?: ComponentType<SVGProps<SVGSVGElement>>;
 };
 
+const defaultPhoneMain = "+77755020555";
+const defaultPhoneDisplay = "+7 (775) 502-05-55";
+const defaultEmail = "info@geoexploration.kz";
+
+export const phoneMain = process.env.NEXT_PUBLIC_PHONE_MAIN || defaultPhoneMain;
+export const phoneDisplay =
+  process.env.NEXT_PUBLIC_PHONE_DISPLAY ||
+  process.env.NEXT_PUBLIC_PHONE_MAIN ||
+  defaultPhoneDisplay;
+export const email = process.env.NEXT_PUBLIC_EMAIL || defaultEmail;
+export const whatsappHref =
+  process.env.NEXT_PUBLIC_WHATSAPP_BASE ||
+  `https://wa.me/${phoneMain.replace(/\D/g, "")}`;
+
 export const contactLinks: ContactLink[] = [
   {
+    id: "whatsapp",
     label: "WhatsApp",
-    href: process.env.NEXT_PUBLIC_WHATSAPP_BASE || "",
+    href: whatsappHref,
     external: true,
     brand: siWhatsapp,
     aria: "Открыть чат WhatsApp",
   },
   {
-    label: process.env.NEXT_PUBLIC_PHONE_DISPLAY || "Телефон",
-    href: `tel:${process.env.NEXT_PUBLIC_PHONE_MAIN}`,
+    id: "phone",
+    label: phoneDisplay,
+    href: `tel:${phoneMain}`,
     icon: Phone,
-    aria: `Позвонить по номеру ${
-      process.env.NEXT_PUBLIC_PHONE_DISPLAY || "основной телефон"
-    }`,
+    aria: `Позвонить по номеру ${phoneDisplay}`,
   },
   {
-    label: process.env.NEXT_PUBLIC_EMAIL || "Email",
-    href: `mailto:${process.env.NEXT_PUBLIC_EMAIL}`,
+    id: "email",
+    label: email,
+    href: `mailto:${email}`,
     icon: Mail,
-    aria: `Написать на email ${process.env.NEXT_PUBLIC_EMAIL}`,
+    aria: `Написать на email ${email}`,
   },
   {
+    id: "instagram",
     label: "Instagram",
     href: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "",
     external: true,

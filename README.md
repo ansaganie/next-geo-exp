@@ -93,7 +93,6 @@ Set as GitHub Actions secrets (or Variables - these values are public):
 | `NEXT_PUBLIC_WHATSAPP_BASE` | Full WhatsApp link with pre-filled message |
 | `NEXT_PUBLIC_INSTAGRAM_URL` | Instagram profile URL |
 | `NEXT_PUBLIC_EMAIL` | Contact email address |
-| `NEXT_PUBLIC_MAP_IFRAME_SRC` | Yandex Maps embed `src` attribute |
 
 ### Runtime (server-side only, set in Plesk - never in CI)
 

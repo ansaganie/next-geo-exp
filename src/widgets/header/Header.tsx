@@ -176,6 +176,13 @@ export function Header() {
         </nav>
 
         <div className="flex md:hidden items-center">
+          <Button
+            size="sm"
+            asChild
+            className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-md text-xs px-2.5 h-8 sm:text-sm sm:px-3 sm:h-9 mr-2"
+          >
+            <Link href={headerCta.href}>{tNav(headerCta.labelKey)}</Link>
+          </Button>
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" aria-label={t("menu")}>
@@ -224,9 +231,6 @@ export function Header() {
                     )}
                   </div>
                 ))}
-                <Button variant="default" className="mt-2" asChild>
-                  <Link href={headerCta.href}>{tNav(headerCta.labelKey)}</Link>
-                </Button>
               </nav>
               {mounted && (
                 <div className="mt-4 flex items-center gap-2 border-t border-border/60 pt-4">
@@ -334,7 +338,7 @@ export function Header() {
           <Button
             size="sm"
             asChild
-            className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-lg"
+            className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-md"
           >
             <Link href={headerCta.href}>{tNav(headerCta.labelKey)}</Link>
           </Button>

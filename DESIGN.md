@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: GeoExploration
-description: Earthy, precise, trustworthy design system for a Kazakhstan engineering-survey company (geodesy, engineering geology, water well drilling, hydrogeology, field supplies). Trilingual - Russian (default), Kazakh, English. Light and dark themes.
+description: Earthy, precise, trustworthy design system for a Kazakhstan engineering-survey company (geodesy, engineering geology, water well drilling, hydrogeology, field supplies). Trilingual - Kazakh (default), Russian, English. Light and dark themes.
 colors:
   background: "#FAF7F2"
   foreground: "#4A3B32"
