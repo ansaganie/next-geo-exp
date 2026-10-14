@@ -3,13 +3,14 @@
  * Usage: bun scripts/submit-indexnow.ts
  */
 import sitemap from "../src/app/sitemap";
+import { siteConfig } from "../src/shared/config/site";
 
 const DEFAULT_KEY = "c03dfd68a2134cb98b671a5ff6d8b2e1";
-const HOST = "geoexploration.kz";
+const HOST = new URL(siteConfig.url).hostname;
 
 async function main() {
   const key = process.env.INDEXNOW_KEY || DEFAULT_KEY;
-  const keyLocation = `https://${HOST}/${key}.txt`;
+  const keyLocation = `${siteConfig.url}/${key}.txt`;
 
   // Dynamically derive the exact list of URLs from the sitemap definition
   const urlList = sitemap().map((entry) => entry.url);

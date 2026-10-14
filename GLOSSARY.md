@@ -25,17 +25,17 @@ _Avoid_: Water study
 
 ## Drilling Services
 
-**Core Drilling**:
+**Core Drilling** (*ru: Колонковое бурение* / *kk: Бағаналы бұрғылау*):
 Rotary exploration drilling using hollow bits to recover intact cylindrical rock cores (PQ/HQ/NQ) for stratigraphic and mineral evaluation.
-_Avoid_: Rock punching, tube drilling
+_Avoid_: Rock punching, tube drilling, rock core puncture
 
-**Water Well Drilling**:
+**Water Well Drilling** (*ru: Бурение скважин на воду* / *kk: Су ұңғымаларын бұрғылау*):
 Drilling, filter installation, casing, and pump-testing of domestic and industrial water supply wells.
-_Avoid_: Water digging, borehole punching
+_Avoid_: Water digging, borehole punching, water hole digging
 
-**Geotechnical Drilling**:
+**Geotechnical Drilling** (*ru: Инженерно-геологическое бурение* / *kk: Инженерлік-геологиялық бұрғылау*):
 Borehole drilling dedicated to structural foundation investigations, standard penetration testing (SPT), and undisturbed soil sampling (monoliths).
-_Avoid_: Soil piercing, ground probe
+_Avoid_: Soil piercing, ground probe, engineering-geological drilling (in English)
 
 ## Field Supplies
 

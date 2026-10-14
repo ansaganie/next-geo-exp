@@ -28,6 +28,7 @@ describe("LocaleLayout metadata", () => {
 
     expect(metaKk.alternates?.canonical).toBe("https://geoexploration.kz");
     expect(metaKk.alternates?.languages).toEqual({
+      "x-default": "https://geoexploration.kz",
       kk: "https://geoexploration.kz",
       ru: "https://geoexploration.kz/ru",
       en: "https://geoexploration.kz/en",
@@ -77,5 +78,14 @@ describe("LocaleLayout metadata", () => {
       params: Promise.resolve({ locale: "unknown" }),
     });
     expect(metaUnknown.openGraph?.locale).toBe("kk_KZ");
+  });
+
+  it("configures regional geo tags for Kazakhstan/Astana", async () => {
+    const metaKk = await generateMetadata({
+      params: Promise.resolve({ locale: "kk" }),
+    });
+    expect(metaKk.other?.["geo.region"]).toBe("KZ-AST");
+    expect(metaKk.other?.["geo.placename"]).toBe("Astana");
+    expect(metaKk.other?.ICBM).toBe("51.169392, 71.449074");
   });
 });

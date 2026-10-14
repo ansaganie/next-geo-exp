@@ -13,6 +13,9 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
+import { constructServiceMetadata } from "@/shared/lib/seo";
+import { siteConfig } from "@/shared/config/site";
+
 const filtered = services.filter((s) => s.category === "drilling");
 
 export async function generateMetadata({
@@ -25,27 +28,13 @@ export async function generateMetadata({
     locale,
     namespace: "servicePages.drilling",
   });
-  const localePrefix = locale === "kk" ? "" : `/${locale}`;
-  const canonicalUrl = `https://geoexploration.kz${localePrefix}/services/drilling`;
 
-  return {
+  return constructServiceMetadata({
+    locale,
+    categorySlug: "drilling",
     title: t("metaTitle"),
     description: t("metaDescription"),
-    alternates: {
-      canonical: canonicalUrl,
-      languages: {
-        kk: "https://geoexploration.kz/services/drilling",
-        ru: "https://geoexploration.kz/ru/services/drilling",
-        en: "https://geoexploration.kz/en/services/drilling",
-      },
-    },
-    openGraph: {
-      title: t("metaTitle"),
-      description: t("metaDescription"),
-      url: canonicalUrl,
-      type: "website",
-    },
-  };
+  });
 }
 
 export default async function DrillingPage() {
@@ -99,11 +88,11 @@ export default async function DrillingPage() {
     name: t("pageHeading"),
     provider: {
       "@type": "LocalBusiness",
-      name: "GeoExploration",
-      telephone: process.env.NEXT_PUBLIC_PHONE_MAIN || "+77755020555",
+      name: siteConfig.name,
+      telephone: siteConfig.contact.phoneMain,
       address: {
         "@type": "PostalAddress",
-        addressLocality: "Astana",
+        addressLocality: siteConfig.geo.placename,
         addressCountry: "KZ",
       },
     },
@@ -169,7 +158,7 @@ export default async function DrillingPage() {
                 <span className="rounded-md bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-wider text-secondary-foreground">
                   {t("coreSection.badge")}
                 </span>
-                <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+                <span className="text-sm font-medium uppercase tracking-widest text-secondary">
                   {t("coreSection.eyebrow")}
                 </span>
               </div>
@@ -227,6 +216,9 @@ export default async function DrillingPage() {
       <section className="py-20">
         <div className="mx-auto max-w-4xl px-8">
           <div className="mb-10 text-center">
+            <p className="mb-2 text-sm font-medium uppercase tracking-widest text-secondary">
+              {t("detailsEyebrow")}
+            </p>
             <h2 className="text-3xl font-bold tracking-tight text-foreground">
               {t("detailsHeading")}
             </h2>
