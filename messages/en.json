@@ -31,7 +31,7 @@
     "goToSection": "Go to section: {label}"
   },
   "hero": {
-    "heading": "GeoExploration key services",
+    "heading": "Engineering-Geological Surveys & Borehole Drilling in Astana, Kazakhstan",
     "goToSlide": "Go to slide {index}: {title}",
     "slides": {
       "drilling": {
@@ -176,6 +176,7 @@
       "metaDescription": "Turnkey water well drilling and wireline core drilling in Astana and across Kazakhstan. URB-2A2 rigs, depths up to 250 m, PQ/HQ/NQ core recovery, borehole passports.",
       "pageHeading": "Borehole & Core Drilling in Astana and Kazakhstan",
       "pageSubtitle": "Turnkey water well drilling, high-precision wireline core drilling, and engineering-geological boreholes with official technical passports.",
+      "detailsEyebrow": "Technology & Fleet",
       "detailsHeading": "Drilling Operations & Technology",
       "p1": "GeoExploration carries out turnkey water well drilling, wireline core drilling with high core recovery, and geotechnical investigation boreholes up to 250 meters deep across Astana, the Akmola region, and all territories of Kazakhstan. Our proprietary drilling fleet (all-terrain URB-2A2 rigs, Boart Longyear equipment) allows us to tackle complex geological conditions.",
       "p2": "All operations strictly adhere to Kazakhstan national standards: comprehensive geophysical logging, core and soil monolith recovery, installation of certified uPVC and steel casing, pumping tests, and full borehole passport issuance.",
@@ -278,7 +279,7 @@
       "details": "Full-cycle drilling of artesian and sand water wells in Astana and the Akmola region. Installation of steel and uPVC casing strings, slotted screens, pumping tests, hydrogeological reports, and official borehole passports."
     },
     "geotechnical-drilling": {
-      "title": "Engineering-Geological Drilling",
+      "title": "Geotechnical Drilling",
       "description": "Borehole drilling for structural foundations with layer-by-layer soil monolith sampling",
       "details": "Field borehole drilling for residential, commercial, and industrial construction. Stratigraphic sampling of soil monoliths, in-situ field testing (plate load, SPT), and laboratory analysis adhering to Kazakhstan building codes."
     },

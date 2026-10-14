@@ -4,6 +4,7 @@ import { ServiceCard } from "@/entities/service/ServiceCard";
 import { PageHeader } from "@/widgets/page-header/PageHeader";
 import { CtaBanner } from "@/widgets/cta-banner/CtaBanner";
 import { getTranslations } from "next-intl/server";
+import { constructServiceMetadata } from "@/shared/lib/seo";
 
 const filtered = services.filter((s) => s.category === "equipment");
 
@@ -17,26 +18,13 @@ export async function generateMetadata({
     locale,
     namespace: "categories.equipment",
   });
-  const localePrefix = locale === "kk" ? "" : `/${locale}`;
-  const canonicalUrl = `https://geoexploration.kz${localePrefix}/services/equipment`;
 
-  return {
+  return constructServiceMetadata({
+    locale,
+    categorySlug: "equipment",
     title: `${tCat("label")} - GeoExploration`,
     description: tCat("description"),
-    alternates: {
-      canonical: canonicalUrl,
-      languages: {
-        kk: "https://geoexploration.kz/services/equipment",
-        ru: "https://geoexploration.kz/ru/services/equipment",
-        en: "https://geoexploration.kz/en/services/equipment",
-      },
-    },
-    openGraph: {
-      title: `${tCat("label")} - GeoExploration`,
-      description: tCat("description"),
-      url: canonicalUrl,
-    },
-  };
+  });
 }
 
 export default async function EquipmentPage() {
