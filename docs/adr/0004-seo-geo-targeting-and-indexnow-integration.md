@@ -27,7 +27,8 @@ Prior to this decision:
    - Keep `/services/drilling` as the consolidated pillar page rather than fragmenting authority across thin sub-routes.
    - Include a dedicated `#core-drilling` anchor section detailing wireline core drilling (PQ/HQ/NQ), rock core recovery, and geological analysis.
    - Include a technical fleet capabilities block (rig types УРБ-2А2, Boart Longyear; depths up to 250 m; casing diameters 125–219 mm).
-   - Implement an interactive FAQ accordion with matching `FAQPage` JSON-LD schema to capture Google and Yandex rich snippet rankings.
+   - Detail a 4-stage operational workflow (mobilization, drilling & core recovery, casing & screening, testing & passporting) to establish transparent B2B process credibility.
+   - Implement an interactive FAQ accordion with matching `FAQPage` and explicit `Service` JSON-LD schemas to capture Google and Yandex rich snippet rankings.
 
 4. **Technical Indexing & IndexNow Pipeline**:
    - Implement dynamic Next.js `src/app/sitemap.ts` generating multilingual sitemap XML with full hreflang alternates (`kk`, `ru`, `en`) and change frequencies.

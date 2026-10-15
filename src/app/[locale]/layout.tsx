@@ -10,6 +10,8 @@ import {
   setRequestLocale,
 } from "next-intl/server";
 import { routing } from "@/i18n/routing";
+import { siteConfig } from "@/shared/config/site";
+import { getCanonicalPath, getLanguageAlternates } from "@/shared/lib/seo";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -35,8 +37,7 @@ export async function generateMetadata({
     en: "en_US",
   };
 
-  const localePrefix = locale === "kk" ? "" : `/${locale}`;
-  const canonicalUrl = `https://geoexploration.kz${localePrefix}`;
+  const canonicalUrl = getCanonicalPath(locale);
 
   const keywordsByLocale: Record<string, string[]> = {
     kk: [
@@ -85,29 +86,35 @@ export async function generateMetadata({
     description: t("description"),
     icons: { icon: "/favicon.ico" },
     keywords: keywordsByLocale[locale] ?? keywordsByLocale.kk,
-    metadataBase: new URL("https://geoexploration.kz"),
+    metadataBase: new URL(siteConfig.url),
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        kk: "https://geoexploration.kz",
-        ru: "https://geoexploration.kz/ru",
-        en: "https://geoexploration.kz/en",
-      },
+      languages: getLanguageAlternates(),
+    },
+    other: {
+      "geo.region": siteConfig.geo.region,
+      "geo.placename": siteConfig.geo.placename,
+      "geo.position": siteConfig.geo.position,
+      ICBM: siteConfig.geo.icbm,
     },
     verification: {
-      google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
-      yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
+      google:
+        process.env.GOOGLE_VERIFICATION ||
+        process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
+      yandex:
+        process.env.YANDEX_VERIFICATION ||
+        process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
     },
     openGraph: {
       title: t("title"),
       description: t("ogDescription"),
       url: canonicalUrl,
-      siteName: "GeoExploration",
+      siteName: siteConfig.name,
       locale: ogLocaleMap[locale] ?? "kk_KZ",
       type: "website",
       images: [
         {
-          url: "/assets/images/Logo.png",
+          url: siteConfig.ogImage,
           width: 1200,
           height: 630,
           alt: t("ogImageAlt"),
@@ -119,7 +126,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: t("title"),
       description: t("ogDescription"),
-      images: ["/assets/images/Logo.png"],
+      images: [siteConfig.ogImage],
     },
   };
 }
@@ -164,25 +171,32 @@ export default async function LocaleLayout({
                 __html: JSON.stringify({
                   "@context": "https://schema.org",
                   "@type": ["LocalBusiness", "ProfessionalService"],
-                  "@id": "https://geoexploration.kz/#organization",
-                  name: "GeoExploration",
-                  url: "https://geoexploration.kz",
-                  logo: "https://geoexploration.kz/assets/images/Logo.png",
-                  image: "https://geoexploration.kz/assets/images/Logo.png",
-                  telephone: process.env.NEXT_PUBLIC_PHONE_MAIN || "+77755020555",
-                  email: process.env.NEXT_PUBLIC_EMAIL || "info@geoexploration.kz",
+                  "@id": `${siteConfig.url}/#organization`,
+                  name: siteConfig.name,
+                  url: siteConfig.url,
+                  logo: `${siteConfig.url}${siteConfig.ogImage}`,
+                  image: `${siteConfig.url}${siteConfig.ogImage}`,
+                  telephone: siteConfig.contact.phoneMain,
+                  email: siteConfig.contact.email,
                   priceRange: "$$",
                   address: {
                     "@type": "PostalAddress",
-                    streetAddress: "г. Астана",
-                    addressLocality: "Астана",
-                    addressRegion: "Астана",
+                    streetAddress:
+                      locale === "kk"
+                        ? "Астана қ."
+                        : locale === "en"
+                          ? "Astana"
+                          : "г. Астана",
+                    addressLocality:
+                      locale === "en" ? "Astana" : "Астана",
+                    addressRegion:
+                      locale === "en" ? "Astana" : "Астана",
                     addressCountry: "KZ",
                   },
                   geo: {
                     "@type": "GeoCoordinates",
-                    latitude: 51.169392,
-                    longitude: 71.449074,
+                    latitude: siteConfig.geo.latitude,
+                    longitude: siteConfig.geo.longitude,
                   },
                   openingHoursSpecification: [
                     {

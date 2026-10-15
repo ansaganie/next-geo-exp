@@ -78,9 +78,9 @@ export function HeroCarousel() {
       {/* Content */}
       <div className="relative z-10 w-full py-8 sm:py-10 md:py-12 lg:py-14">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <h2 id="hero-heading" className="sr-only">
+          <h1 id="hero-heading" className="sr-only">
             {t("heading")}
-          </h2>
+          </h1>
 
           <Carousel
             setApi={setApi}

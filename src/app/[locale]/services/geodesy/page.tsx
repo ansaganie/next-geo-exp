@@ -4,6 +4,7 @@ import { ServiceCard } from "@/entities/service/ServiceCard";
 import { PageHeader } from "@/widgets/page-header/PageHeader";
 import { CtaBanner } from "@/widgets/cta-banner/CtaBanner";
 import { getTranslations } from "next-intl/server";
+import { constructServiceMetadata } from "@/shared/lib/seo";
 
 const filtered = services.filter((s) => s.category === "geodesy");
 
@@ -17,26 +18,13 @@ export async function generateMetadata({
     locale,
     namespace: "categories.geodesy",
   });
-  const localePrefix = locale === "kk" ? "" : `/${locale}`;
-  const canonicalUrl = `https://geoexploration.kz${localePrefix}/services/geodesy`;
 
-  return {
+  return constructServiceMetadata({
+    locale,
+    categorySlug: "geodesy",
     title: `${tCat("label")} - GeoExploration`,
     description: tCat("description"),
-    alternates: {
-      canonical: canonicalUrl,
-      languages: {
-        kk: "https://geoexploration.kz/services/geodesy",
-        ru: "https://geoexploration.kz/ru/services/geodesy",
-        en: "https://geoexploration.kz/en/services/geodesy",
-      },
-    },
-    openGraph: {
-      title: `${tCat("label")} - GeoExploration`,
-      description: tCat("description"),
-      url: canonicalUrl,
-    },
-  };
+  });
 }
 
 export default async function GeodesyPage() {

@@ -26,6 +26,9 @@ describe("dynamic sitemap", () => {
     );
 
     expect(drillingRu).toBeDefined();
+    expect(drillingRu?.alternates?.languages?.["x-default"]).toBe(
+      "https://geoexploration.kz/services/drilling",
+    );
     expect(drillingRu?.alternates?.languages?.kk).toBe(
       "https://geoexploration.kz/services/drilling",
     );
